@@ -1,0 +1,50 @@
+* {margin: 0; padding: 0; box-sizing: border-box;}
+#app {
+   .header {
+        height: 470px;
+        width: 100%;
+        background: transparent url('./img/hero.jpg') center no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        position: relative;
+    
+        nav {
+        display: flex;
+        height: 40px;
+        background: transparent;
+
+
+        .nav-options {
+            display: flex;
+            width: 60%;
+            justify-content: space-around;
+            align-self: center;
+            color: #f4f4f4;
+            
+            li {
+                list-style: none;
+            }
+        }
+    }
+
+    .title-wrap {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        padding: 20px 0;
+        
+
+        .subtitle {
+            font-weight: 100;
+            
+        }
+
+        .title {
+            font-weight: 700;
+        }
+    }
+   }
+
+}

@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#app .header {
+  height: 470px;
+  width: 100%;
+  background: transparent url("./img/hero.jpg") center no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+}
+#app .header nav {
+  display: flex;
+  height: 40px;
+  background: transparent;
+}
+#app .header nav .nav-options {
+  display: flex;
+  width: 60%;
+  justify-content: space-around;
+  align-self: center;
+  color: #f4f4f4;
+}
+#app .header nav .nav-options li {
+  list-style: none;
+}
+#app .header .title-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  padding: 20px 0;
+}
+#app .header .title-wrap .subtitle {
+  font-weight: 100;
+}
+#app .header .title-wrap .title {
+  font-weight: 700;
+}
+
+/*# sourceMappingURL=index.css.map */
