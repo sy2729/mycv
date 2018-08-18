@@ -16,6 +16,8 @@
   display: flex;
   height: 40px;
   background: transparent;
+  justify-content: space-between;
+  margin: 20px;
 }
 #app .header nav .nav-options {
   display: flex;
@@ -40,6 +42,55 @@
 }
 #app .header .title-wrap .title {
   font-weight: 700;
+}
+#app .each-section {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  padding: 50px 20px;
+}
+#app .each-section .section-title-wrap {
+  width: 30%;
+  min-width: 300px;
+  font-weight: thin;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#app .each-section .section-title-wrap .section-title {
+  max-width: 50px;
+}
+#app .each-section .section-content {
+  flex: 1 1 auto;
+  max-width: 400px;
+}
+#app .each-section .section-content .content-description {
+  color: #EAB2B2;
+  font-size: 0.8em;
+  margin-bottom: 30px;
+}
+#app .each-section .section-content .skill-wrap .each-skill {
+  width: 100%;
+  margin-bottom: 10px;
+}
+#app .each-section .section-content .skill-wrap .each-skill .skill-name {
+  margin-bottom: 4px;
+}
+#app .each-section .section-content .skill-wrap .each-skill .bar-outter {
+  width: 100%;
+  position: relative;
+  height: 5px;
+  background: #D25355;
+}
+#app .each-section .section-content .skill-wrap .each-skill .bar-outter .bar-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #f4f4f4;
+  height: 100%;
+}
+#app .skill-section {
+  color: #f4f4f4;
 }
 
 /*# sourceMappingURL=index.css.map */
