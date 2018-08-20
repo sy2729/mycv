@@ -4,6 +4,15 @@
   box-sizing: border-box;
 }
 
+p, h1, h2, h3, h4, h5, li {
+  line-height: 1.5em;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+p {
+  font-size: 14px;
+}
+
 #app .header {
   height: 470px;
   width: 100%;
@@ -43,14 +52,25 @@
 #app .header .title-wrap .title {
   font-weight: 700;
 }
+#app .header .title-wrap .arrow-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #B4BABD;
+  transform: translateY(150px);
+}
+#app .header .title-wrap .arrow-wrap img {
+  width: 100%;
+  height: auto;
+}
 #app .each-section {
   display: flex;
   width: 100%;
   flex-wrap: wrap;
-  padding: 50px 20px;
+  padding: 50px 125px 50px 20px;
+  color: #222;
 }
 #app .each-section .section-title-wrap {
-  width: 30%;
   min-width: 300px;
   font-weight: thin;
   display: flex;
@@ -59,38 +79,77 @@
 }
 #app .each-section .section-title-wrap .section-title {
   max-width: 50px;
+  text-transform: uppercase;
 }
 #app .each-section .section-content {
-  flex: 1 1 auto;
-  max-width: 400px;
+  min-width: 300px;
+  width: calc(100% - 300px);
 }
 #app .each-section .section-content .content-description {
   color: #EAB2B2;
   font-size: 0.8em;
   margin-bottom: 30px;
+  width: 60%;
+  min-width: 350px;
 }
-#app .each-section .section-content .skill-wrap .each-skill {
+#app .skill-section {
+  color: #f4f4f4;
+}
+#app .skill-section .skill-wrap {
+  color: #FBF7F7;
+}
+#app .skill-section .skill-wrap .each-skill {
   width: 100%;
   margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 100;
 }
-#app .each-section .section-content .skill-wrap .each-skill .skill-name {
+#app .skill-section .skill-wrap .each-skill .bar-info-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#app .skill-section .skill-wrap .each-skill .bar-info-wrap .skill-name {
   margin-bottom: 4px;
 }
-#app .each-section .section-content .skill-wrap .each-skill .bar-outter {
+#app .skill-section .skill-wrap .each-skill .bar-outter {
   width: 100%;
   position: relative;
-  height: 5px;
+  height: 3px;
   background: #D25355;
 }
-#app .each-section .section-content .skill-wrap .each-skill .bar-outter .bar-inner {
+#app .skill-section .skill-wrap .each-skill .bar-outter .bar-inner {
   position: absolute;
   top: 0;
   left: 0;
   background: #f4f4f4;
   height: 100%;
 }
-#app .skill-section {
-  color: #f4f4f4;
+#app .experience-section .section-content .each-experience {
+  padding: 0 40px;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #F4F4F4;
+}
+#app .experience-section .section-content .each-experience .experience-logo-wrap {
+  width: 120px;
+}
+#app .experience-section .section-content .each-experience .experience-logo-wrap .experience-logo {
+  width: 40px;
+  height: auto;
+}
+#app .experience-section .section-content .each-experience .experience-info-wrap {
+  display: flex;
+  justify-content: space-between;
+  flex: 1 1 auto;
+}
+#app .experience-section .section-content .each-experience .experience-info-wrap .experience-info .role {
+  color: #C93639;
+}
+#app .experience-section .section-content .each-experience .experience-info-wrap .experience-date {
+  justify-self: flex-end;
+  color: #9B9B9B;
 }
 
 /*# sourceMappingURL=index.css.map */
