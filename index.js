@@ -242,6 +242,108 @@ var educationSection = {
 };
 
 
+var eachWork = {
+    template: `
+        <div class="each-work" :style="{ 'background-image': 'url(' + img + ')'}">
+            <div class='work-cover'>
+                <div class="work-info-wrap">
+                    <p class='work-name'>{{name}}</p>
+                    <a :href='link'>View Project</a>
+                </div>
+            </div>
+        </div>
+    `,
+    props: ['img', 'name', 'descrip', 'link'],
+}
+
+var progressBar = {
+    template: `
+        <div class='progress-out' ref='progressBar'>
+            <div class="progress-in" :style="{width: (viewLength/totalLength) * 100 + '%', left: ((15 - scrolledDistance) / progressBarLength) * 100 + '%'}"></div>
+        </div>
+    `,
+    props: ['totalLength', 'viewLength', 'scrolledDistance'],
+    data: function(){
+        return {
+            progressBarLength: 0,
+        }
+    },
+    computed: {
+        calcScrollDistance(){
+            console.log(scrolledDistance)
+        }
+    },
+    mounted(){
+        let width = this.$refs.progressBar.getBoundingClientRect().width;  
+        this.progressBarLength = width;
+    }
+}
+
+var workSection = {
+    template: `
+        <div class="work-section each-section" :style="{background: sectionColor}" ref='currentSection'>
+             <section-title :order=order :name=sectionName></section-title>
+             <div class='section-content' ref='works'>
+                <each-work v-for='(i, index) in works' :key=index v-bind='i'></each-work>
+             </div>
+             <progress-bar :totalLength=allWorkLength :viewLength=viewLength :scrolledDistance=scrolledDistance></progress-bar>
+        </div>
+    `,
+
+    data: function(){
+        return {
+            sectionColor: '#F5F5F5',
+            order: '04',
+            sectionName: 'Portfolio',
+            works: [
+                {
+                    name: 'Atos Style Guide',
+                    link: 'https://sy2729.github.io/style-guide-atos/style-guide.html',
+                    img: 'https://z1.muscache.cn/im/pictures/3fabaa30-4aff-49c5-9ee4-2eb96d149886.jpg?aki_policy=large',
+                    descrip:'xxxxxxxx',
+                },
+                {
+                    name: 'Work 2',
+                    link: 'https://sy2729.github.io/style-guide-atos/style-guide.html',
+                    img: 'https://z1.muscache.cn/im/pictures/fd5fb67e-9cdc-4111-b8e6-373727c75669.jpg?aki_policy=large',
+                    descrip:'xxxxxxxx',
+                },
+                {
+                    name: 'work 3',
+                    link: 'https://sy2729.github.io/style-guide-atos/style-guide.html',
+                    img: 'https://z1.muscache.cn/im/pictures/d254f055-afbf-466f-ad24-28e1f678671d.jpg?aki_policy=x_large',
+                    descrip:'xxxxxxxx',
+                },
+                
+            ],
+            allWorkLength: 0,
+            viewLength: 20,
+            scrolledDistance: 0,
+        }
+    },
+    methods: {
+        detectScrollDistance(){
+            value = document.querySelectorAll('.each-work')[0].getBoundingClientRect().left;
+            this.scrolledDistance = value;
+        }
+    },
+    components: {
+        'section-title': sectionTitle,
+        'each-work': eachWork,
+        'progress-bar': progressBar,
+    },
+    mounted(){
+        // get alllength and view length of the work
+        let allLength = this.$refs.works.scrollWidth;
+        let viewLength = this.$refs.currentSection.getBoundingClientRect().width;
+        this.viewLength = viewLength;
+        this.allWorkLength = allLength;
+
+        // watch the work scroll
+        this.$refs.works.onscroll = this.detectScrollDistance;
+
+    }
+}
 
 
 // initialize Vue
@@ -264,5 +366,6 @@ new Vue({
         'skill-section': skillSection,
         'experience-section': experienceSection,
         'education-section': educationSection,
+        'work-section': workSection,
     }
 })
