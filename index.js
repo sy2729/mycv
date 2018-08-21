@@ -33,7 +33,7 @@ var nav = {
             ]
         }
     }
-}
+};
 
 var sectionTitle = {
     template: `
@@ -50,7 +50,7 @@ var sectionTitle = {
         }
     },
     props:['order', 'name']
-}
+};
 
 var skillSection = {
     template: `
@@ -104,7 +104,7 @@ var skillSection = {
     components: {
         'section-title': sectionTitle,
     }
-}
+};
 
 var eachExperience = {
     template: `
@@ -127,7 +127,7 @@ var eachExperience = {
         </div>
     `,
     props: ['logo', 'role', 'company','beginDate', 'endDate']
-}
+};
 
 var experienceSection = {
     template: `
@@ -173,8 +173,73 @@ var experienceSection = {
         'section-title': sectionTitle,
         'each-experience': eachExperience,
     }
-}
+};
 
+// education component
+var eachEducation = {
+    template: `
+        <div class="each-education">
+            <div class="school-info-wrap">
+                <div class="school-info-sub-wrap">
+                    <p class="school">{{school}}</p>
+                    <p class="major">{{major}}</p>
+                </div>
+                <p class="degree">{{degree}}</p>
+            </div>
+            <p class="education-date">
+                <span>{{startDate}}</span>
+                    -
+                <span>{{endDate}}</span>
+            </p>
+        </div>
+    `,
+    props: ['school', 'degree', 'major', 'startDate', 'endDate']
+};
+
+var educationSection = {
+    template: `
+        <div class="education-section each-section" :style="{background: sectionColor}">
+             <section-title :order=order :name=sectionName></section-title>
+             <div class='section-content'>
+                <each-education v-for='(i, index) in educations' :key=index v-bind='i'></each-experience>
+             </div>
+        </div>
+    `,
+    data: function(){
+        return {
+            sectionColor: '#fff',
+            order: '03',
+            sectionName: 'Education',
+            educations: [
+                {
+                    school: 'Teachers College, Columbia University',
+                    degree: 'Master',
+                    major: 'Instructional Technology and Media',
+                    startDate: '2017.09',
+                    endDate: '2019.05',
+                },
+                {
+                    school: 'Central China Normal University',
+                    degree: 'Bachelor',
+                    major: 'Chinese International Education',
+                    startDate: '2013.09',
+                    endDate: '2017.06',
+                },
+                {
+                    school: 'University of California, Berkeley',
+                    degree: 'Exchange',
+                    major: 'General Study',
+                    startDate: '2016.01',
+                    endDate: '2016.06',
+                },
+            ]
+        }
+    },
+    components: {
+        'section-title': sectionTitle,
+        'each-education': eachEducation,
+    }
+};
 
 
 
@@ -198,5 +263,6 @@ new Vue({
         'cv-nav': nav,
         'skill-section': skillSection,
         'experience-section': experienceSection,
+        'education-section': educationSection,
     }
 })

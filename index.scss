@@ -11,6 +11,7 @@ p {font-size: 14px;}
         background-size: cover;
         background-attachment: fixed;
         position: relative;
+        overflow: hidden;
     
         nav {
         display: flex;
@@ -73,7 +74,7 @@ p {font-size: 14px;}
        display: flex;
        width: 100%;
        flex-wrap: wrap;
-       padding: 50px 125px 50px 20px;
+       padding: 75px 125px 75px 20px;
        color: #222;
 
 
@@ -86,14 +87,14 @@ p {font-size: 14px;}
             align-items: center;
 
             .section-title {
-                max-width: 50px;
+                // max-width: 50px;
                 text-transform: uppercase;
             }
 
         }
         .section-content {
             // flex: 1 1 auto;
-            min-width: 300px;
+            min-width: 280px;
             width: calc(100% - 300px);
             // max-width: 400px;
             
@@ -102,7 +103,7 @@ p {font-size: 14px;}
                 font-size: 0.8em;
                 margin-bottom: 30px;
                 width: 60%;
-                min-width: 350px;
+                min-width: 280px;
             }
         }
    }
@@ -186,4 +187,103 @@ p {font-size: 14px;}
        }
    }
 
+//    education section
+    .education-section {
+        .section-content {
+            display: flex;
+            flex-wrap: wrap;
+
+            .each-education {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                padding: 22px 20px;
+                border: 1px solid #F4F4F4;
+                width: calc(50% - 10px);
+                min-width: 280px;
+                margin-top: 10px;
+                margin-right: 10px;
+                // height: 110px;
+                font-size: 13px;
+                .school-info-wrap {
+                    display: flex;
+                    justify-content: space-between;
+
+                    .major {
+                        color: #C93639;
+                    }
+                }
+
+                .education-date {
+                    margin-top: 30px;
+                    color: #9E9E9E;
+                }
+            }
+        }
+
+    }
+
+}
+
+@media screen and ( max-width:744px) {
+    #app {
+
+        .header {
+            nav {
+                img {
+                    width: 30%;
+                }
+
+                .nav-options {
+                    flex: 1 1 auto;
+                }
+            }
+        }
+
+        .each-section {
+            padding: 125px 50px;
+            .section-title-wrap {
+                margin: 10px auto;
+
+                .section-title {
+                    text-align: center;
+                }
+            }
+
+            .section-content {
+                margin: 10px auto;
+                width: 100%;
+
+                .content-description {
+                    width: 100%;
+                }
+
+                .each-experience {
+                    padding: 0 20px;
+                }
+
+                .each-education {
+                    width: 100%;
+                    margin:10px auto 0;
+                }
+            }
+        }
+    }
+
+}
+
+@media screen and ( max-width:544px) {
+    #app {
+        .header {
+            nav {
+                img {
+                    width: 10%;
+                }
+            }
+        }
+
+        .each-section {
+            padding: 75px 15px;
+        }
+    }
 }
