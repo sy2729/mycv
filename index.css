@@ -14,7 +14,7 @@ p {
 }
 
 #app .header {
-  height: 470px;
+  height: 100vh;
   width: 100%;
   background: transparent url("./img/hero.jpg") center no-repeat;
   background-size: cover;
