@@ -259,7 +259,7 @@ var eachWork = {
 var progressBar = {
     template: `
         <div class='progress-out' ref='progressBar'>
-            <div class="progress-in" :style="{width: (viewLength/totalLength) * 100 + '%', left: ((15 - scrolledDistance) / progressBarLength) * 100 + '%'}"></div>
+            <div class="progress-in" :style="{width: (viewLength/totalLength) * 100 + '%', left: (scrolledDistance / totalLength) * 100 + '%'}"></div>
         </div>
     `,
     props: ['totalLength', 'viewLength', 'scrolledDistance'],
@@ -270,7 +270,7 @@ var progressBar = {
     },
     computed: {
         calcScrollDistance(){
-            console.log(scrolledDistance)
+            
         }
     },
     mounted(){
@@ -281,7 +281,7 @@ var progressBar = {
 
 var workSection = {
     template: `
-        <div class="work-section each-section" :style="{background: sectionColor}" ref='currentSection'>
+        <div class="work-section each-section" :style="{background: sectionColor}">
              <section-title :order=order :name=sectionName></section-title>
              <div class='section-content' ref='works'>
                 <each-work v-for='(i, index) in works' :key=index v-bind='i'></each-work>
@@ -323,9 +323,24 @@ var workSection = {
     },
     methods: {
         detectScrollDistance(){
-            value = document.querySelectorAll('.each-work')[0].getBoundingClientRect().left;
-            this.scrolledDistance = value;
+            value = this.getScrollDistance();
+            this.scrolledDistance = this.initialDistanceBeforeScroll - value;
+        },
+
+        getScrollDistance(){
+            return document.querySelectorAll('.each-work')[0].getBoundingClientRect().left;
+        },
+
+        getInitialScrollDistance(){
+            return document.querySelector('.section-content').getBoundingClientRect().left;
+        },
+        getBarStyle(){
+            let allLength = this.$refs.works.scrollWidth;
+            let viewLength = this.$refs.works.getBoundingClientRect().width;
+            this.viewLength = viewLength;
+            this.allWorkLength = allLength;
         }
+
     },
     components: {
         'section-title': sectionTitle,
@@ -334,17 +349,54 @@ var workSection = {
     },
     mounted(){
         // get alllength and view length of the work
-        let allLength = this.$refs.works.scrollWidth;
-        let viewLength = this.$refs.currentSection.getBoundingClientRect().width;
-        this.viewLength = viewLength;
-        this.allWorkLength = allLength;
+        this.getBarStyle();
 
         // watch the work scroll
         this.$refs.works.onscroll = this.detectScrollDistance;
+        // get the initial left value to calculate how long scrolled
+        this.initialDistanceBeforeScroll = this.getInitialScrollDistance();
+
+        // watch the browser resize to recalculate the initial left value
+        window.addEventListener('resize', ()=>{
+            this.getBarStyle();
+            this.initialDistanceBeforeScroll = this.getInitialScrollDistance();
+        })
 
     }
 }
 
+
+var footer = {
+    template: `
+        <footer :style="{background: sectionColor}">
+            <div class="footer-content">
+                <p>Get in touch with me!<a herf='...'>Click Here</a></p>
+            </div>
+            <div class="footer-footer">
+                <ul class="social-media">
+                    <li v-for='i in media'><a href='i.link'>{{i.name}}</a></li>
+                </ul>
+
+                <p class='creat Stamp'>&copy 2018 Made in China</p>
+            </div>
+        </footer>
+    `,
+    data: function(){
+        return {
+            sectionColor: '#202020',
+            media: [
+                {
+                    name: 'Blog',
+                    link: '.dfdfdfdf....',
+                },
+                {
+                    name: 'Github',
+                    link: '.....',
+                },
+            ]
+        }
+    }
+}
 
 // initialize Vue
 new Vue({
@@ -367,5 +419,6 @@ new Vue({
         'experience-section': experienceSection,
         'education-section': educationSection,
         'work-section': workSection,
+        'footer-section': footer,
     }
 })

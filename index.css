@@ -57,7 +57,7 @@ p {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  border: 1px solid #B4BABD;
+  border: 1px solid #f4f4f4;
   transform: translateY(150px);
 }
 #app .header .title-wrap .arrow-wrap img {
@@ -228,6 +228,36 @@ p {
   top: 0;
   height: 100%;
   background-color: #D25355;
+}
+#app footer .footer-content {
+  height: 210px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f4f4f4;
+}
+#app footer .footer-content p {
+  font-size: 1.2em;
+}
+#app footer .footer-footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #A0A0A0;
+  height: 60px;
+  background: #1D1D1D;
+}
+#app footer .footer-footer .social-media {
+  display: flex;
+}
+#app footer .footer-footer .social-media li {
+  margin: 0 10px;
+  list-style: none;
+}
+#app footer .footer-footer .social-media li a {
+  color: inherit;
+  text-decoration: none;
 }
 
 @media screen and (max-width: 744px) {
