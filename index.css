@@ -28,6 +28,11 @@ p {
   background: transparent;
   justify-content: space-between;
   margin: 20px;
+  align-items: center;
+}
+#app .header nav img {
+  align-self: flex-end;
+  width: 40px;
 }
 #app .header nav .nav-options {
   display: flex;
@@ -98,6 +103,9 @@ p {
 #app .skill-section .skill-wrap {
   color: #FBF7F7;
 }
+#app .skill-section .skill-wrap.active .bar-inner {
+  width: 0% !important;
+}
 #app .skill-section .skill-wrap .each-skill {
   width: 100%;
   margin-bottom: 10px;
@@ -124,6 +132,7 @@ p {
   left: 0;
   background: #f4f4f4;
   height: 100%;
+  transition: width 5s;
 }
 #app .experience-section .section-content .each-experience {
   padding: 0 40px;
@@ -167,6 +176,9 @@ p {
   margin-right: 10px;
   font-size: 13px;
 }
+#app .education-section .section-content .each-education.active {
+  box-shadow: 2px 2px 10px 0 rgba(201, 54, 57, 0.1), -2px -2px 10px 0 rgba(201, 54, 57, 0.1);
+}
 #app .education-section .section-content .each-education .school-info-wrap {
   display: flex;
   justify-content: space-between;
@@ -177,6 +189,9 @@ p {
 #app .education-section .section-content .each-education .education-date {
   margin-top: 30px;
   color: #9E9E9E;
+}
+#app .work-section {
+  position: relative;
 }
 #app .work-section .section-content {
   display: flex;
@@ -213,8 +228,29 @@ p {
 #app .work-section .section-content .each-work:hover .work-cover {
   opacity: 1;
 }
+#app .work-section .next-btn {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  font-size: 1.35em;
+  color: #999999;
+  top: 50%;
+  transform: translate(50%, -100%);
+  right: 125px;
+  border: none;
+  background: #f4f4f4;
+  border-radius: 50%;
+  box-shadow: 2px 2px 10px 0 rgba(100, 100, 100, 0.5);
+  cursor: pointer;
+}
+#app .work-section .next-btn:focus {
+  outline: none;
+}
 #app .work-section .progress-out {
-  margin: 20px 0;
+  margin: 30px 0 10px;
   width: 60%;
   min-width: 200px;
   position: relative;
@@ -240,6 +276,9 @@ p {
 #app footer .footer-content p {
   font-size: 1.2em;
 }
+#app footer .footer-content p a {
+  color: inherit;
+}
 #app footer .footer-footer {
   display: flex;
   justify-content: space-around;
@@ -259,13 +298,13 @@ p {
   color: inherit;
   text-decoration: none;
 }
+#app footer .footer-footer .creat-stamp {
+  text-transform: uppercase;
+}
 
 @media screen and (max-width: 744px) {
   #app .header {
     background-attachment: scroll;
-  }
-  #app .header nav img {
-    width: 30%;
   }
   #app .header nav .nav-options {
     flex: 1 1 auto;
@@ -293,6 +332,10 @@ p {
   #app .each-section .section-content .each-education {
     width: 100%;
     margin: 10px auto 0;
+  }
+
+  .next-btn {
+    right: 50px !important;
   }
 }
 @media screen and (max-width: 544px) {

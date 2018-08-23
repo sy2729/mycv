@@ -13,7 +13,7 @@ var nav = {
 
     data: function(){
         return {
-            logoImg: './img/logo.svg',
+            logoImg: './img/logo.png',
             navList: [
                 {
                     name: 'Home'
@@ -58,7 +58,7 @@ var skillSection = {
             <section-title :order=order :name=sectionName></section-title>
             <div class='section-content'>
                 <p class="content-description">{{description}}</p>
-                <div class="skill-wrap">
+                <div :class="['skill-wrap', {active: skillBarShort}]">
                     <div class="each-skill" v-for='i in skills'>
                         <div class="bar-info-wrap">
                             <p class='skill-name'>{{i.name}}</p>
@@ -79,6 +79,7 @@ var skillSection = {
             sectionName: 'Skills',
             description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
             sectionColor: '#C93639',
+            skillBarShort: true,
             skills: [
                 {
                     name: 'HTML & CSS & JavaSCript',
@@ -103,6 +104,16 @@ var skillSection = {
 
     components: {
         'section-title': sectionTitle,
+    },
+
+    methods: {
+        removeActive(){
+            this.skillBarShort = false;
+        }
+    },
+
+    mounted(){
+        ScrollReveal().reveal('.skill-wrap', { afterReveal: this.removeActive});
     }
 };
 
@@ -178,7 +189,7 @@ var experienceSection = {
 // education component
 var eachEducation = {
     template: `
-        <div class="each-education">
+        <div :class="['each-education', {active: activeState}]">
             <div class="school-info-wrap">
                 <div class="school-info-sub-wrap">
                     <p class="school">{{school}}</p>
@@ -193,7 +204,7 @@ var eachEducation = {
             </p>
         </div>
     `,
-    props: ['school', 'degree', 'major', 'startDate', 'endDate']
+    props: ['school', 'degree', 'major', 'startDate', 'endDate', 'activeState']
 };
 
 var educationSection = {
@@ -217,6 +228,7 @@ var educationSection = {
                     major: 'Instructional Technology and Media',
                     startDate: '2017.09',
                     endDate: '2019.05',
+                    activeState: true,
                 },
                 {
                     school: 'Central China Normal University',
@@ -286,6 +298,7 @@ var workSection = {
              <div class='section-content' ref='works'>
                 <each-work v-for='(i, index) in works' :key=index v-bind='i'></each-work>
              </div>
+             <button class='next-btn' @click=scrollRight> > </button>
              <progress-bar :totalLength=allWorkLength :viewLength=viewLength :scrolledDistance=scrolledDistance></progress-bar>
         </div>
     `,
@@ -339,6 +352,9 @@ var workSection = {
             let viewLength = this.$refs.works.getBoundingClientRect().width;
             this.viewLength = viewLength;
             this.allWorkLength = allLength;
+        },
+        scrollRight(){
+            this.$refs.works.scrollLeft = this.$refs.works.scrollLeft + 280;
         }
 
     },
@@ -370,20 +386,21 @@ var footer = {
     template: `
         <footer :style="{background: sectionColor}">
             <div class="footer-content">
-                <p>Get in touch with me!<a herf='...'>Click Here</a></p>
+                <p>Get in touch with me!<a :href="'mailto:' + email">Click Here</a></p>
             </div>
             <div class="footer-footer">
                 <ul class="social-media">
                     <li v-for='i in media'><a href='i.link'>{{i.name}}</a></li>
                 </ul>
 
-                <p class='creat Stamp'>&copy 2018 Made in China</p>
+                <p class='creat-stamp'>&copy 2018 Made in China</p>
             </div>
         </footer>
     `,
     data: function(){
         return {
             sectionColor: '#202020',
+            email: 'sy2729@tc.columbia.edu',
             media: [
                 {
                     name: 'Blog',
