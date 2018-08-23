@@ -67,10 +67,20 @@ p {font-size: 14px;}
            border-radius: 50%;
            border: 1px solid #f4f4f4;
            transform: translateY(150px);
+           cursor: pointer;
 
            img {
                width: 100%;
                height: auto;
+           }
+
+           &.active {
+               animation: jump .5s alternate ease-in-out infinite;
+           }
+
+           @keyframes jump {
+               from {transform: translateY(150px);}
+               to {transform: translateY(165px);}
            }
        }
 
@@ -218,6 +228,7 @@ p {font-size: 14px;}
                 margin-right: 10px;
                 // height: 110px;
                 font-size: 13px;
+                transition: .6s;
 
                 &.active {
                     box-shadow: 2px 2px 10px 0 rgba(201, 54, 57, 0.1), -2px -2px 10px 0 rgba(201, 54, 57, 0.1);
@@ -366,6 +377,10 @@ p {font-size: 14px;}
                         text-decoration: none;
                     }
                 }
+            }
+
+            img {
+                width: 30px;
             }
 
             .creat-stamp {

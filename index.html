@@ -34,5 +34,43 @@
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="./vue.js"></script> 
     <script src="./index.js"></script>
+    <script>
+        var myCallback = function(){
+            document.querySelector('.arrow-wrap').classList.add('active')
+        };
+        ScrollReveal().reveal('.arrow-wrap', { afterReveal: myCallback });
+
+        document.querySelector('.arrow-wrap').addEventListener('click', ()=>{
+            let value = document.querySelector('.skill-section').offsetTop;
+            // snippet
+            let scrollTo = function (position, timeout) {
+                var scrollTop = document.documentElement.scrollTop || document.body.scrollTop,
+                    direction = position - scrollTop > 0 ? 1 : -1,
+                    distance = Math.abs(position - scrollTop),
+                    split = distance / 50,
+                    _timeout;
+
+                if (position !== scrollTop) {
+                    timeout = timeout || 1000;
+                    split *= direction;
+
+                    _timeout = setInterval(function () {
+                        scrollTop += split;
+                        distance -= Math.abs(split);
+                        if (0 >= distance) {
+                            window.scrollTo(0, position);
+                            clearInterval(_timeout);
+                            _timeout = null;
+                        } else {
+                            window.scrollTo(0, scrollTop);
+                        }
+                    }, timeout / 100);
+                }
+            };
+
+            scrollTo(value, 1000);
+        })
+
+    </script>
 </body>
 </html>

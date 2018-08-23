@@ -390,8 +390,10 @@ var footer = {
             </div>
             <div class="footer-footer">
                 <ul class="social-media">
-                    <li v-for='i in media'><a href='i.link'>{{i.name}}</a></li>
+                    <li v-for='i in media'><a :href='i.link'>{{i.name}}</a></li>
                 </ul>
+
+                <img :src=logoImg>
 
                 <p class='creat-stamp'>&copy 2018 Made in China</p>
             </div>
@@ -401,14 +403,15 @@ var footer = {
         return {
             sectionColor: '#202020',
             email: 'sy2729@tc.columbia.edu',
+            logoImg: './img/logo.png',
             media: [
                 {
                     name: 'Blog',
-                    link: '.dfdfdfdf....',
+                    link: 'https://sy2729.github.io/',
                 },
                 {
                     name: 'Github',
-                    link: '.....',
+                    link: 'https://github.com/sy2729',
                 },
             ]
         }
