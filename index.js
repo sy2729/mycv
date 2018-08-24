@@ -119,25 +119,50 @@ var skillSection = {
 
 var eachExperience = {
     template: `
-        <div class="each-experience">
-            <div class='experience-logo-wrap'>
-                <img :src=logo class='experience-logo'>
-            </div>
-            <div class="experience-info-wrap">
-                <div class="experience-info">
-                    <p class='company'>{{company}}</p>
-                    <p class='role'>{{role}}</p>
-                </div>
+        <div :class="['each-experience', 'each-clickable',{active: activeState, viewDetail: viewDetailState}]" @click=viewEach>
+             <transition name='show-content'>
+                <div class="summary-wrap" v-if=!viewDetailState>
+                    <div class='experience-logo-wrap'>
+                        <img :src=logo class='experience-logo'>
+                    </div>
+                    <div class="experience-info-wrap">
+                        <div class="experience-info">
+                            <p class='company'>{{company}}</p>
+                            <p class='role'>{{role}}</p>
+                        </div>
 
-                <p class='experience-date'>
-                    <span>{{beginDate}}</span>
-                        -
-                    <span>{{endDate}}</span>
-                </p>   
-            </div>
+                        <p class='experience-date'>
+                            <span>{{beginDate}}</span>
+                                -
+                            <span>{{endDate}}</span>
+                        </p>   
+                    </div>
+                </div>
+             </transition>
+
+            <transition name='show-content'>
+                <div class='experience-detail' v-if=viewDetailState>
+                    <ul>
+                        <li v-for='i in detail.descrip'>{{i || 'Nothing Yet'}}</li>
+                    </ul>
+                </div>
+            </transition>
+
+            <div class='change-state view-summary' v-if=viewDetailState>Back</div>
         </div>
     `,
-    props: ['logo', 'role', 'company','beginDate', 'endDate']
+    props: ['logo', 'role', 'company', 'beginDate', 'endDate', 'activeState', 'detail'],
+    data: function(){
+        return {
+            viewDetailState: false,
+
+        }
+    },
+    methods: {
+        viewEach(){
+            this.viewDetailState = !this.viewDetailState;
+        }
+    }
 };
 
 var experienceSection = {
@@ -157,17 +182,32 @@ var experienceSection = {
             experiences: [
                 {
                     logo: './img/experience/tc.jpg',
-                    role: 'Course Assistant',
+                    role: 'Course Assistant - JavaScript Programming',
                     company: 'Teachers College, Columbia University',
                     beginDate: '2018.09',
-                    endDate: '2018.12',
+                    endDate: 'present',
+                    activeState: true,
+                    detail: {
+                        descrip: [
+                            
+                        ],
+                    },
                 },
                 {
                     logo: './img/experience/atos.png',
                     role: 'UX Designer',
                     company: 'Atos',
                     beginDate: '2018.05',
-                    endDate: '2018.08',
+                    endDate: 'present',
+                    activeState: true,
+                    detail: {
+                        descrip: [
+                            'Collaborate with other designers and design web & mobile products from concept to hi-fi prototypes ',
+                            'Work with developers and support delivering / QA new features',
+                            'Design marketing materials including marketing website, brochures, videos',
+                            'Support user research and gather feedback from users to improve product design',
+                        ],
+                    },
                 },
                 {
                     logo: './img/experience/tc.jpg',
@@ -175,6 +215,14 @@ var experienceSection = {
                     company: 'Teachers College, Columbia University',
                     beginDate: '2018.03',
                     endDate: '2018.05',
+                    activeState: false,
+                    detail: {
+                        descrip: [
+                            "Assist the TC office of the Web in refreshing the college's website, assist the External Affairs Web Office in transferring current websites to the new site template in T4 content management system",
+                            'Help with quality assurance testing, and other content migration tasks',
+                            'Help with site style debugging and user experience improvement with CSS solutions',
+                        ],
+                    },
                 },
         
             ]
@@ -289,6 +337,20 @@ var progressBar = {
         let width = this.$refs.progressBar.getBoundingClientRect().width;  
         this.progressBarLength = width;
     }
+}
+
+var workDetail = {
+    template: `
+        <div></div>
+    `,
+    data: function(){
+        return {
+
+        }
+    },
+
+    props: [],
+
 }
 
 var workSection = {
