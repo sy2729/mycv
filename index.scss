@@ -605,6 +605,12 @@ $theme: #C93639;
         .each-section {
             padding: 75px 15px;
         }
+
+        .work-section {
+            .next-btn {
+                transform: translate(100%, -50%);
+            }
+        }
     }
 }
 

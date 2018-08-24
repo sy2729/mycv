@@ -485,6 +485,9 @@ p {
   #app .each-section {
     padding: 75px 15px;
   }
+  #app .work-section .next-btn {
+    transform: translate(100%, -50%);
+  }
 }
 .show-content-enter-active {
   transition: opacity 1s;
