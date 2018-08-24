@@ -143,7 +143,7 @@ var eachExperience = {
             <transition name='show-content'>
                 <div class='experience-detail' v-if=viewDetailState>
                     <ul>
-                        <li v-for='i in detail.descrip'>{{i || 'Nothing Yet'}}</li>
+                        <li v-for='i in detail.descrip'>{{i}}</li>
                     </ul>
                 </div>
             </transition>
@@ -304,16 +304,23 @@ var educationSection = {
 
 var eachWork = {
     template: `
-        <div class="each-work" :style="{ 'background-image': 'url(' + img + ')'}">
+        <div class="each-work" :style="{ 'background-image': 'url(' + img + ')'}" @click=viewEachWork>
             <div class='work-cover'>
                 <div class="work-info-wrap">
                     <p class='work-name'>{{name}}</p>
-                    <a :href='link'>View Project</a>
+                    
                 </div>
             </div>
         </div>
     `,
-    props: ['img', 'name', 'descrip', 'link'],
+    props: ['img', 'name', 'descrip', 'link', 'tags'],
+    methods: {
+        viewEachWork(){
+            let data = JSON.parse(JSON.stringify(this.$props));
+            this.$emit('view-work-detail', data);
+        }
+    }
+
 }
 
 var progressBar = {
@@ -341,16 +348,33 @@ var progressBar = {
 
 var workDetail = {
     template: `
-        <div></div>
+        <transition name='show-content'>
+            <div class='work-detail' v-if=state>
+                <div class='title-wrap'>
+                    <h2 class='title'>{{detail.name}}</h2>  
+                    <ul class='tags'>
+                        <li v-for='i in detail.tags'>{{i}}</li>
+                    </ul>
+
+                    <div class='work-content'>
+                        <div v-for="i in detail.descrip">
+                            <img :src='i.content' v-if="i.type==='img'">
+                            <p v-html='i.content' v-if="i.type==='text'"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="close" @click="$emit('close-detail')">
+                    <span>X</span>
+                </div>
+            </div>
+        </transition>
     `,
     data: function(){
         return {
 
         }
     },
-
-    props: [],
-
+    props: ['detail', 'state']
 }
 
 var workSection = {
@@ -358,7 +382,7 @@ var workSection = {
         <div class="work-section each-section" :style="{background: sectionColor}">
              <section-title :order=order :name=sectionName></section-title>
              <div class='section-content' ref='works'>
-                <each-work v-for='(i, index) in works' :key=index v-bind='i'></each-work>
+                <each-work v-for='(i, index) in works' :key=index v-bind='i' @view-work-detail=viewWorkDetail></each-work>
              </div>
              <button class='next-btn' @click=scrollRight> > </button>
              <progress-bar :totalLength=allWorkLength :viewLength=viewLength :scrolledDistance=scrolledDistance></progress-bar>
@@ -374,20 +398,40 @@ var workSection = {
                 {
                     name: 'Atos Style Guide',
                     link: 'https://sy2729.github.io/style-guide-atos/style-guide.html',
-                    img: 'https://z1.muscache.cn/im/pictures/3fabaa30-4aff-49c5-9ee4-2eb96d149886.jpg?aki_policy=large',
-                    descrip:'xxxxxxxx',
+                    img: './img/1.jpg',
+                    descrip: [
+                        {
+                            content: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
+                            type: 'text',
+                        }, 
+                        {
+                            content: './img/1.jpg',
+                            type: 'img',
+                        },
+                        {
+                            content: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
+                            type: 'text',
+                        }, 
+                        {
+                            content: './img/1.jpg',
+                            type: 'img',
+                        },
+                    ],
+                    tags: ['Web Dev','UX Design', 'UI Design'],
                 },
                 {
                     name: 'Work 2',
                     link: 'https://sy2729.github.io/style-guide-atos/style-guide.html',
                     img: 'https://z1.muscache.cn/im/pictures/fd5fb67e-9cdc-4111-b8e6-373727c75669.jpg?aki_policy=large',
                     descrip:'xxxxxxxx',
+                    tags: ['Web Dev', 'UX Design', 'UI Design'],
                 },
                 {
                     name: 'work 3',
                     link: 'https://sy2729.github.io/style-guide-atos/style-guide.html',
                     img: 'https://z1.muscache.cn/im/pictures/d254f055-afbf-466f-ad24-28e1f678671d.jpg?aki_policy=x_large',
                     descrip:'xxxxxxxx',
+                    tags: ['Web Dev', 'UX Design', 'UI Design'],
                 },
                 
             ],
@@ -417,8 +461,10 @@ var workSection = {
         },
         scrollRight(){
             this.$refs.works.scrollLeft = this.$refs.works.scrollLeft + 280;
+        },
+        viewWorkDetail(data){
+            this.$emit('view-work-detail', data)
         }
-
     },
     components: {
         'section-title': sectionTitle,
@@ -484,11 +530,20 @@ var footer = {
 new Vue({
     el: "#app",
     data: {
-
+        workDetail: {},
+        workDetailOpened: false,
     },
 
     methods: {
-
+        viewWorkDetail(data){
+            this.workDetail = data;
+            this.workDetailOpened = true;
+            document.body.style.overflow = 'hidden';
+        },
+        closeDetail(){
+            this.workDetailOpened = false;
+            document.body.style.overflow = 'unset';
+        }
     },
 
     computed: {
@@ -502,5 +557,6 @@ new Vue({
         'education-section': educationSection,
         'work-section': workSection,
         'footer-section': footer,
+        'work-detail': workDetail,
     }
 })
