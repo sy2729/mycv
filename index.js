@@ -521,6 +521,7 @@ var creditWidget = {
     template: `
         <div class='credit-wrap'>
             <p>Credit to XXXXX's Design on Dribbble</p>
+            <p class='close' @click="$emit('closeWidget')">X</p>
         </div>
     `,
 
@@ -543,7 +544,7 @@ var footer = {
 
                 <div class="credit-sign" @click='openCredit'>?</div>
                 <transition name='jump'>
-                    <credit-widget v-if="creditOpened"></credit-widget>
+                    <credit-widget v-if="creditOpened" @closeWidget=closeWidget></credit-widget>
                 </transition>
 
             </div>
@@ -570,6 +571,9 @@ var footer = {
     methods: {
         openCredit(){
             this.creditOpened = true;
+        },
+        closeWidget(){
+            this.creditOpened = false;
         }
     },
 

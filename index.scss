@@ -488,6 +488,18 @@ $theme: #C93639;
                 align-items: center;
                 background: #F8CD64;
                 color: #f4f4f4;
+
+                .close {
+                    position: absolute;
+                    right: 20px;
+                    width: 30px;
+                    height: 30px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 1.2em;
+                    cursor: pointer;
+                }
             }
         }
     }
