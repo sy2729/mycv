@@ -460,10 +460,35 @@ var workSection = {
             this.allWorkLength = allLength;
         },
         scrollRight(){
-            this.$refs.works.scrollLeft = this.$refs.works.scrollLeft + 280;
+            this.scrollHorizontal(this.$refs.works, this.$refs.works.scrollLeft + 280, 500);
+            // this.$refs.works.scrollLeft = this.$refs.works.scrollLeft + 280;
         },
         viewWorkDetail(data){
             this.$emit('view-work-detail', data)
+        },
+        scrollHorizontal(node, position, timeout){
+            var scrollLeft = node.scrollLeft,
+                direction = position - scrollLeft > 0 ? 1 : -1,
+                distance = Math.abs(position - scrollLeft),
+                split = distance / 50,
+                _timeout;
+
+            if (position !== scrollLeft) {
+                timeout = timeout || 1000;
+                split *= direction;
+
+                _timeout = setInterval(function () {
+                    scrollLeft += split;
+                    distance -= Math.abs(split);
+                    if (0 >= distance) {
+                        node.scrollLeft = position;
+                        clearInterval(_timeout);
+                        _timeout = null;
+                    } else {
+                        node.scrollLeft = scrollLeft;
+                    }
+                }, timeout / 100);
+            }
         }
     },
     components: {
