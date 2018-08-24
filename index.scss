@@ -437,6 +437,7 @@ $theme: #C93639;
             color: #A0A0A0;
             height: 60px;
             background: #1D1D1D;
+            position: relative;
 
             .social-media {
                 display: flex;
@@ -457,6 +458,36 @@ $theme: #C93639;
 
             .creat-stamp {
                 text-transform: uppercase;
+            }
+
+            .credit-sign {
+                position: absolute;
+                height: 15px;
+                width: 15px;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                border-radius: 50%;
+                background: #A0A0A0;
+                color: #1D1D1D;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 13px;
+                cursor: pointer;
+            }
+
+            .credit-wrap {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: #F8CD64;
+                color: #f4f4f4;
             }
         }
     }
@@ -626,4 +657,14 @@ $theme: #C93639;
 
 .show-content-enter, .show-content-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
+}
+
+.jump-enter-active, .jump-leave-active {
+  transition: transform .4s ease-in-out;
+//   transition: opacity 1s;
+}
+
+.jump-enter, .jump-leave-to /* .fade-leave-active below version 2.1.8 */ {
+//   opacity: 0;
+    transform: translateY(60px);
 }

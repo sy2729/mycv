@@ -189,7 +189,9 @@ var experienceSection = {
                     activeState: true,
                     detail: {
                         descrip: [
-                            
+                          'Assist the Instructor in scheduling and operating the class, and grading the work',
+                          'Assist the students with debugging, clarify some coding concepts, especially in JavaScript',
+                          'Creating demo projects in demonstrating concepts being taught in class and as intro to more advanced implementation in JavaScript and interactive web page coding',  
                         ],
                     },
                 },
@@ -307,7 +309,7 @@ var eachWork = {
         <div class="each-work" :style="{ 'background-image': 'url(' + img + ')'}" @click=viewEachWork>
             <div class='work-cover'>
                 <div class="work-info-wrap">
-                    <p class='work-name'>{{name}}</p>
+                    <h3 class='work-name'>{{name}}</h3>
                     
                 </div>
             </div>
@@ -515,6 +517,15 @@ var workSection = {
 }
 
 
+var creditWidget = {
+    template: `
+        <div class='credit-wrap'>
+            <p>Credit to XXXXX's Design on Dribbble</p>
+        </div>
+    `,
+
+}
+
 var footer = {
     template: `
         <footer :style="{background: sectionColor}">
@@ -529,6 +540,12 @@ var footer = {
                 <img :src=logoImg>
 
                 <p class='creat-stamp'>&copy 2018 Made in China</p>
+
+                <div class="credit-sign" @click='openCredit'>?</div>
+                <transition name='jump'>
+                    <credit-widget v-if="creditOpened"></credit-widget>
+                </transition>
+
             </div>
         </footer>
     `,
@@ -546,8 +563,18 @@ var footer = {
                     name: 'Github',
                     link: 'https://github.com/sy2729',
                 },
-            ]
+            ],
+            creditOpened: false,
         }
+    },
+    methods: {
+        openCredit(){
+            this.creditOpened = true;
+        }
+    },
+
+    components: {
+        'credit-widget': creditWidget,
     }
 }
 

@@ -361,6 +361,7 @@ p {
   color: #A0A0A0;
   height: 60px;
   background: #1D1D1D;
+  position: relative;
 }
 #app footer .footer-footer .social-media {
   display: flex;
@@ -378,6 +379,34 @@ p {
 }
 #app footer .footer-footer .creat-stamp {
   text-transform: uppercase;
+}
+#app footer .footer-footer .credit-sign {
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: #A0A0A0;
+  color: #1D1D1D;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  cursor: pointer;
+}
+#app footer .footer-footer .credit-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #F8CD64;
+  color: #f4f4f4;
 }
 #app .work-detail {
   position: fixed;
@@ -499,6 +528,14 @@ p {
 
 .show-content-enter, .show-content-leave-to {
   opacity: 0;
+}
+
+.jump-enter-active, .jump-leave-active {
+  transition: transform 0.4s ease-in-out;
+}
+
+.jump-enter, .jump-leave-to {
+  transform: translateY(60px);
 }
 
 /*# sourceMappingURL=index.css.map */
