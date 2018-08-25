@@ -492,7 +492,6 @@ var workDetail = {
     },
     methods: {
         switchWork(data){
-            console.log(data)
             this.currentWork = data;
         }
     },
@@ -501,9 +500,32 @@ var workDetail = {
     }
 }
 
+const switchType = {
+    template: `
+        <div class='switch-type clearfix'>
+            <ul class='type-wrap'>
+                <li :class="{'active': i === typeChosen}" v-for='(i, index) in types' @click='switchType(i)'>{{i}}<span v-if='index !== types.length - 1' class='type-divide'> /</span></li>
+            </ul>
+        </div>
+    `,
+    data: function(){
+        return {
+            typeChosen: 'all',
+        }
+    },
+    methods: {
+        switchType(data){
+            this.typeChosen = data;
+            this.$emit('switch-type', data);
+        }
+    },
+    props: ['types'],
+}
+
 var workSection = {
     template: `
         <div class="work-section each-section" :style="{background: sectionColor}">
+            <switch-type :types=workTypes @switch-type=switchType></switch-type>
              <section-title :order=order :name=sectionName></section-title>
              <div class='section-content' ref='works'>
                 <each-work v-for='(i, index) in works' :key=index v-bind='i' @view-work-detail=viewWorkDetail></each-work>
@@ -518,6 +540,7 @@ var workSection = {
             sectionColor: '#F5F5F5',
             order: '04',
             sectionName: 'Portfolio',
+            workTypes: ['all','web', 'design', 'video'],
             works: [
                 {
                     name: 'Netease Musice Redev (Mobile)',
@@ -619,12 +642,17 @@ var workSection = {
                     }
                 }, timeout / 100);
             }
+        },
+
+        switchType(data){
+            console.log(data)
         }
     },
     components: {
         'section-title': sectionTitle,
         'each-work': eachWork,
         'progress-bar': progressBar,
+        'switch-type': switchType,
     },
     mounted(){
         // get alllength and view length of the work

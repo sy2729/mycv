@@ -17,6 +17,12 @@ a {
   color: inherit;
 }
 
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
 .each-clickable, .header-bar {
   cursor: pointer;
   position: relative;
@@ -298,6 +304,30 @@ a {
 #app .work-section {
   position: relative;
 }
+#app .work-section .switch-type {
+  flex-basis: 100%;
+}
+#app .work-section .switch-type ul {
+  display: flex;
+  margin: 20px 0;
+  list-style: none;
+  float: right;
+  color: #9B9B9B;
+}
+#app .work-section .switch-type ul li {
+  cursor: pointer;
+  margin-right: 10px;
+}
+#app .work-section .switch-type ul li.active {
+  color: #C93639;
+}
+#app .work-section .switch-type ul li:hover {
+  color: #C93639;
+}
+#app .work-section .switch-type ul li .type-divide {
+  color: #9B9B9B;
+  margin-left: 10px;
+}
 #app .work-section .section-content {
   display: flex;
   flex-wrap: nowrap;
@@ -547,6 +577,7 @@ a {
   bottom: 32px;
   right: 88px;
   color: #f4f4f4;
+  font-size: inherit;
 }
 
 @media screen and (max-width: 744px) {
