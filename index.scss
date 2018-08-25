@@ -1,7 +1,8 @@
 * {margin: 0; padding: 0; box-sizing: border-box;}
 p, h1, h2, h3, h4, h5, li {line-height: 1.5em; font-family: Arial, Helvetica, sans-serif;}
-p {font-size: 14px;}
+p, li, span {font-size: 14px;}
 $activeBoxShadow: 2px 2px 10px 0 rgba(201, 54, 57, 0.1), -2px -2px 10px 0 rgba(201, 54, 57, 0.1);
+a {color: inherit};
 $theme: #C93639;
 .each-clickable, .header-bar {
     cursor: pointer;
@@ -122,11 +123,9 @@ $theme: #C93639;
            border: 1px solid #f4f4f4;
            transform: translateY(150px);
            cursor: pointer;
-
-           img {
-               width: 100%;
-               height: auto;
-           }
+           display: flex;
+           justify-content: center;
+           align-items: center;
 
            &.active {
                animation: jump .5s alternate ease-in-out infinite;
@@ -243,16 +242,13 @@ $theme: #C93639;
                justify-content: center;
                align-items: center;
 
-               &.viewDetail {
-                   align-items: flex-start;
-               }
-
                 &.active {
                     box-shadow: $activeBoxShadow;
                 }
 
                 &.viewDetail {
-                    min-height: 180px;
+                    min-height: 120px;
+                    align-items: flex-start;
                     // height: 180px;
                     overflow-y: scroll;
                 }
@@ -386,8 +382,13 @@ $theme: #C93639;
                     justify-content: center;
                     align-items: center;
 
-                    a {
-                        color: inherit;
+                    .work-info-wrap {
+                        width: 70%;
+                        margin: 0 auto;
+                        text-align: center;
+                        .work-name {
+
+                        }
                     }
                 }
 
@@ -575,6 +576,32 @@ $theme: #C93639;
             margin-right: 40px;
             .title-wrap {
 
+                .work-link-wrap {
+                    padding: 10px 0;
+
+                    a {
+                        padding: 5px 15px 5px 0;
+                        text-decoration: none;
+                        color: #AAABAC;
+                        line-height: 1.2em;
+
+                        i {
+                            color: #1D1D1D;
+                            font-size: 1.2em;
+                            padding-right: 10px;
+                            vertical-align: middle;
+                        }
+
+                        &:hover {
+                            color: rgb(209, 209, 209);
+                            i {
+                                color: #C93639;
+                            }
+                        }
+
+                    }
+                }
+
                 .tags {
                     list-style: none;
                     display: flex;
@@ -734,6 +761,10 @@ $theme: #C93639;
 
         .each-section {
             padding: 75px 15px;
+        }
+
+        .skill-section {
+            min-height: 100vh;
         }
 
         .work-section {

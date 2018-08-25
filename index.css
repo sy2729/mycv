@@ -9,8 +9,12 @@ p, h1, h2, h3, h4, h5, li {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-p {
+p, li, span {
   font-size: 14px;
+}
+
+a {
+  color: inherit;
 }
 
 .each-clickable, .header-bar {
@@ -116,10 +120,9 @@ p {
   border: 1px solid #f4f4f4;
   transform: translateY(150px);
   cursor: pointer;
-}
-#app .header .title-wrap .arrow-wrap img {
-  width: 100%;
-  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #app .header .title-wrap .arrow-wrap.active {
   animation: jump 0.5s alternate ease-in-out infinite;
@@ -209,14 +212,12 @@ p {
   justify-content: center;
   align-items: center;
 }
-#app .experience-section .section-content .each-experience.viewDetail {
-  align-items: flex-start;
-}
 #app .experience-section .section-content .each-experience.active {
   box-shadow: 2px 2px 10px 0 rgba(201, 54, 57, 0.1), -2px -2px 10px 0 rgba(201, 54, 57, 0.1);
 }
 #app .experience-section .section-content .each-experience.viewDetail {
-  min-height: 180px;
+  min-height: 120px;
+  align-items: flex-start;
   overflow-y: scroll;
 }
 #app .experience-section .section-content .each-experience .change-state {
@@ -326,8 +327,10 @@ p {
   justify-content: center;
   align-items: center;
 }
-#app .work-section .section-content .each-work .work-cover a {
-  color: inherit;
+#app .work-section .section-content .each-work .work-cover .work-info-wrap {
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
 }
 #app .work-section .section-content .each-work:hover .work-cover {
   opacity: 1;
@@ -481,6 +484,27 @@ p {
   padding: 0 20px;
   margin-right: 40px;
 }
+#app .work-detail .current-content-wrap .title-wrap .work-link-wrap {
+  padding: 10px 0;
+}
+#app .work-detail .current-content-wrap .title-wrap .work-link-wrap a {
+  padding: 5px 15px 5px 0;
+  text-decoration: none;
+  color: #AAABAC;
+  line-height: 1.2em;
+}
+#app .work-detail .current-content-wrap .title-wrap .work-link-wrap a i {
+  color: #1D1D1D;
+  font-size: 1.2em;
+  padding-right: 10px;
+  vertical-align: middle;
+}
+#app .work-detail .current-content-wrap .title-wrap .work-link-wrap a:hover {
+  color: #d1d1d1;
+}
+#app .work-detail .current-content-wrap .title-wrap .work-link-wrap a:hover i {
+  color: #C93639;
+}
 #app .work-detail .current-content-wrap .title-wrap .tags {
   list-style: none;
   display: flex;
@@ -614,6 +638,9 @@ p {
   }
   #app .each-section {
     padding: 75px 15px;
+  }
+  #app .skill-section {
+    min-height: 100vh;
   }
   #app .work-section .next-btn {
     transform: translate(100%, -50%);

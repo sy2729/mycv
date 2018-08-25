@@ -44,7 +44,7 @@ var header = {
             <div class="title-wrap" ref='titleWrap'>
                 <h4 class="subtitle">Hello, I'm</h4>
                 <h1 class="title">Shuai Yuan</h1>
-                <div class='arrow-wrap' @click=arrowScroll ref='arrow'><img src="./img/arrow-down.svg" alt="down"></div>
+                <div class='arrow-wrap' @click=arrowScroll ref='arrow'><i class="fa fa-arrow-down"></i></div>
             </div>
         </div>
     `,
@@ -153,7 +153,7 @@ var skillSection = {
         return {
             order: '01',
             sectionName: 'Skills',
-            description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
+            description: `I’m passionate about Web Development and User Interface design, with close observation of the latest trends in those design fields. I have solid skills in creating design prototype through front-end development and proficiency of using design software. With my pursuit of aesthetic details, I am able to precisely communicate my idea and design thoughts with my clients and partners.`,
             sectionColor: '#C93639',
             skillBarShort: true,
             skills: [
@@ -458,7 +458,11 @@ var workDetail = {
             <div class='work-detail'>
                 <section class='current-content-wrap'>
                     <div class='title-wrap'>
-                        <h2 class='title'>{{currentWork.name}}</h2>  
+                        <h2 class='title'>{{currentWork.name}}</h2>
+                        <div class="work-link-wrap">
+                            <a class='link-preview' :href='currentWork.link.preview' title="preivew"><span><i class='fa fa-eye'></i>preview</span></a>
+                            <a :href='currentWork.link.repo' title="repo"><span><i class='fa fa-github'></i>repo</span></a>
+                        </div>
                         <ul class='tags'>
                             <li v-for='i in currentWork.tags'>{{i}}</li>
                         </ul>
@@ -472,7 +476,7 @@ var workDetail = {
                 </section>
                 <side-bar-in-work-detail :allwork=allwork :currentId=currentWork.id @switch-work-detail="switchWork"></side-bar-in-work-detail>
                 <div class="close" @click="$emit('close-detail')">
-                    <span>X</span>
+                    <span><i class="fa fa-times"></i></span>
                 </div>
             </div>
     `,
@@ -492,7 +496,7 @@ var workDetail = {
             this.currentWork = data;
         }
     },
-    mounted(){
+    beforeMount(){
         this.currentWork = this.$props.detail;
     }
 }
@@ -504,7 +508,7 @@ var workSection = {
              <div class='section-content' ref='works'>
                 <each-work v-for='(i, index) in works' :key=index v-bind='i' @view-work-detail=viewWorkDetail></each-work>
              </div>
-             <button class='next-btn' @click=scrollRight> > </button>
+             <button class='next-btn' @click=scrollRight><i class='fa fa-angle-right'></i></button>
              <progress-bar :totalLength=allWorkLength :viewLength=viewLength :scrolledDistance=scrolledDistance></progress-bar>
         </div>
     `,
@@ -516,8 +520,11 @@ var workSection = {
             sectionName: 'Portfolio',
             works: [
                 {
-                    name: 'Atos Style Guide',
-                    link: 'https://sy2729.github.io/style-guide-atos/style-guide.html',
+                    name: 'Netease Musice Redev (Mobile)',
+                    link: {
+                        preview: `https://sy2729.github.io/music-app/`,
+                        repo: 'https://github.com/sy2729/music-app',
+                    },
                     img: './img/1.jpg',
                     id: 1,
                     descrip: [
