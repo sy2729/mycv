@@ -44,6 +44,18 @@ p {
   position: relative;
   overflow: hidden;
 }
+#app .header .header-layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: transparent url("./img/hero-layer.png") center no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  z-index: 3;
+  pointer-events: none;
+}
 #app .header nav {
   display: flex;
   height: 40px;
@@ -51,6 +63,8 @@ p {
   justify-content: space-between;
   margin: 20px;
   align-items: center;
+  position: relative;
+  z-index: 4;
 }
 #app .header nav img {
   align-self: flex-end;
@@ -70,9 +84,15 @@ p {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateY(-50%) scale(1.3);
   color: #fff;
   padding: 20px 0;
+  opacity: 0;
+  transition: all 4s;
+}
+#app .header .title-wrap.active {
+  left: 15%;
+  opacity: 1;
 }
 #app .header .title-wrap .subtitle {
   font-weight: 100;
@@ -477,8 +497,42 @@ p {
   #app .header {
     background-attachment: scroll;
   }
+  #app .header .header-layer {
+    background-attachment: scroll;
+  }
   #app .header nav .nav-options {
     flex: 1 1 auto;
+  }
+  #app .header .title-wrap {
+    transform: translateY(-50%) scale(1);
+  }
+  #app .header .title-wrap.active {
+    animation: slideBackForth 4s ease-in-out forwards;
+  }
+  @keyframes slideBackForth {
+    0% {
+      left: 50%;
+      opacity: 0;
+      z-index: 2;
+    }
+    70% {
+      left: -15%;
+      opacity: 1;
+      z-index: 2;
+    }
+    71% {
+      left: -15%;
+      opacity: 1;
+      z-index: 2;
+    }
+    72% {
+      left: 20%;
+      z-index: 3;
+    }
+    100% {
+      left: 20%;
+      z-index: 3;
+    }
   }
   #app .each-section {
     padding: 125px 50px;

@@ -35,6 +35,82 @@ var nav = {
     }
 };
 
+var header = {
+    template: `
+        <div class="header">
+            <div class="header-layer" ref='overlay'></div>
+            <cv-nav></cv-nav>
+
+            <div class="title-wrap" ref='titleWrap'>
+                <h4 class="subtitle">Hello, I'm</h4>
+                <h1 class="title">Shuai Yuan</h1>
+                <div class='arrow-wrap' @click=arrowScroll ref='arrow'><img src="./img/arrow-down.svg" alt="down"></div>
+            </div>
+        </div>
+    `,
+    data: function(){
+        return {
+
+        }
+    },
+
+    methods: {
+        scrollTo(position, timeout){
+                var scrollTop = document.documentElement.scrollTop || document.body.scrollTop,
+                    direction = position - scrollTop > 0 ? 1 : -1,
+                    distance = Math.abs(position - scrollTop),
+                    split = distance / 50,
+                    _timeout;
+
+                if (position !== scrollTop) {
+                    timeout = timeout || 1000;
+                    split *= direction;
+
+                    _timeout = setInterval(function () {
+                        scrollTop += split;
+                        distance -= Math.abs(split);
+                        if (0 >= distance) {
+                            window.scrollTo(0, position);
+                            clearInterval(_timeout);
+                            _timeout = null;
+                        } else {
+                            window.scrollTo(0, scrollTop);
+                        }
+                    }, timeout / 100);
+                }
+        },
+        arrowScroll(){
+            let value = document.querySelector('.skill-section').offsetTop;
+            this.scrollTo(value, 500);
+        },
+        myCallback(){
+            this.$refs.arrow.classList.add('active');
+        },
+        detectLayerLoading(){
+            // detect the layer loading
+            let img = document.createElement('img');
+            img.setAttribute("src", './img/hero-layer.png');
+            img.onload = ()=>{
+                img = null;
+                this.loadText();
+            }
+        },
+        loadText(){
+            this.$refs.titleWrap.classList.add('active')
+        }
+    },
+
+    components: {
+        'cv-nav': nav,
+    },
+
+    mounted(){
+        ScrollReveal().reveal('.arrow-wrap', { afterReveal: this.myCallback });
+        this.detectLayerLoading();
+
+    }
+}
+
 var sectionTitle = {
     template: `
     <div class='section-title-wrap'>
@@ -521,7 +597,7 @@ var creditWidget = {
     template: `
         <div class='credit-wrap'>
             <p>Credit to XXXXX's Design on Dribbble</p>
-            <p class='close' @click="$emit('closeWidget')">X</p>
+            <div class='close' @click="$emit('closeWidget')">X</div>
         </div>
     `,
 
@@ -607,7 +683,7 @@ new Vue({
     },
 
     components: {
-        'cv-nav': nav,
+        'header-section': header,
         'skill-section': skillSection,
         'experience-section': experienceSection,
         'education-section': educationSection,
