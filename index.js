@@ -391,7 +391,7 @@ var eachWork = {
             </div>
         </div>
     `,
-    props: ['img', 'name', 'descrip', 'link', 'tags'],
+    props: ['img', 'name', 'descrip', 'link', 'tags', 'id'],
     methods: {
         viewEachWork(){
             let data = JSON.parse(JSON.stringify(this.$props));
@@ -424,35 +424,77 @@ var progressBar = {
     }
 }
 
-var workDetail = {
+var sideBarInWorkDetail = {
     template: `
-        <transition name='show-content'>
-            <div class='work-detail' v-if=state>
-                <div class='title-wrap'>
-                    <h2 class='title'>{{detail.name}}</h2>  
-                    <ul class='tags'>
-                        <li v-for='i in detail.tags'>{{i}}</li>
-                    </ul>
-
-                    <div class='work-content'>
-                        <div v-for="i in detail.descrip">
-                            <img :src='i.content' v-if="i.type==='img'">
-                            <p v-html='i.content' v-if="i.type==='text'"></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="close" @click="$emit('close-detail')">
-                    <span>X</span>
-                </div>
-            </div>
-        </transition>
+        <aside class='sideBar'>
+            <ul>
+                <li v-for='i in allwork' :class="{'header-bar': i.id === currentId}" @click='switchWork(i.id)' :data-id=i.id>{{i.name}}</li>
+            </ul>
+        </aside>
     `,
-    data: function(){
+    data: function () {
         return {
 
         }
     },
-    props: ['detail', 'state']
+    methods: {
+        switchWork(data){
+            this.$props.allwork.map((i)=>{
+                if(data === i.id) {
+                    this.$emit('switch-work-detail', i)
+                }
+            })
+        }
+    },
+    props: ['allwork', 'currentId'],
+    mounted(){
+        
+    }
+
+}
+
+var workDetail = {
+    template: `
+            <div class='work-detail'>
+                <section class='current-content-wrap'>
+                    <div class='title-wrap'>
+                        <h2 class='title'>{{currentWork.name}}</h2>  
+                        <ul class='tags'>
+                            <li v-for='i in currentWork.tags'>{{i}}</li>
+                        </ul>
+                    </div>
+                    <div class='work-content'>
+                        <div v-for="i in currentWork.descrip">
+                            <img :src='i.content' v-if="i.type==='img'">
+                            <p v-html='i.content' v-if="i.type==='text'"></p>
+                        </div>
+                    </div>
+                </section>
+                <side-bar-in-work-detail :allwork=allwork :currentId=currentWork.id @switch-work-detail="switchWork"></side-bar-in-work-detail>
+                <div class="close" @click="$emit('close-detail')">
+                    <span>X</span>
+                </div>
+            </div>
+    `,
+    data: function(){
+        return {
+            currentWork: {},
+        }
+    },
+    props: ['detail', 'allwork'],
+
+    components: {
+        "side-bar-in-work-detail": sideBarInWorkDetail,
+    },
+    methods: {
+        switchWork(data){
+            console.log(data)
+            this.currentWork = data;
+        }
+    },
+    mounted(){
+        this.currentWork = this.$props.detail;
+    }
 }
 
 var workSection = {
@@ -477,6 +519,7 @@ var workSection = {
                     name: 'Atos Style Guide',
                     link: 'https://sy2729.github.io/style-guide-atos/style-guide.html',
                     img: './img/1.jpg',
+                    id: 1,
                     descrip: [
                         {
                             content: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
@@ -501,6 +544,7 @@ var workSection = {
                     name: 'Work 2',
                     link: 'https://sy2729.github.io/style-guide-atos/style-guide.html',
                     img: 'https://z1.muscache.cn/im/pictures/fd5fb67e-9cdc-4111-b8e6-373727c75669.jpg?aki_policy=large',
+                    id: 2,
                     descrip:'xxxxxxxx',
                     tags: ['Web Dev', 'UX Design', 'UI Design'],
                 },
@@ -508,6 +552,7 @@ var workSection = {
                     name: 'work 3',
                     link: 'https://sy2729.github.io/style-guide-atos/style-guide.html',
                     img: 'https://z1.muscache.cn/im/pictures/d254f055-afbf-466f-ad24-28e1f678671d.jpg?aki_policy=x_large',
+                    id: 3,
                     descrip:'xxxxxxxx',
                     tags: ['Web Dev', 'UX Design', 'UI Design'],
                 },
@@ -587,7 +632,10 @@ var workSection = {
         window.addEventListener('resize', ()=>{
             this.getBarStyle();
             this.initialDistanceBeforeScroll = this.getInitialScrollDistance();
-        })
+        });
+
+        // pass all work data to root
+        this.$emit('all-work', this.works)
 
     }
 }
@@ -664,6 +712,7 @@ new Vue({
     data: {
         workDetail: {},
         workDetailOpened: false,
+        allWorks: null,
     },
 
     methods: {
@@ -675,6 +724,9 @@ new Vue({
         closeDetail(){
             this.workDetailOpened = false;
             document.body.style.overflow = 'unset';
+        },
+        getAllWork(data){
+            this.allWorks = data;
         }
     },
 

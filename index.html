@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Shuai Yuan | CV</title>
     <link rel="stylesheet" href="./index.css">
 </head>
 <body>
@@ -15,9 +15,11 @@
         <skill-section></skill-section>
         <experience-section></experience-section>
         <education-section></education-section>
-        <work-section @view-work-detail=viewWorkDetail></work-section>
+        <work-section @view-work-detail=viewWorkDetail @all-work=getAllWork></work-section>
         <footer-section></footer-section>
-        <work-detail :state=workDetailOpened :detail=workDetail @close-detail=closeDetail></work-detail>
+        <transition name='show-content'>
+            <work-detail :state=workDetailOpened :detail=workDetail @close-detail=closeDetail :allwork=allWorks v-if=workDetailOpened></work-detail>
+        </transition>
 
 
     </div>
