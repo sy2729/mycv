@@ -88,7 +88,7 @@ p {
   color: #fff;
   padding: 20px 0;
   opacity: 0;
-  transition: all 4s;
+  transition: all 3s;
 }
 #app .header .title-wrap.active {
   left: 15%;
@@ -507,7 +507,7 @@ p {
     transform: translateY(-50%) scale(1);
   }
   #app .header .title-wrap.active {
-    animation: slideBackForth 4s ease-in-out forwards;
+    animation: slideBackForth 3s ease-in-out forwards;
   }
   @keyframes slideBackForth {
     0% {
@@ -515,19 +515,22 @@ p {
       opacity: 0;
       z-index: 2;
     }
-    70% {
-      left: -15%;
+    50% {
+      left: 0;
       opacity: 1;
       z-index: 2;
+      transform: translateY(-50%) scale(1) translateX(-100%);
     }
-    71% {
-      left: -15%;
+    51% {
+      left: 0;
       opacity: 1;
-      z-index: 2;
+      z-index: 3;
+      transform: translateY(-50%) scale(1) translateX(-100%);
     }
-    72% {
+    52% {
       left: 20%;
       z-index: 3;
+      transform: translateY(-50%) scale(1);
     }
     100% {
       left: 20%;

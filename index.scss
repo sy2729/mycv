@@ -90,7 +90,7 @@ $theme: #C93639;
         color: #fff;
         padding: 20px 0;
         opacity: 0;
-        transition: all 4s;
+        transition: all 3s;
         &.active {
             left: 15%;
             opacity: 1;
@@ -615,14 +615,14 @@ $theme: #C93639;
                 transform: translateY(-50%) scale(1);
 
                 &.active {
-                    animation: slideBackForth 4s ease-in-out forwards;
+                    animation: slideBackForth 3s ease-in-out forwards;
                 }
 
                 @keyframes slideBackForth {
                     0%{left: 50%; opacity: 0; z-index: 2;}
-                    70%{left: -15%; opacity: 1; z-index: 2;}
-                    71%{left: -15%; opacity: 1; z-index: 2;}
-                    72%{left: 20%; z-index: 3;}
+                    50%{left: 0; opacity: 1; z-index: 2; transform: translateY(-50%) scale(1) translateX(-100%);}
+                    51%{left: 0; opacity: 1; z-index: 3; transform: translateY(-50%) scale(1) translateX(-100%);}
+                    52%{left: 20%; z-index: 3; transform: translateY(-50%) scale(1);}
                     100%{left: 20%; z-index: 3;}
                 }
             }
