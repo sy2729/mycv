@@ -386,12 +386,21 @@ var eachWork = {
             <div class='work-cover'>
                 <div class="work-info-wrap">
                     <h3 class='work-name'>{{name}}</h3>
-                    <span class='currentType'>{{type}}</span>
+                    <span class='current-type'><i :class="typeIconCode[type]"></i></span>
                 </div>
             </div>
         </div>
     `,
     props: ['img', 'name', 'descrip', 'link', 'tags', 'id', 'type'],
+    data: function(){
+        return {
+            typeIconCode: {
+                'web': 'fa fa-code',
+                'video': 'fa fa-play-circle',
+                'design': 'fa fa-paint-brush',
+            }
+        }
+    },
     methods: {
         viewEachWork(){
             let data = JSON.parse(JSON.stringify(this.$props));

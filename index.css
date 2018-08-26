@@ -362,6 +362,10 @@ a {
   margin: 0 auto;
   text-align: center;
 }
+#app .work-section .section-content .each-work .work-cover .work-info-wrap .current-type {
+  font-size: 1.5em;
+  font-weight: 100;
+}
 #app .work-section .section-content .each-work:hover .work-cover {
   opacity: 1;
 }
