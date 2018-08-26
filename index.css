@@ -98,6 +98,7 @@ a {
 }
 #app .header nav .nav-options li {
   list-style: none;
+  cursor: pointer;
 }
 #app .header .title-wrap {
   position: absolute;

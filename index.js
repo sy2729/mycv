@@ -6,7 +6,7 @@ var nav = {
         <nav>
             <img :src=logoImg>
             <ul class='nav-options'>
-                <li v-for='i in navList'>{{i.name}}</li>
+                <li v-for='i in navList' @click='chooseToView(i.name)'>{{i.name}}</li>
             </ul>
         </nav>
     `,
@@ -15,9 +15,6 @@ var nav = {
         return {
             logoImg: './img/logo.png',
             navList: [
-                {
-                    name: 'Home'
-                },
                 {
                     name: 'Web'
                 },
@@ -32,6 +29,15 @@ var nav = {
                 },
             ]
         }
+    },
+    methods: {
+        chooseToView(data){
+            if(data.toLowerCase() !== 'blog') {
+                this.$emit('choose-to-view', data.toLowerCase());
+            }else {
+                console.log('choose blog');
+            }
+        }
     }
 };
 
@@ -39,7 +45,7 @@ var header = {
     template: `
         <div class="header">
             <div class="header-layer" ref='overlay'></div>
-            <cv-nav></cv-nav>
+            <cv-nav @choose-to-view='headerSelect'></cv-nav>
 
             <div class="title-wrap" ref='titleWrap'>
                 <h4 class="subtitle">Hello, I'm</h4>
@@ -97,6 +103,10 @@ var header = {
         },
         loadText(){
             this.$refs.titleWrap.classList.add('active')
+        },
+        headerSelect(data){
+            let value = document.querySelector('.work-section').offsetTop;
+            this.scrollTo(value, 500);
         }
     },
 
@@ -702,9 +712,8 @@ var workSection = {
     updated(){
         // update the scrollbar visual everytime change the work content
         this.getBarStyle();
-    }
+    },
 }
-
 
 var creditWidget = {
     template: `
@@ -792,7 +801,7 @@ new Vue({
         },
         getAllWork(data){
             this.allWorks = data;
-        }
+        },
     },
 
     computed: {
