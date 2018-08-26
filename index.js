@@ -386,12 +386,12 @@ var eachWork = {
             <div class='work-cover'>
                 <div class="work-info-wrap">
                     <h3 class='work-name'>{{name}}</h3>
-                    
+                    <span class='currentType'>{{type}}</span>
                 </div>
             </div>
         </div>
     `,
-    props: ['img', 'name', 'descrip', 'link', 'tags', 'id'],
+    props: ['img', 'name', 'descrip', 'link', 'tags', 'id', 'type'],
     methods: {
         viewEachWork(){
             let data = JSON.parse(JSON.stringify(this.$props));
@@ -689,6 +689,10 @@ var workSection = {
 
         // pass all work data to root
         this.$emit('all-work', this.works)
+    },
+    updated(){
+        // update the scrollbar visual everytime change the work content
+        this.getBarStyle();
     }
 }
 
