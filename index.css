@@ -673,6 +673,10 @@ a {
   #app .skill-section {
     min-height: 100vh;
   }
+  #app .work-section .switch-type .type-wrap {
+    float: unset;
+    justify-content: center;
+  }
   #app .work-section .next-btn {
     transform: translate(100%, -50%);
   }

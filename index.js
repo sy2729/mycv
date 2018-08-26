@@ -528,7 +528,7 @@ var workSection = {
             <switch-type :types=workTypes @switch-type=switchType></switch-type>
              <section-title :order=order :name=sectionName></section-title>
              <div class='section-content' ref='works'>
-                <each-work v-for='(i, index) in works' :key=index v-bind='i' @view-work-detail=viewWorkDetail></each-work>
+                <each-work v-for='(i, index) in filteredWorks' :key=index v-bind='i' @view-work-detail=viewWorkDetail></each-work>
              </div>
              <button class='next-btn' @click=scrollRight><i class='fa fa-angle-right'></i></button>
              <progress-bar :totalLength=allWorkLength :viewLength=viewLength :scrolledDistance=scrolledDistance></progress-bar>
@@ -541,6 +541,7 @@ var workSection = {
             order: '04',
             sectionName: 'Portfolio',
             workTypes: ['all','web', 'design', 'video'],
+            filteredWorks: [],
             works: [
                 {
                     name: 'Netease Musice Redev (Mobile)',
@@ -569,6 +570,7 @@ var workSection = {
                         },
                     ],
                     tags: ['Web Dev','UX Design', 'UI Design'],
+                    type: 'web',
                 },
                 {
                     name: 'Work 2',
@@ -577,6 +579,7 @@ var workSection = {
                     id: 2,
                     descrip:'xxxxxxxx',
                     tags: ['Web Dev', 'UX Design', 'UI Design'],
+                    type: 'video',
                 },
                 {
                     name: 'work 3',
@@ -585,6 +588,7 @@ var workSection = {
                     id: 3,
                     descrip:'xxxxxxxx',
                     tags: ['Web Dev', 'UX Design', 'UI Design'],
+                    type: 'design',
                 },
                 
             ],
@@ -645,7 +649,17 @@ var workSection = {
         },
 
         switchType(data){
-            console.log(data)
+            if(data.toLowerCase() === 'all') {
+                this.filteredWorks = this.works;
+            }else {
+                let results = this.works.filter((i) => {
+                    if (i.type.toLowerCase() === data.toLowerCase()) {
+                        return i
+                    }
+                });
+                this.filteredWorks = results;
+            }
+
         }
     },
     components: {
@@ -653,6 +667,10 @@ var workSection = {
         'each-work': eachWork,
         'progress-bar': progressBar,
         'switch-type': switchType,
+    },
+    beforeMount(){
+        // use all works by default
+        this.filteredWorks = this.works;
     },
     mounted(){
         // get alllength and view length of the work
@@ -671,7 +689,6 @@ var workSection = {
 
         // pass all work data to root
         this.$emit('all-work', this.works)
-
     }
 }
 
