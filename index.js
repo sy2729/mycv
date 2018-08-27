@@ -97,7 +97,7 @@ var header = {
         detectLayerLoading(){
             // detect the layer loading
             let img = document.createElement('img');
-            img.setAttribute("src", './img/hero-layer.png');
+            img.setAttribute("src", 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535384915/cv-img/hero-layer.png');
             img.onload = ()=>{
                 img = null;
                 this.loadText();

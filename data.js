@@ -75,7 +75,7 @@
                     preview: `https://sy2729.github.io/music-app/`,
                     repo: 'https://github.com/sy2729/music-app',
                 },
-                img: './img/work/music/music-1.jpeg',
+                img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535382448/cv-img/work/music/music-1.jpg',
                 id: 1,
                 descrip: [
                     {
@@ -83,7 +83,8 @@
                         type: 'text',
                     },
                     {
-                        content: './img/work/music/music-1.jpeg',
+                        // content: './img/work/music/music-1.jpeg',
+                        content: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535382448/cv-img/work/music/music-1.jpg',
                         type: 'img',
                     },
                     {
@@ -91,7 +92,7 @@
                         type: 'text',
                     },
                     {
-                        content: `./img/work/music/music-2.jpeg`,
+                        content: `https://res.cloudinary.com/shuaiyuan/image/upload/v1535382449/cv-img/work/music/music-2.jpg`,
                         type: 'img',
                     },
                     {
@@ -99,7 +100,7 @@
                         type: 'text',
                     },
                     {
-                        content: './img/work/music/music-3.jpeg',
+                        content: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535382447/cv-img/work/music/music-3.jpg',
                         type: 'img',
                     },
                     {
@@ -107,7 +108,7 @@
                         type: 'text',
                     },
                     {
-                        content: './img/work/music/music-4.jpeg',
+                        content: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535382447/cv-img/work/music/music-4.jpg',
                         type: 'img',
                     },
                     {
@@ -119,7 +120,7 @@
                         type: 'text',
                     },
                     {
-                        content: './img/work/music/music-5.png',
+                        content: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535382452/cv-img/work/music/music-5.png',
                         type: 'img',
                     },
                     {
@@ -127,7 +128,7 @@
                         type: 'text',
                     },
                     {
-                        content: './img/work/music/music-6.png',
+                        content: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535382454/cv-img/work/music/music-6.png',
                         type: 'img',
                     },
                     {
@@ -135,7 +136,7 @@
                         type: 'text',
                     },
                     {
-                        content: './img/work/music/music-7.png',
+                        content: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535382454/cv-img/work/music/music-7.png',
                         type: 'img',
                     },
                 ],
@@ -148,7 +149,7 @@
                     preview: `https://sy2729.github.io/atosonesource-market/dist/MARKET.html`,
                     repo: `https://github.com/sy2729/atosonesource-market`
                 },
-                img: './img/work/atos-landing/atos-landing-2.png',
+                img: 'http://res.cloudinary.com/shuaiyuan/image/upload/q_60/v1535382853/cv-img/work/atos-landing/atos-landing-2.png',
                 id: 2,
                 descrip: [
                     {
@@ -160,7 +161,8 @@
                         type: 'text'
                     },
                     {
-                        content: `./img/work/atos-landing/atos-landing-1.png`,
+                        // content: `./img/work/atos-landing/atos-landing-1.png`,
+                        content: `http://res.cloudinary.com/shuaiyuan/image/upload/q_60/v1535382860/cv-img/work/atos-landing/atos-landing-1.png`,
                         type: 'img'
                     },
                 ],
@@ -173,7 +175,8 @@
                     preview: 'https://sy2729.github.io/digital-dashboard-demo/',
                     repo: 'https://github.com/sy2729/digital-dashboard-demo/'
                 },
-                img: './img/work/atos-digital/atos-digital-dashboard-1.png',
+                // img: './img/work/atos-digital/atos-digital-dashboard-1.png',
+                img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535383123/cv-img/work/atos-digital/atos-digital-dashboard-1.png',
                 id: 3,
                 descrip: [
                     {
@@ -185,7 +188,7 @@
                         type: 'text',
                     },
                     {
-                        content: './img/work/atos-digital/atos-digital-dashboard-1.png',
+                        content: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535383123/cv-img/work/atos-digital/atos-digital-dashboard-1.png',
                         type: 'img'
                     }
                 ],
@@ -198,7 +201,8 @@
                     preview: 'https://sy2729.github.io/careGuru/',
                     repo: 'https://github.com/sy2729/careGuru'
                 },
-                img: './img/work/careguru/careguru-1.png',
+                // img: './img/work/careguru/careguru-1.png',
+                img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535383181/cv-img/work/careguru/careguru-1.png',
                 id: 3,
                 descrip: [
                     {
@@ -210,7 +214,7 @@
                         type: 'text',
                     },
                     {
-                        content: './img/work/careguru/careguru-1.png',
+                        content: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535383181/cv-img/work/careguru/careguru-1.png',
                         type: 'img'
                     },
                     {
@@ -222,7 +226,7 @@
                         type: 'text'
                     },
                     {
-                        content: `./img/work/careguru/careguru-2.png`,
+                        content: `https://res.cloudinary.com/shuaiyuan/image/upload/v1535383183/cv-img/work/careguru/careguru-2.png`,
                         type: 'img'
                     },
                     {
@@ -230,7 +234,7 @@
                         type: 'text'
                     },
                     {
-                        content: `./img/work/careguru/careguru-3.png`,
+                        content: `https://res.cloudinary.com/shuaiyuan/image/upload/v1535383181/cv-img/work/careguru/careguru-3.png`,
                         type: 'img'
                     }
                 ],
@@ -243,7 +247,8 @@
                     preview: 'https://sy2729.github.io/dynamic-drawing/',
                     repo: 'https://github.com/sy2729/dynamic-drawing'
                 },
-                img: './img/work/dynamic-drawing/dynamic-drawing-1.png',
+                // img: './img/work/dynamic-drawing/dynamic-drawing-1.png',
+                img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535383255/cv-img/work/dynamic-drawing/dynamic-drawing-1.png',
                 id: 3,
                 descrip: [
                     {
@@ -251,7 +256,7 @@
                         type: 'text',
                     },
                     {
-                        content: './img/work/dynamic-drawing/dynamic-drawing-2.png',
+                        content: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535383255/cv-img/work/dynamic-drawing/dynamic-drawing-2.png',
                         type: 'img'
                     },
                 ],
@@ -264,7 +269,8 @@
                     preview: 'https://sy2729.github.io/canvas-draw/',
                     repo: 'https://github.com/sy2729/canvas-draw'
                 },
-                img: './img/work/canvas-draw/canvas-draw-2.png',
+                // img: './img/work/canvas-draw/canvas-draw-2.png',
+                img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535383299/cv-img/work/canvas-draw/canvas-draw-2.png',
                 id: 3,
                 descrip: [
                     {
@@ -272,7 +278,7 @@
                         type: 'text',
                     },
                     {
-                        content: './img/work/canvas-draw/canvas-draw-1.png',
+                        content: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535383299/cv-img/work/canvas-draw/canvas-draw-1.png',
                         type: 'img'
                     },
                 ],
@@ -281,7 +287,7 @@
             },
             {
                 name: 'Teachers College Site Design Assistance',
-                img: './img/work/tc-site/tc-site-1.png',
+                img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535383418/cv-img/work/tc-site/tc-site-1.png',
                 id: 3,
                 descrip: [
                     {
@@ -289,7 +295,7 @@
                         type: 'text',
                     },
                     {
-                        content: './img/work/tc-site/tc-site-2.png',
+                        content: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535383425/cv-img/work/tc-site/tc-site-2.png',
                         type: 'img'
                     },
                 ],
@@ -298,7 +304,8 @@
             },
             {
                 name: 'Code Battle',
-                img: './img/work/game-card/game-card-2.png',
+                // img: './img/work/game-card/game-card-2.png',
+                img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535383492/cv-img/work/code-battle/game-card-2.png',
                 id: 3,
                 link: {
                     preview: `https://sy2729.github.io/gameCaard/`,
@@ -310,7 +317,7 @@
                         type: 'text',
                     },
                     {
-                        content: './img/work/game-card/game-card-1.png',
+                        content: 'http://res.cloudinary.com/shuaiyuan/image/upload/q_49/v1535383509/cv-img/work/code-battle/game-card-1.png',
                         type: 'img'
                     },
                 ],
@@ -319,7 +326,8 @@
             },
             {
                 name: 'Atos Aviva Server Query User Interface Design',
-                img: './img/work/atos-aviva/atos-aviva-2.png',
+                // img: './img/work/atos-aviva/atos-aviva-2.png',
+                img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535383565/cv-img/work/atos-aviva/atos-aviva-2.png',
                 id: 3,
                 descrip: [
                     {
@@ -327,7 +335,7 @@
                         type: 'text',
                     },
                     {
-                        content: './img/work/atos-aviva/atos-aviva-2.png',
+                        content: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535383565/cv-img/work/atos-aviva/atos-aviva-2.png',
                         type: 'img'
                     },
                     {
@@ -335,7 +343,7 @@
                         type: 'text',
                     },
                     {
-                        content: './img/work/atos-aviva/atos-aviva-4.png',
+                        content: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535383569/cv-img/work/atos-aviva/atos-aviva-4.png',
                         type: 'img'
                     },
                     {
@@ -347,7 +355,7 @@
                         type: 'text',
                     },
                     {
-                        content: './img/work/atos-aviva/atos-aviva-3.png',
+                        content: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535383569/cv-img/work/atos-aviva/atos-aviva-3.png',
                         type: 'img'
                     },
                 ],
@@ -356,7 +364,8 @@
             },
             {
                 name: 'Atos Service Delivery Management',
-                img: './img/work/atos-sdm/atos-sdm-1.png',
+                // img: './img/work/atos-sdm/atos-sdm-1.png',
+                img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535383644/cv-img/work/atos-sdm/atos-sdm-1.png',
                 id: 3,
                 descrip: [
                     {
@@ -364,7 +373,7 @@
                         type: 'text',
                     },
                     {
-                        content: './img/work/atos-sdm/atos-sdm-1.png',
+                        content: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535383644/cv-img/work/atos-sdm/atos-sdm-1.png',
                         type: 'img'
                     },
                     {
@@ -372,7 +381,7 @@
                         type: 'text',
                     },
                     {
-                        content: './img/work/atos-sdm/atos-sdm-3.png',
+                        content: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535383644/cv-img/work/atos-sdm/atos-sdm-3.png',
                         type: 'img'
                     },
                     {
@@ -380,7 +389,7 @@
                         type: 'text',
                     },
                     {
-                        content: './img/work/atos-sdm/atos-sdm-4.png',
+                        content: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535383644/cv-img/work/atos-sdm/atos-sdm-4.png',
                         type: 'img'
                     },
                     {
@@ -388,7 +397,7 @@
                         type: 'text',
                     },
                     {
-                        content: './img/work/atos-sdm/atos-sdm-2.png',
+                        content: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535383644/cv-img/work/atos-sdm/atos-sdm-2.png',
                         type: 'img'
                     },
                 ],
@@ -397,7 +406,7 @@
             },
             {
                 name: 'Where AM I From',
-                img: 'https://i.ytimg.com/vi_webp/8kWDH6cejB4/maxresdefault.webp',
+                img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535384138/cv-img/work/where-am-I-from/where-am-I-from.png',
                 id: 3,
                 youtubeID: '8kWDH6cejB4',
                 biliID: '14943823',
