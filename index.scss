@@ -9,6 +9,7 @@ a {color: inherit};
     clear: both;
 }
 $theme: #C93639;
+.t-center {text-align: center;}
 .each-clickable, .header-bar {
     cursor: pointer;
     position: relative;
@@ -656,15 +657,28 @@ $theme: #C93639;
 
             .work-content {
                 p {
-                    margin: 20px 0;
+                        margin: 20px 0;
+                        line-height: 2em;
+
+                        a {
+                            color: $theme;
+                        }
                 }
-                img {
+                .each-descrip-img {
+                    background: #efefef;
                     width: 70%;
-                    height: auto;
-                    float: right;
-                    padding: 10px;
-                    max-width: 500px;
+                    margin: 30px auto;
                     min-width: 300px;
+                    img {
+                        width: 90%;
+                        height: auto;
+                        margin: 0 auto;
+                        display: block;
+                        // float: right;
+                        padding: 20px 0;
+                        max-width: 400px;
+                        min-width: 200px;
+                    }
                 }
             }
         }

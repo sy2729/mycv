@@ -553,16 +553,19 @@ a {
   color: #AAABAC;
   margin: 5px 4px;
 }
-#app .work-detail .current-content-wrap .work-content p {
+#app .work-detail .current-content-wrap .work-content .each-descrip {
+  background: #efefef;
+}
+#app .work-detail .current-content-wrap .work-content .each-descrip p {
   margin: 20px 0;
 }
-#app .work-detail .current-content-wrap .work-content img {
+#app .work-detail .current-content-wrap .work-content .each-descrip img {
   width: 70%;
   height: auto;
-  float: right;
+  margin: 10px auto;
   padding: 10px;
   max-width: 500px;
-  min-width: 300px;
+  min-width: 200px;
 }
 #app .work-detail .close {
   position: fixed;

@@ -1,4 +1,6 @@
 // import {  } from "./index.scss";
+import { cvData } from "./data";
+import "./index.scss";
 
 // create component
 var nav = {
@@ -166,25 +168,7 @@ var skillSection = {
             description: `I’m passionate about Web Development and User Interface design, with close observation of the latest trends in those design fields. I have solid skills in creating design prototype through front-end development and proficiency of using design software. With my pursuit of aesthetic details, I am able to precisely communicate my idea and design thoughts with my clients and partners.`,
             sectionColor: '#C93639',
             skillBarShort: true,
-            skills: [
-                {
-                    name: 'HTML & CSS & JavaSCript',
-                    extent: '70'
-                },
-                {
-                    name: 'UX / UI Design',
-                    extent: '60'
-                },
-                {
-                    name: 'Videography',
-                    extent: '60'
-                },
-                {
-                    name: 'Vue / Riot / Firebase / MVC ...',
-                    extent: '70'
-                },
-            ]
-
+            skills: [],
         }
     },
 
@@ -196,6 +180,9 @@ var skillSection = {
         removeActive(){
             this.skillBarShort = false;
         }
+    },
+    beforeMount(){
+        this.skills = cvData.skills;
     },
 
     mounted(){
@@ -265,60 +252,15 @@ var experienceSection = {
             sectionColor: '#FFFFFF',
             order:'02',
             sectionName: 'Experience',
-            experiences: [
-                {
-                    logo: './img/experience/tc.jpg',
-                    role: 'Course Assistant - JavaScript Programming',
-                    company: 'Teachers College, Columbia University',
-                    beginDate: '2018.09',
-                    endDate: 'present',
-                    activeState: true,
-                    detail: {
-                        descrip: [
-                          'Assist the Instructor in scheduling and operating the class, and grading the work',
-                          'Assist the students with debugging, clarify some coding concepts, especially in JavaScript',
-                          'Creating demo projects in demonstrating concepts being taught in class and as intro to more advanced implementation in JavaScript and interactive web page coding',  
-                        ],
-                    },
-                },
-                {
-                    logo: './img/experience/atos.png',
-                    role: 'UX Designer',
-                    company: 'Atos',
-                    beginDate: '2018.05',
-                    endDate: 'present',
-                    activeState: true,
-                    detail: {
-                        descrip: [
-                            'Collaborate with other designers and design web & mobile products from concept to hi-fi prototypes ',
-                            'Work with developers and support delivering / QA new features',
-                            'Design marketing materials including marketing website, brochures, videos',
-                            'Support user research and gather feedback from users to improve product design',
-                        ],
-                    },
-                },
-                {
-                    logo: './img/experience/tc.jpg',
-                    role: 'Web Developer',
-                    company: 'Teachers College, Columbia University',
-                    beginDate: '2018.03',
-                    endDate: '2018.05',
-                    activeState: false,
-                    detail: {
-                        descrip: [
-                            "Assist the TC office of the Web in refreshing the college's website, assist the External Affairs Web Office in transferring current websites to the new site template in T4 content management system",
-                            'Help with quality assurance testing, and other content migration tasks',
-                            'Help with site style debugging and user experience improvement with CSS solutions',
-                        ],
-                    },
-                },
-        
-            ]
+            experiences: [],
         }
     },
     components: {
         'section-title': sectionTitle,
         'each-experience': eachExperience,
+    },
+    beforeMount(){
+        this.experiences = cvData.experiences;
     }
 };
 
@@ -348,7 +290,7 @@ var educationSection = {
         <div class="education-section each-section" :style="{background: sectionColor}">
              <section-title :order=order :name=sectionName></section-title>
              <div class='section-content'>
-                <each-education v-for='(i, index) in educations' :key=index v-bind='i'></each-experience>
+                <each-education v-for='(i, index) in educations' :key=index v-bind='i'></each-education>
              </div>
         </div>
     `,
@@ -487,7 +429,7 @@ var workDetail = {
                         </ul>
                     </div>
                     <div class='work-content'>
-                        <div v-for="i in currentWork.descrip">
+                        <div v-for="i in currentWork.descrip" :class="{'each-descrip-img': i.type==='img'}">
                             <img :src='i.content' v-if="i.type==='img'">
                             <p v-html='i.content' v-if="i.type==='text'"></p>
                         </div>
@@ -561,56 +503,7 @@ var workSection = {
             sectionName: 'Portfolio',
             workTypes: ['all','web', 'design', 'video'],
             filteredWorks: [],
-            works: [
-                {
-                    name: 'Netease Musice Redev (Mobile)',
-                    link: {
-                        preview: `https://sy2729.github.io/music-app/`,
-                        repo: 'https://github.com/sy2729/music-app',
-                    },
-                    img: './img/1.jpg',
-                    id: 1,
-                    descrip: [
-                        {
-                            content: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
-                            type: 'text',
-                        }, 
-                        {
-                            content: './img/1.jpg',
-                            type: 'img',
-                        },
-                        {
-                            content: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
-                            type: 'text',
-                        }, 
-                        {
-                            content: './img/1.jpg',
-                            type: 'img',
-                        },
-                    ],
-                    tags: ['Web Dev','UX Design', 'UI Design'],
-                    type: 'web',
-                },
-                {
-                    name: 'Work 2',
-                    link: 'https://sy2729.github.io/style-guide-atos/style-guide.html',
-                    img: 'https://z1.muscache.cn/im/pictures/fd5fb67e-9cdc-4111-b8e6-373727c75669.jpg?aki_policy=large',
-                    id: 2,
-                    descrip:'xxxxxxxx',
-                    tags: ['Web Dev', 'UX Design', 'UI Design'],
-                    type: 'video',
-                },
-                {
-                    name: 'work 3',
-                    link: 'https://sy2729.github.io/style-guide-atos/style-guide.html',
-                    img: 'https://z1.muscache.cn/im/pictures/d254f055-afbf-466f-ad24-28e1f678671d.jpg?aki_policy=x_large',
-                    id: 3,
-                    descrip:'xxxxxxxx',
-                    tags: ['Web Dev', 'UX Design', 'UI Design'],
-                    type: 'design',
-                },
-                
-            ],
+            works: [],
             allWorkLength: 0,
             viewLength: 20,
             scrolledDistance: 0,
@@ -618,7 +511,7 @@ var workSection = {
     },
     methods: {
         detectScrollDistance(){
-            value = this.getScrollDistance();
+            let value = this.getScrollDistance();
             this.scrolledDistance = this.initialDistanceBeforeScroll - value;
         },
 
@@ -688,6 +581,7 @@ var workSection = {
         'switch-type': switchType,
     },
     beforeMount(){
+        this.works = cvData.works;
         // use all works by default
         this.filteredWorks = this.works;
     },
