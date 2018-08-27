@@ -39,12 +39,30 @@ $theme: #C93639;
 
 .header-bar {
     cursor: unset;
-    background: #F5F5F5;
+    background: #ddd;
     pointer-events: none;
     &:after {
         opacity: 1;
     }
 }
+
+// alibaba icon-font
+@font-face {
+  font-family: 'iconfont';  /* project id 810977 */
+  src: url('//at.alicdn.com/t/font_810977_jbh6layqzx.eot');
+  src: url('//at.alicdn.com/t/font_810977_jbh6layqzx.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_810977_jbh6layqzx.woff') format('woff'),
+  url('//at.alicdn.com/t/font_810977_jbh6layqzx.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_810977_jbh6layqzx.svg#iconfont') format('svg');
+}
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 
 #app {
    .header {
@@ -450,9 +468,9 @@ $theme: #C93639;
             height: 40px;
             width: 40px;
             font-size: 1.35em;
-            color: #999999;
+            color: #fefefe;
             top: 50%;
-            transform: translate(50%, -100%);
+            transform: translate(50%, -50%);
             right: 125px;
             border: none;
             background: #f4f4f4;
@@ -460,8 +478,37 @@ $theme: #C93639;
             box-shadow: 2px 2px 10px 0 rgba(100, 100, 100, 0.5);
             cursor: pointer;
 
+            i {
+                position: relative;
+                z-index: 3;
+            }
+
             &:focus {
                 outline: none;
+            }
+
+            &:after {
+                content: '';
+                border-radius: inherit;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;                
+                background: $theme;
+                transition: all .4s ease-in-out;
+                transform-origin: center;
+                z-index: 2;
+            }
+
+            &.end {
+                color: #ddd;
+                cursor: not-allowed;
+
+                &:after {
+                    background: #ddd;
+                    transform: scale(0);
+                }
             }
         }
         
@@ -587,6 +634,7 @@ $theme: #C93639;
         display: flex;
         align-items: baseline;
         background: #F6F6F6;
+        z-index: 5;
 
         .sideBar {
             min-width: 250px;
@@ -597,12 +645,15 @@ $theme: #C93639;
 
             ul { 
                 list-style: none;
+                display: flex;
+                flex-direction: column;
 
                 li {
                     padding: 10px 0 10px 10px;
                     cursor: pointer;
-
-                    .header-bar {
+                    order: 2;
+                    &.header-bar {
+                        order: 1;
                         cursor: unset;
                     }
                 }
@@ -623,6 +674,7 @@ $theme: #C93639;
                 .current-work-type {
                     position: absolute;
                     right: 10px;
+                    top: 35px;
 
                 }
                 .work-link-wrap {
@@ -668,6 +720,36 @@ $theme: #C93639;
 
             .work-content {
                 padding: 25px;
+
+                .video-source-wrap {
+                    span {
+                        padding: 4px 10px;
+                        border: 1px solid $theme;
+                        cursor: pointer;
+                        color: #AAABAC;
+
+                        &.active {
+                            color: #fefefe;
+                            background: $theme;
+                            border-color: $theme;
+                        }
+                    }
+                }
+
+                .work-videoWrapper {
+                    overflow:hidden;
+                    padding-bottom:56.25%;
+                    position:relative;
+                    height:0;
+                    iframe {
+                        left:0;
+                        top:0;
+                        height:100%;
+                        width:100%;
+                        position:absolute;
+                    }
+                }
+
                 p {
                         margin: 20px 0;
                         line-height: 2em;
@@ -675,6 +757,11 @@ $theme: #C93639;
                         a {
                             color: $theme;
                         }
+
+                    &.t-center {
+                        margin: 20px 0 -25px;
+                        color: #7d7d7d;
+                    }
                 }
                 .each-descrip-img {
                     background: #efefef;
@@ -804,14 +891,20 @@ $theme: #C93639;
                 padding: 0;
                 margin: 0 auto;
             }
+
+            .sideBar {
+                min-width: unset;
+                width: 100%;
+            }
+        }
+
+        .work-section {
+            .next-btn {
+                right: 50px !important;
+                transform: translate(50%, 50%);
+            }
         }
     }
-
-    .next-btn {
-        right: 50px !important;
-    }
-
-
 }
 
 @media screen and ( max-width:544px) {
@@ -842,7 +935,7 @@ $theme: #C93639;
             }
 
             .next-btn {
-                transform: translate(100%, -50%);
+                transform: translate(100%, 50%);
             }
         }
 

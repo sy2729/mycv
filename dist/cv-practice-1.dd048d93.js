@@ -210,27 +210,248 @@ var cvData = {
             content: './img/work/music/music-7.png',
             type: 'img'
         }],
-        tags: ['Web Dev', 'jQuery'],
+        tags: ['Web Dev', 'jQuery', 'Dynamic REM'],
         type: 'web'
     }, {
-        name: 'Work 2',
-        link: 'https://sy2729.github.io/style-guide-atos/style-guide.html',
-        img: 'https://z1.muscache.cn/im/pictures/fd5fb67e-9cdc-4111-b8e6-373727c75669.jpg?aki_policy=large',
+        name: 'Atos OneSource Landing Page',
+        link: {
+            preview: 'https://sy2729.github.io/atosonesource-market/dist/MARKET.html',
+            repo: 'https://github.com/sy2729/atosonesource-market'
+        },
+        img: './img/work/atos-landing/atos-landing-2.png',
         id: 2,
-        descrip: 'xxxxxxxx',
-        tags: ['Web Dev', 'UX Design', 'UI Design'],
-        type: 'video'
+        descrip: [{
+            content: 'This is part of the <a href="http://www.atosonesource.com/">Atos OneSource</a> page. The original page was built using app drag, a drag-and-drop web design and dev product. But to implement some advanced features and make the site more customizable, we chose to write the code.',
+            type: 'text'
+        }, {
+            content: 'It\'s initially built with jQuery, and we\'re reconstructing it with Vue.js',
+            type: 'text'
+        }, {
+            content: './img/work/atos-landing/atos-landing-1.png',
+            type: 'img'
+        }],
+        tags: ['Web Dev', 'UX Design', 'Atos'],
+        type: 'web'
     }, {
-        name: 'work 3',
-        link: 'https://sy2729.github.io/style-guide-atos/style-guide.html',
-        img: 'https://z1.muscache.cn/im/pictures/d254f055-afbf-466f-ad24-28e1f678671d.jpg?aki_policy=x_large',
+        name: 'Atos Digital Dashboard Petal Dev',
+        link: {
+            preview: 'https://sy2729.github.io/digital-dashboard-demo/',
+            repo: 'https://github.com/sy2729/digital-dashboard-demo/'
+        },
+        img: './img/work/atos-digital/atos-digital-dashboard-1.png',
         id: 3,
-        descrip: 'xxxxxxxx',
-        tags: ['Web Dev', 'UX Design', 'UI Design'],
+        descrip: [{
+            content: 'This is the homepage for <a href="www.atosonesourceweb.com/">Atos OneSource Dashboard</a> where clients use to manage their daily KPI. We invisioned a data visualizaed work interface so the idea of the petal representation came into our mind.',
+            type: 'text'
+        }, {
+            content: 'Collaborating with the developers, I provided the front-end support in creating the petal and the flower, and of course, it\'s mobile friendly.',
+            type: 'text'
+        }, {
+            content: './img/work/atos-digital/atos-digital-dashboard-1.png',
+            type: 'img'
+        }],
+        tags: ['Web Dev', 'UX Design', 'Atos', 'CSS'],
+        type: 'web'
+    }, {
+        name: 'Care Guru',
+        link: {
+            preview: 'https://sy2729.github.io/careGuru/',
+            repo: 'https://github.com/sy2729/careGuru'
+        },
+        img: './img/work/careguru/careguru-1.png',
+        id: 3,
+        descrip: [{
+            content: 'This is a team project in a class where I collaborate with three other classmates to present the idea of \'insurance education with web technology\'.',
+            type: 'text'
+        }, {
+            content: 'We have many international students who are unfamiliar with the U.S insurance. Thus being able to understand the basic concepts in insurance aftering viewing this website is our goal.',
+            type: 'text'
+        }, {
+            content: './img/work/careguru/careguru-1.png',
+            type: 'img'
+        }, {
+            content: 'We use Riot.js as the MVC framework and Google Firebase as the database, according to the course requirement',
+            type: 'text'
+        }, {
+            content: '<p class=\'t-center\'>The user dashboard after login</p>',
+            type: 'text'
+        }, {
+            content: './img/work/careguru/careguru-2.png',
+            type: 'img'
+        }, {
+            content: '<p class=\'t-center\'>Knowledge card</p>',
+            type: 'text'
+        }, {
+            content: './img/work/careguru/careguru-3.png',
+            type: 'img'
+        }],
+        tags: ['Web Dev', 'Riot.js', 'Firebase'],
+        type: 'web'
+    }, {
+        name: 'Dynamic Drawing',
+        link: {
+            preview: 'https://sy2729.github.io/dynamic-drawing/',
+            repo: 'https://github.com/sy2729/dynamic-drawing'
+        },
+        img: './img/work/dynamic-drawing/dynamic-drawing-1.png',
+        id: 3,
+        descrip: [{
+            content: 'A Simple dynamic drawing animation -- shows how the code modification made the visual changes, a great way to demonstrate certain concepts in CSS and shows its margic. This project unveils some valuable educational techniques in web technologies that I might explore in the future.',
+            type: 'text'
+        }, {
+            content: './img/work/dynamic-drawing/dynamic-drawing-2.png',
+            type: 'img'
+        }],
+        tags: ['Web Dev', 'CSS', 'JavaScript'],
+        type: 'web'
+    }, {
+        name: 'Canvas NoteBook',
+        link: {
+            preview: 'https://sy2729.github.io/canvas-draw/',
+            repo: 'https://github.com/sy2729/canvas-draw'
+        },
+        img: './img/work/canvas-draw/canvas-draw-2.png',
+        id: 3,
+        descrip: [{
+            content: '<p class="t-center">A simple canvas where user can draw and save the draft to local as an image. It have functions like change stoke width, color with eraser and clear feature.</p>',
+            type: 'text'
+        }, {
+            content: './img/work/canvas-draw/canvas-draw-1.png',
+            type: 'img'
+        }],
+        tags: ['Web Dev', 'Canvas'],
+        type: 'web'
+    }, {
+        name: 'Teachers College Site Design Assistance',
+        img: './img/work/tc-site/tc-site-1.png',
+        id: 3,
+        descrip: [{
+            content: 'My main task during working in the Web Office of Teachers College, Columbia Unievrsity was to test the new <a href="tc.edu">Teachers College Official Website</a>,provide feedbacks from a UX standppoint and write some CSS solutions for part of the design',
+            type: 'text'
+        }, {
+            content: './img/work/tc-site/tc-site-2.png',
+            type: 'img'
+        }],
+        tags: ['UX Design', 'CSS'],
         type: 'design'
+    }, {
+        name: 'Code Battle',
+        img: './img/work/game-card/game-card-2.png',
+        id: 3,
+        link: {
+            preview: 'https://sy2729.github.io/gameCaard/',
+            repo: 'https://github.com/sy2729/gameCaard'
+        },
+        descrip: [{
+            content: 'This is a boardGame that was made in a game design class. We build up this website for both marketing and rule explanation',
+            type: 'text'
+        }, {
+            content: './img/work/game-card/game-card-1.png',
+            type: 'img'
+        }],
+        tags: ['UX Design', 'Web Dev', 'Riot.js'],
+        type: 'web'
+    }, {
+        name: 'Atos Aviva Server Query User Interface Design',
+        img: './img/work/atos-aviva/atos-aviva-2.png',
+        id: 3,
+        descrip: [{
+            content: 'We need to provide a solution for client to query a server and its related properties, while being able to offer functions like query on multiple and complicated properties instead of solely name.',
+            type: 'text'
+        }, {
+            content: './img/work/atos-aviva/atos-aviva-2.png',
+            type: 'img'
+        }, {
+            content: 'The relation between the server name and app name are \'many to many\' as well as the server name to other properties such as owner and service name it belongs to, which makes it a little bit tricky than normal query dashboard',
+            type: 'text'
+        }, {
+            content: './img/work/atos-aviva/atos-aviva-4.png',
+            type: 'img'
+        }, {
+            content: 'We spent much time communicate back and forth with our clients to figure out their desired functions and what visual presentation would be appropriate.',
+            type: 'text'
+        }, {
+            content: '<p class=\'t-center\'>the sketch working file screenshot</p>',
+            type: 'text'
+        }, {
+            content: './img/work/atos-aviva/atos-aviva-3.png',
+            type: 'img'
+        }],
+        tags: ['UX Design', 'Atos'],
+        type: 'design'
+    }, {
+        name: 'Atos Service Delivery Management',
+        img: './img/work/atos-sdm/atos-sdm-1.png',
+        id: 3,
+        descrip: [{
+            content: 'This is an email-look app design for Atos internal employee use, including manager and delivery roles.',
+            type: 'text'
+        }, {
+            content: './img/work/atos-sdm/atos-sdm-1.png',
+            type: 'img'
+        }, {
+            content: 'Different from normal email apps, there are 5 states for the message / email / notification, while each update of the state has different visuals on the two sides.',
+            type: 'text'
+        }, {
+            content: './img/work/atos-sdm/atos-sdm-3.png',
+            type: 'img'
+        }, {
+            content: '<p class=\'t-center\'>Reject or accept and reply to the request</p>',
+            type: 'text'
+        }, {
+            content: './img/work/atos-sdm/atos-sdm-4.png',
+            type: 'img'
+        }, {
+            content: '<p class=\'t-center\'>the flowchart of the user interaction</p>',
+            type: 'text'
+        }, {
+            content: './img/work/atos-sdm/atos-sdm-2.png',
+            type: 'img'
+        }],
+        tags: ['UX Design', 'Atos'],
+        type: 'design'
+    }, {
+        name: 'Where AM I From',
+        img: 'https://i.ytimg.com/vi_webp/8kWDH6cejB4/maxresdefault.webp',
+        id: 3,
+        youtubeID: '8kWDH6cejB4',
+        biliID: '14943823',
+        link: {
+            youtube: 'https://youtu.be/8kWDH6cejB4',
+            bili: 'https://www.bilibili.com/video/av14943823'
+        },
+        descrip: [{
+            content: 'An assignment from a course in Teachers College, Columbia University named Culture, Media and Education. It\'s inspired by the poem of "where AM I From " by George Ella Lyon. She also initialize this activity collecting art piece from the world, narrating about each individual\'s origin and reflection.',
+            type: 'text'
+        }, {
+            content: {
+                youtube: '',
+                bili: ''
+            },
+            type: 'video'
+        }],
+        tags: ['Video', 'Life'],
+        type: 'video'
     }]
 
 };
+
+cvData.works.map(function (i, index) {
+    i.id = index + 1;
+    i.type = i.type.toLowerCase();
+
+    if (i.type === 'video') {
+        i.link.youtube = 'https://youtu.be/' + i.youtubeID;
+        i.link.bili = 'https://www.bilibili.com/video/av' + i.biliID;
+        var descript = i.descrip;
+        descript.map(function (j) {
+            if (j.type === 'video') {
+                j.content.youtube = 'https://www.youtube.com/embed/' + i.youtubeID;
+                j.content.bili = '//player.bilibili.com/player.html?aid=' + i.biliID;
+            }
+        });
+    }
+});
 
 exports.cvData = cvData;
 },{}],"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
@@ -577,10 +798,11 @@ var sideBarInWorkDetail = {
 };
 
 var workDetail = {
-    template: "\n            <div class='work-detail'>\n                <section class='current-content-wrap'>\n                    <div class='title-wrap'>\n                        <h2 class='title'>{{currentWork.name}}</h2>\n                        <span class='t-color current-work-type'>{{currentWork.type}}</span>\n                        <div class=\"work-link-wrap\" v-if=\"currentWork.type==='web'\">\n                            <a class='link-preview' :href='currentWork.link.preview' title=\"preivew\"><span><i class='fa fa-eye'></i>preview</span></a>\n                            <a :href='currentWork.link.repo' title=\"repo\"><span><i class='fa fa-github'></i>repo</span></a>\n                        </div>\n                        <div class=\"work-link-wrap\" v-if=\"currentWork.type==='video'\">\n                            <a class='link-preview' :href='currentWork.link.preview' title=\"YouTube\"><span><i class='fa fa-youtube'></i>preview</span></a>\n                            <a :href='currentWork.link.repo' title=\"repo\"><span><i class='fa fa-github'></i>repo</span></a>\n                        </div>\n                        <ul class='tags'>\n                            <li v-for='i in currentWork.tags'>{{i}}</li>\n                        </ul>\n                    </div>\n                    <div class='work-content'>\n                        <div v-for=\"i in currentWork.descrip\" :class=\"{'each-descrip-img': i.type==='img'}\">\n                            <img :src='i.content' v-if=\"i.type==='img'\">\n                            <p v-html='i.content' v-if=\"i.type==='text'\"></p>\n                        </div>\n                    </div>\n                </section>\n                <side-bar-in-work-detail :allwork=allwork :currentId=currentWork.id @switch-work-detail=\"switchWork\"></side-bar-in-work-detail>\n                <div class=\"close\" @click=\"$emit('close-detail')\">\n                    <span><i class=\"fa fa-times\"></i></span>\n                </div>\n            </div>\n    ",
+    template: "\n            <div class='work-detail' ref='detail'>\n                <section class='current-content-wrap'>\n                    <div class='title-wrap'>\n                        <h2 class='title'>{{currentWork.name}}</h2>\n                        <span class='t-color current-work-type'>{{currentWork.type}}</span>\n                        <div class=\"work-link-wrap\" v-if=\"currentWork.type==='web'\">\n                            <a class='link-preview' :href='currentWork.link.preview' title=\"preivew\"><span><i class='fa fa-eye'></i>preview</span></a>\n                            <a :href='currentWork.link.repo' title=\"repo\"><span><i class='fa fa-github'></i>repo</span></a>\n                        </div>\n                        <div class=\"work-link-wrap\" v-if=\"currentWork.type==='video'\">\n                            <a class='link-preview' :href='currentWork.link.youtube' title=\"YouTube - Worldwide Audience\"><span><i class='fa fa-youtube'></i></span></a>\n                            <a :href='currentWork.link.bili' title=\"bilibili - Chinese Audience\"><span><i class='iconfont'>&#xe607;</i></span></a>\n                        </div>\n                        <ul class='tags'>\n                            <li v-for='i in currentWork.tags'>{{i}}</li>\n                        </ul>\n                    </div>\n                    <div class='work-content'>\n                        <div v-for=\"i in currentWork.descrip\" :class=\"[{'each-descrip-img': i.type==='img'},{'work-videoWrapper': i.type==='video'} ]\">\n                            <iframe :src=\"i.content.youtube\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen v-if=\"i.type==='video' && currentLanguage === 'en'\"></iframe>\n                            <iframe :src=\"i.content.bili\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen v-if=\"i.type==='video' && currentLanguage === 'zh'\"></iframe>\n\n                            <img :src='i.content' v-if=\"i.type==='img'\">\n                            <p v-html='i.content' v-if=\"i.type==='text'\"></p>\n                        </div>\n\n                        <div v-if=\"currentWork.type==='video'\" class='video-source-wrap'>\n                            <p>Choose the video source based on your country:</p>\n                            <span @click=\"changeVideo('en')\" :class=\"{active: currentLanguage === 'en'}\">YouTube</span><span @click=\"changeVideo('zh')\" :class=\"{active: currentLanguage === 'zh'}\">BiliBili</span>\n                        </div>\n                    </div>\n                </section>\n                <side-bar-in-work-detail :allwork=allwork :currentId=currentWork.id @switch-work-detail=\"switchWork\"></side-bar-in-work-detail>\n                <div class=\"close\" @click=\"$emit('close-detail')\">\n                    <span><i class=\"fa fa-times\"></i></span>\n                </div>\n            </div>\n    ",
     data: function data() {
         return {
-            currentWork: {}
+            currentWork: {},
+            currentLanguage: ''
         };
     },
     props: ['detail', 'allwork'],
@@ -591,10 +813,33 @@ var workDetail = {
     methods: {
         switchWork: function switchWork(data) {
             this.currentWork = data;
+            this.$refs.detail.scrollTop = 0;
+        },
+        judgeSystemLanguage: function judgeSystemLanguage() {
+            var type = navigator.appName;
+            if (type == "Netscape") {
+                var lang = navigator.language; //获取浏览器配置语言，支持非IE浏览器
+            } else {
+                var lang = navigator.userLanguage; //获取浏览器配置语言，支持IE5+ == navigator.systemLanguage
+            };
+            var lang = lang.substr(0, 2); //获取浏览器配置语言前两位
+            if (lang == "zh") {
+                this.currentLanguage = 'zh';
+            } else {
+                this.currentLanguage = 'en';
+            }
+        },
+        changeVideo: function changeVideo(data) {
+            if (data === 'en' && this.currentLanguage !== 'en') {
+                this.currentLanguage = 'en';
+            } else if (data === 'zh' && this.currentLanguage !== 'zh') {
+                this.currentLanguage = 'zh';
+            }
         }
     },
     beforeMount: function beforeMount() {
         this.currentWork = this.$props.detail;
+        this.judgeSystemLanguage();
     }
 };
 
@@ -615,7 +860,7 @@ var switchType = {
 };
 
 var workSection = {
-    template: "\n        <div class=\"work-section each-section\" :style=\"{background: sectionColor}\">\n            <switch-type :types=workTypes @switch-type=switchType></switch-type>\n             <section-title :order=order :name=sectionName></section-title>\n             <div class='section-content' ref='works'>\n                <each-work v-for='(i, index) in filteredWorks' :key=index v-bind='i' @view-work-detail=viewWorkDetail></each-work>\n             </div>\n             <button class='next-btn' @click=scrollRight><i class='fa fa-angle-right'></i></button>\n             <progress-bar :totalLength=allWorkLength :viewLength=viewLength :scrolledDistance=scrolledDistance></progress-bar>\n        </div>\n    ",
+    template: "\n        <div class=\"work-section each-section\" :style=\"{background: sectionColor}\">\n            <switch-type :types=workTypes @switch-type=switchType></switch-type>\n             <section-title :order=order :name=sectionName></section-title>\n             <div class='section-content' ref='works'>\n                <each-work v-for='(i, index) in filteredWorks' :key=index v-bind='i' @view-work-detail=viewWorkDetail></each-work>\n             </div>\n             <button :class=\"['next-btn',{end: scrollToEnd}]\" @click=scrollRight><i class='fa fa-angle-right'></i></button>\n             <progress-bar :totalLength=allWorkLength :viewLength=viewLength :scrolledDistance=scrolledDistance></progress-bar>\n        </div>\n    ",
 
     data: function data() {
         return {
@@ -627,13 +872,15 @@ var workSection = {
             works: [],
             allWorkLength: 0,
             viewLength: 20,
-            scrolledDistance: 0
+            scrolledDistance: 0,
+            scrollToEnd: false
         };
     },
     methods: {
         detectScrollDistance: function detectScrollDistance() {
             var value = this.getScrollDistance();
             this.scrolledDistance = this.initialDistanceBeforeScroll - value;
+            this.detectScrollToEnd();
         },
         getScrollDistance: function getScrollDistance() {
             return document.querySelectorAll('.each-work')[0].getBoundingClientRect().left;
@@ -650,6 +897,14 @@ var workSection = {
         scrollRight: function scrollRight() {
             this.scrollHorizontal(this.$refs.works, this.$refs.works.scrollLeft + 280, 500);
             // this.$refs.works.scrollLeft = this.$refs.works.scrollLeft + 280;
+            this.detectScrollToEnd();
+        },
+        detectScrollToEnd: function detectScrollToEnd() {
+            if (this.scrolledDistance + this.viewLength >= this.allWorkLength) {
+                this.scrollToEnd = true;
+            } else {
+                this.scrollToEnd = false;
+            }
         },
         viewWorkDetail: function viewWorkDetail(data) {
             this.$emit('view-work-detail', data);
@@ -688,6 +943,17 @@ var workSection = {
                     }
                 });
                 this.filteredWorks = results;
+            };
+        },
+        shuffle: function shuffle(arr) {
+            var i = arr.length,
+                t,
+                j;
+            while (i) {
+                j = Math.floor(Math.random() * i--); //!!!
+                t = arr[i];
+                arr[i] = arr[j];
+                arr[j] = t;
             }
         }
     },
@@ -699,6 +965,7 @@ var workSection = {
     },
     beforeMount: function beforeMount() {
         this.works = _data.cvData.works;
+        this.shuffle(this.works);
         // use all works by default
         this.filteredWorks = this.works;
     },
@@ -725,6 +992,7 @@ var workSection = {
     updated: function updated() {
         // update the scrollbar visual everytime change the work content
         this.getBarStyle();
+        this.detectScrollToEnd();
     }
 };
 
@@ -828,7 +1096,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '62170' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '56375' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 

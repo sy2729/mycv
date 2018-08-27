@@ -416,7 +416,7 @@ var sideBarInWorkDetail = {
 
 var workDetail = {
     template: `
-            <div class='work-detail'>
+            <div class='work-detail' ref='detail'>
                 <section class='current-content-wrap'>
                     <div class='title-wrap'>
                         <h2 class='title'>{{currentWork.name}}</h2>
@@ -426,17 +426,25 @@ var workDetail = {
                             <a :href='currentWork.link.repo' title="repo"><span><i class='fa fa-github'></i>repo</span></a>
                         </div>
                         <div class="work-link-wrap" v-if="currentWork.type==='video'">
-                            <a class='link-preview' :href='currentWork.link.preview' title="YouTube"><span><i class='fa fa-youtube'></i>preview</span></a>
-                            <a :href='currentWork.link.repo' title="repo"><span><i class='fa fa-github'></i>repo</span></a>
+                            <a class='link-preview' :href='currentWork.link.youtube' title="YouTube - Worldwide Audience"><span><i class='fa fa-youtube'></i></span></a>
+                            <a :href='currentWork.link.bili' title="bilibili - Chinese Audience"><span><i class='iconfont'>&#xe607;</i></span></a>
                         </div>
                         <ul class='tags'>
                             <li v-for='i in currentWork.tags'>{{i}}</li>
                         </ul>
                     </div>
                     <div class='work-content'>
-                        <div v-for="i in currentWork.descrip" :class="{'each-descrip-img': i.type==='img'}">
+                        <div v-for="i in currentWork.descrip" :class="[{'each-descrip-img': i.type==='img'},{'work-videoWrapper': i.type==='video'} ]">
+                            <iframe :src="i.content.youtube" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen v-if="i.type==='video' && currentLanguage === 'en'"></iframe>
+                            <iframe :src="i.content.bili" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen v-if="i.type==='video' && currentLanguage === 'zh'"></iframe>
+
                             <img :src='i.content' v-if="i.type==='img'">
                             <p v-html='i.content' v-if="i.type==='text'"></p>
+                        </div>
+
+                        <div v-if="currentWork.type==='video'" class='video-source-wrap'>
+                            <p>Choose the video source based on your country:</p>
+                            <span @click="changeVideo('en')" :class="{active: currentLanguage === 'en'}">YouTube</span><span @click="changeVideo('zh')" :class="{active: currentLanguage === 'zh'}">BiliBili</span>
                         </div>
                     </div>
                 </section>
@@ -449,6 +457,7 @@ var workDetail = {
     data: function(){
         return {
             currentWork: {},
+            currentLanguage: '',
         }
     },
     props: ['detail', 'allwork'],
@@ -459,11 +468,34 @@ var workDetail = {
     methods: {
         switchWork(data){
             this.currentWork = data;
-        }
+            this.$refs.detail.scrollTop = 0;
+        },
+        judgeSystemLanguage(){
+            var type = navigator.appName;
+        　　if (type == "Netscape"){
+            　　var lang = navigator.language;//获取浏览器配置语言，支持非IE浏览器
+        　　}else{
+            　　var lang = navigator.userLanguage;//获取浏览器配置语言，支持IE5+ == navigator.systemLanguage
+        　　};
+        　　var lang = lang.substr(0, 2);//获取浏览器配置语言前两位
+        　　if (lang == "zh"){
+                this.currentLanguage = 'zh';
+            　　}else{
+                this.currentLanguage = 'en';
+            　　}
+        },
+        changeVideo(data){
+            if(data === 'en' && this.currentLanguage !== 'en') {
+                this.currentLanguage = 'en';
+            } else if (data === 'zh' && this.currentLanguage !== 'zh') {
+                this.currentLanguage = 'zh';
+            }
+        },
     },
     beforeMount(){
         this.currentWork = this.$props.detail;
-    }
+        this.judgeSystemLanguage();
+    },
 }
 
 const switchType = {
@@ -496,7 +528,7 @@ var workSection = {
              <div class='section-content' ref='works'>
                 <each-work v-for='(i, index) in filteredWorks' :key=index v-bind='i' @view-work-detail=viewWorkDetail></each-work>
              </div>
-             <button class='next-btn' @click=scrollRight><i class='fa fa-angle-right'></i></button>
+             <button :class="['next-btn',{end: scrollToEnd}]" @click=scrollRight><i class='fa fa-angle-right'></i></button>
              <progress-bar :totalLength=allWorkLength :viewLength=viewLength :scrolledDistance=scrolledDistance></progress-bar>
         </div>
     `,
@@ -512,12 +544,14 @@ var workSection = {
             allWorkLength: 0,
             viewLength: 20,
             scrolledDistance: 0,
+            scrollToEnd: false,
         }
     },
     methods: {
         detectScrollDistance(){
             let value = this.getScrollDistance();
             this.scrolledDistance = this.initialDistanceBeforeScroll - value;
+            this.detectScrollToEnd();
         },
 
         getScrollDistance(){
@@ -536,6 +570,14 @@ var workSection = {
         scrollRight(){
             this.scrollHorizontal(this.$refs.works, this.$refs.works.scrollLeft + 280, 500);
             // this.$refs.works.scrollLeft = this.$refs.works.scrollLeft + 280;
+            this.detectScrollToEnd();
+        },
+        detectScrollToEnd(){
+            if (this.scrolledDistance + this.viewLength >= this.allWorkLength) {
+                this.scrollToEnd = true;
+            }else {
+                this.scrollToEnd = false;
+            }
         },
         viewWorkDetail(data){
             this.$emit('view-work-detail', data)
@@ -575,9 +617,17 @@ var workSection = {
                     }
                 });
                 this.filteredWorks = results;
-            }
-
-        }
+            };
+        },
+        shuffle(arr) {
+            var i = arr.length, t, j;
+            while (i) {
+                j = Math.floor(Math.random() * i--); //!!!
+                t = arr[i];
+                arr[i] = arr[j];
+                arr[j] = t;
+            } 
+        } 
     },
     components: {
         'section-title': sectionTitle,
@@ -587,6 +637,7 @@ var workSection = {
     },
     beforeMount(){
         this.works = cvData.works;
+        this.shuffle(this.works)
         // use all works by default
         this.filteredWorks = this.works;
     },
@@ -611,6 +662,7 @@ var workSection = {
     updated(){
         // update the scrollbar visual everytime change the work content
         this.getBarStyle();
+        this.detectScrollToEnd();
     },
 }
 
