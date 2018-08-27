@@ -9,6 +9,9 @@ a {color: inherit};
     clear: both;
 }
 $theme: #C93639;
+.t-color {
+    color: $theme;    
+}
 .t-center {text-align: center;}
 .each-clickable, .header-bar {
     cursor: pointer;
@@ -579,11 +582,11 @@ $theme: #C93639;
         left: 0;
         bottom: 0;
         right: 0;
-        background-color: #FEFFFF;
         padding: 30px;
         overflow-y: auto;
         display: flex;
         align-items: baseline;
+        background: #F6F6F6;
 
         .sideBar {
             min-width: 250px;
@@ -612,8 +615,16 @@ $theme: #C93639;
             flex: 1 1 auto;
             padding: 0 20px;
             margin-right: 40px;
+            background: #FEFFFF;
             .title-wrap {
+                padding: 25px;
+                position: relative;
 
+                .current-work-type {
+                    position: absolute;
+                    right: 10px;
+
+                }
                 .work-link-wrap {
                     padding: 10px 0;
 
@@ -656,6 +667,7 @@ $theme: #C93639;
             }
 
             .work-content {
+                padding: 25px;
                 p {
                         margin: 20px 0;
                         line-height: 2em;
@@ -668,7 +680,7 @@ $theme: #C93639;
                     background: #efefef;
                     width: 70%;
                     margin: 30px auto;
-                    min-width: 300px;
+                    min-width: 260px;
                     img {
                         width: 90%;
                         height: auto;
@@ -789,7 +801,8 @@ $theme: #C93639;
                 transform: rotate(45deg) scale(0.6);
             }
             .current-content-wrap {
-                padding: none;
+                padding: 0;
+                margin: 0 auto;
             }
         }
     }
@@ -832,6 +845,18 @@ $theme: #C93639;
                 transform: translate(100%, -50%);
             }
         }
+
+         .work-detail {
+             padding: 0;
+
+             .current-content-wrap {
+                 .title-wrap {
+                     .current-work-type {
+                         position: unset;
+                     }
+                 }
+             }
+         }
     }
 }
 
