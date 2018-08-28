@@ -89,7 +89,7 @@ var header = {
         },
         arrowScroll(){
             let value = document.querySelector('.skill-section').offsetTop;
-            this.scrollTo(value, 500);
+            this.scrollTo(value, 20);
         },
         myCallback(){
             this.$refs.arrow.classList.add('active');

@@ -731,7 +731,7 @@ var header = {
         },
         arrowScroll: function arrowScroll() {
             var value = document.querySelector('.skill-section').offsetTop;
-            this.scrollTo(value, 500);
+            this.scrollTo(value, 20);
         },
         myCallback: function myCallback() {
             this.$refs.arrow.classList.add('active');
@@ -1237,7 +1237,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '60147' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '50938' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
