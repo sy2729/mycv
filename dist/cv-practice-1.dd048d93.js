@@ -938,7 +938,7 @@ var switchType = {
 };
 
 var sideBarInWorkDetail = (_sideBarInWorkDetail = {
-    template: "\n        <aside class='sideBar'>\n            <switch-type @switch-type=switchType :types=worktypes></switch-type>\n            <ul>\n                <li v-for='i in filteredWorks' :class=\"{'header-bar': i.id === currentId}\" @click='switchWork(i.id)' :data-id=i.id>{{i.name}}</li>\n            </ul>\n        </aside>\n    ",
+    template: "\n        <aside class='sideBar'>\n            <switch-type @switch-type=switchType :types=worktypes></switch-type>\n            <ul>\n                <li v-for='i in filteredWorks' :class=\"{'header-bar': i.id === currentId}\" @click='switchWork(i.id)' :data-id=i.id><span class=\"li-name\">{{i.name}}</span> <span class=\"li-tag\">{{i.type}}</span></li>\n            </ul>\n        </aside>\n    ",
     data: function data() {
         return {
             filteredWorks: [],
@@ -1261,7 +1261,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '50938' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '59557' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 

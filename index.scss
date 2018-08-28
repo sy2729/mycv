@@ -641,11 +641,12 @@ $light-theme: #e69b9d;
         z-index: 5;
 
         .sideBar {
-            min-width: 250px;
+            min-width: 300px;
             width: 30%;
-            
+            display: table;
             height: 100%;
-            padding: 10px 5px;
+            padding: 20px;
+            background: #FEFFFF;
 
             .switch-type {
                 margin: 0 0 10px 0;
@@ -653,6 +654,7 @@ $light-theme: #e69b9d;
                     margin: 0;
                     li {
                         padding: 5px 0;
+                        border: none;
                     }
 
                 }
@@ -667,9 +669,35 @@ $light-theme: #e69b9d;
                     padding: 10px 0 10px 10px;
                     cursor: pointer;
                     order: 2;
+                    border-bottom: 1px solid #dedede;
+
+                    span.li-name {
+                        vertical-align: middle;
+                    }
+                    span.li-tag {
+                        // margin-right: 4px;
+                        // float: right;
+                        // font-size: 0.9em;
+                        // color: $light-theme;
+                            float: right;
+                            font-size: 0.7em;
+                            color: #e69b9d;
+                            padding: 0 10px;
+                            background: #f3f3f3;
+                            border-radius: 30px;
+                            display: inline-block;
+                            vertical-align: middle;
+                            margin-right: 4px;
+                            margin-left: 2px;
+                    }
+
                     &.header-bar {
                         order: 1;
                         cursor: unset;
+                        span.li-tag {
+                            color: $theme;
+                            background: #fff;
+                        }
                     }
                 }
              }
@@ -680,7 +708,7 @@ $light-theme: #e69b9d;
         .current-content-wrap {
             flex: 1 1 auto;
             padding: 0 20px;
-            margin-right: 40px;
+            margin-right: 20px;
             background: #FEFFFF;
             .title-wrap {
                 padding: 25px;
@@ -915,6 +943,7 @@ $light-theme: #e69b9d;
             }
 
             .sideBar {
+                margin-top: 30px;
                 min-width: unset;
                 width: 100%;
             }

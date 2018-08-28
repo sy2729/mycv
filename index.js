@@ -411,7 +411,7 @@ var sideBarInWorkDetail = {
         <aside class='sideBar'>
             <switch-type @switch-type=switchType :types=worktypes></switch-type>
             <ul>
-                <li v-for='i in filteredWorks' :class="{'header-bar': i.id === currentId}" @click='switchWork(i.id)' :data-id=i.id>{{i.name}}</li>
+                <li v-for='i in filteredWorks' :class="{'header-bar': i.id === currentId}" @click='switchWork(i.id)' :data-id=i.id><span class="li-name">{{i.name}}</span> <span class="li-tag">{{i.type}}</span></li>
             </ul>
         </aside>
     `,

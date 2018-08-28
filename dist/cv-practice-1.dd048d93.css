@@ -467,16 +467,19 @@ a {
   background: #F6F6F6;
   z-index: 5; }
   #app .work-detail .sideBar {
-    min-width: 250px;
+    min-width: 300px;
     width: 30%;
+    display: table;
     height: 100%;
-    padding: 10px 5px; }
+    padding: 20px;
+    background: #FEFFFF; }
     #app .work-detail .sideBar .switch-type {
       margin: 0 0 10px 0; }
       #app .work-detail .sideBar .switch-type ul {
         margin: 0; }
         #app .work-detail .sideBar .switch-type ul li {
-          padding: 5px 0; }
+          padding: 5px 0;
+          border: none; }
     #app .work-detail .sideBar ul {
       list-style: none;
       display: flex;
@@ -484,14 +487,31 @@ a {
       #app .work-detail .sideBar ul li {
         padding: 10px 0 10px 10px;
         cursor: pointer;
-        order: 2; }
+        order: 2;
+        border-bottom: 1px solid #dedede; }
+        #app .work-detail .sideBar ul li span.li-name {
+          vertical-align: middle; }
+        #app .work-detail .sideBar ul li span.li-tag {
+          float: right;
+          font-size: 0.7em;
+          color: #e69b9d;
+          padding: 0 10px;
+          background: #f3f3f3;
+          border-radius: 30px;
+          display: inline-block;
+          vertical-align: middle;
+          margin-right: 4px;
+          margin-left: 2px; }
         #app .work-detail .sideBar ul li.header-bar {
           order: 1;
           cursor: unset; }
+          #app .work-detail .sideBar ul li.header-bar span.li-tag {
+            color: #C93639;
+            background: #fff; }
   #app .work-detail .current-content-wrap {
     flex: 1 1 auto;
     padding: 0 20px;
-    margin-right: 40px;
+    margin-right: 20px;
     background: #FEFFFF; }
     #app .work-detail .current-content-wrap .title-wrap {
       padding: 25px;
@@ -654,6 +674,7 @@ a {
       padding: 0;
       margin: 0 auto; }
     #app .work-detail .sideBar {
+      margin-top: 30px;
       min-width: unset;
       width: 100%; }
   #app .work-section .next-btn {
