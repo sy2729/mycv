@@ -295,6 +295,8 @@ a {
   position: relative; }
   #app .work-section .switch-type {
     flex-basis: 100%; }
+    #app .work-section .switch-type .type-wrap {
+      float: right; }
   #app .work-section .section-content {
     display: flex;
     flex-wrap: nowrap;

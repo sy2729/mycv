@@ -410,6 +410,9 @@ $light-theme: #e69b9d;
         position: relative;
         .switch-type {
             flex-basis: 100%;
+            .type-wrap {
+                float: right;
+            }
         }
         .section-content {
             display: flex;
