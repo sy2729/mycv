@@ -65,6 +65,31 @@ $light-theme: #e69b9d;
     -moz-osx-font-smoothing: grayscale;
 }
 
+.switch-type {
+    ul.type-wrap {
+        display: flex;
+        flex-direction: row !important;
+        margin: 20px 0;
+        list-style: none;
+        color: #9B9B9B;
+
+        li {
+            cursor: pointer;
+            margin-right: 10px;
+            &.active {
+                color: $theme;
+            }
+            &:hover {
+                color: $theme;
+            }
+            .type-divide {
+                color: #9B9B9B;
+                margin-left: 10px;
+            }
+        }
+    }
+}
+
 
 #app {
    .header {
@@ -385,29 +410,6 @@ $light-theme: #e69b9d;
         position: relative;
         .switch-type {
             flex-basis: 100%;
-            
-            ul {
-                display: flex;
-                margin: 20px 0;
-                list-style: none;
-                float: right;
-                color: #9B9B9B;
-
-                li {
-                    cursor: pointer;
-                    margin-right: 10px;
-                    &.active {
-                        color: $theme;
-                    }
-                    &:hover {
-                        color: $theme;
-                    }
-                    .type-divide {
-                        color: #9B9B9B;
-                        margin-left: 10px;
-                    }
-                }
-            }
         }
         .section-content {
             display: flex;
@@ -644,6 +646,17 @@ $light-theme: #e69b9d;
             
             height: 100%;
             padding: 10px 5px;
+
+            .switch-type {
+                margin: 0 0 10px 0;
+                ul {
+                    margin: 0;
+                    li {
+                        padding: 5px 0;
+                    }
+
+                }
+            }
 
             ul { 
                 list-style: none;

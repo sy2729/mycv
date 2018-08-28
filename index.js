@@ -384,32 +384,74 @@ var progressBar = {
         this.progressBarLength = width;
     }
 }
+const switchType = {
+    template: `
+        <div class='switch-type clearfix'>
+            <ul class='type-wrap'>
+                <li :class="{'active': i === typeChosen}" v-for='(i, index) in types' @click='switchType(i)'>{{i}}<span v-if='index !== types.length - 1' class='type-divide'> /</span></li>
+            </ul>
+        </div>
+    `,
+    data: function () {
+        return {
+            typeChosen: 'all',
+        }
+    },
+    methods: {
+        switchType(data) {
+            this.typeChosen = data;
+            this.$emit('switch-type', data);
+        }
+    },
+    props: ['types'],
+}
 
 var sideBarInWorkDetail = {
     template: `
         <aside class='sideBar'>
+            <switch-type @switch-type=switchType :types=worktypes></switch-type>
             <ul>
-                <li v-for='i in allwork' :class="{'header-bar': i.id === currentId}" @click='switchWork(i.id)' :data-id=i.id>{{i.name}}</li>
+                <li v-for='i in filteredWorks' :class="{'header-bar': i.id === currentId}" @click='switchWork(i.id)' :data-id=i.id>{{i.name}}</li>
             </ul>
         </aside>
     `,
     data: function () {
         return {
-
+            filteredWorks: [],
+            works: [],
         }
     },
+    props: ['worktypes'],
     methods: {
         switchWork(data){
-            this.$props.allwork.map((i)=>{
+            this.filteredWorks.map((i)=>{
                 if(data === i.id) {
                     this.$emit('switch-work-detail', i)
                 }
             })
-        }
+        },
+
+        switchType(data) {
+            console.log(data)
+            if (data.toLowerCase() === 'all') {
+                this.filteredWorks = this.works;
+            } else {
+                let results = this.works.filter((i) => {
+                    if (i.type.toLowerCase() === data.toLowerCase()) {
+                        return i
+                    }
+                });
+                this.filteredWorks = results;
+            };
+        },
     },
-    props: ['allwork', 'currentId'],
-    mounted(){
-        
+    props: ['allwork', 'currentId', 'worktypes'],
+    beforeMount(){
+        this.works = this.$props.allwork;
+        this.filteredWorks = this.works;
+    },
+    components: {
+        'switch-type': switchType,
     }
 
 }
@@ -452,7 +494,7 @@ var workDetail = {
                         </div>
                     </div>
                 </section>
-                <side-bar-in-work-detail :allwork=allwork :currentId=currentWork.id @switch-work-detail="switchWork"></side-bar-in-work-detail>
+                <side-bar-in-work-detail :allwork=allwork :currentId=currentWork.id @switch-work-detail="switchWork" :worktypes=worktypes></side-bar-in-work-detail>
                 <div class="close" @click="$emit('close-detail')">
                     <span><i class="fa fa-times"></i></span>
                 </div>
@@ -464,7 +506,7 @@ var workDetail = {
             currentLanguage: '',
         }
     },
-    props: ['detail', 'allwork'],
+    props: ['detail', 'allwork', 'worktypes'],
 
     components: {
         "side-bar-in-work-detail": sideBarInWorkDetail,
@@ -502,32 +544,10 @@ var workDetail = {
     },
 }
 
-const switchType = {
-    template: `
-        <div class='switch-type clearfix'>
-            <ul class='type-wrap'>
-                <li :class="{'active': i === typeChosen}" v-for='(i, index) in types' @click='switchType(i)'>{{i}}<span v-if='index !== types.length - 1' class='type-divide'> /</span></li>
-            </ul>
-        </div>
-    `,
-    data: function(){
-        return {
-            typeChosen: 'all',
-        }
-    },
-    methods: {
-        switchType(data){
-            this.typeChosen = data;
-            this.$emit('switch-type', data);
-        }
-    },
-    props: ['types'],
-}
-
 var workSection = {
     template: `
         <div class="work-section each-section" :style="{background: sectionColor}">
-            <switch-type :types=workTypes @switch-type=switchType></switch-type>
+            <switch-type :types=worktypes @switch-type=switchType></switch-type>
              <section-title :order=order :name=sectionName></section-title>
              <div class='section-content' ref='works'>
                 <each-work v-for='(i, index) in filteredWorks' :key=index v-bind='i' @view-work-detail=viewWorkDetail></each-work>
@@ -542,7 +562,6 @@ var workSection = {
             sectionColor: '#F5F5F5',
             order: '04',
             sectionName: 'Portfolio',
-            workTypes: ['all','web', 'design', 'video'],
             filteredWorks: [],
             works: [],
             allWorkLength: 0,
@@ -551,6 +570,7 @@ var workSection = {
             scrollToEnd: false,
         }
     },
+    props: ['worktypes'],
     methods: {
         detectScrollDistance(){
             let value = this.getScrollDistance();
@@ -742,6 +762,7 @@ new Vue({
         workDetail: {},
         workDetailOpened: false,
         allWorks: null,
+        workTypes: ['all', 'web', 'design', 'video'],
     },
 
     methods: {

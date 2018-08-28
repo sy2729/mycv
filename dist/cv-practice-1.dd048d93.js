@@ -664,12 +664,16 @@ module.hot.accept(reloadCSS);
 },{"_css_loader":"../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
+var _sideBarInWorkDetail;
+
 var _data = require("./data");
 
 require("./index.scss");
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; } // import {  } from "./index.scss";
+
+
 // create component
-// import {  } from "./index.scss";
 var nav = {
     template: "\n        <nav>\n            <img :src=logoImg>\n            <ul class='nav-options'>\n                <li v-for='i in navList' @click='chooseToView(i.name)'>{{i.name}}</li>\n            </ul>\n        </nav>\n    ",
 
@@ -917,36 +921,71 @@ var progressBar = {
         this.progressBarLength = width;
     }
 };
-
-var sideBarInWorkDetail = {
-    template: "\n        <aside class='sideBar'>\n            <ul>\n                <li v-for='i in allwork' :class=\"{'header-bar': i.id === currentId}\" @click='switchWork(i.id)' :data-id=i.id>{{i.name}}</li>\n            </ul>\n        </aside>\n    ",
+var switchType = {
+    template: "\n        <div class='switch-type clearfix'>\n            <ul class='type-wrap'>\n                <li :class=\"{'active': i === typeChosen}\" v-for='(i, index) in types' @click='switchType(i)'>{{i}}<span v-if='index !== types.length - 1' class='type-divide'> /</span></li>\n            </ul>\n        </div>\n    ",
     data: function data() {
-        return {};
+        return {
+            typeChosen: 'all'
+        };
     },
+    methods: {
+        switchType: function switchType(data) {
+            this.typeChosen = data;
+            this.$emit('switch-type', data);
+        }
+    },
+    props: ['types']
+};
+
+var sideBarInWorkDetail = (_sideBarInWorkDetail = {
+    template: "\n        <aside class='sideBar'>\n            <switch-type @switch-type=switchType :types=worktypes></switch-type>\n            <ul>\n                <li v-for='i in filteredWorks' :class=\"{'header-bar': i.id === currentId}\" @click='switchWork(i.id)' :data-id=i.id>{{i.name}}</li>\n            </ul>\n        </aside>\n    ",
+    data: function data() {
+        return {
+            filteredWorks: [],
+            works: []
+        };
+    },
+    props: ['worktypes'],
     methods: {
         switchWork: function switchWork(data) {
             var _this2 = this;
 
-            this.$props.allwork.map(function (i) {
+            this.filteredWorks.map(function (i) {
                 if (data === i.id) {
                     _this2.$emit('switch-work-detail', i);
                 }
             });
+        },
+        switchType: function switchType(data) {
+            console.log(data);
+            if (data.toLowerCase() === 'all') {
+                this.filteredWorks = this.works;
+            } else {
+                var results = this.works.filter(function (i) {
+                    if (i.type.toLowerCase() === data.toLowerCase()) {
+                        return i;
+                    }
+                });
+                this.filteredWorks = results;
+            };
         }
-    },
-    props: ['allwork', 'currentId'],
-    mounted: function mounted() {}
-};
+    }
+}, _defineProperty(_sideBarInWorkDetail, "props", ['allwork', 'currentId', 'worktypes']), _defineProperty(_sideBarInWorkDetail, "beforeMount", function beforeMount() {
+    this.works = this.$props.allwork;
+    this.filteredWorks = this.works;
+}), _defineProperty(_sideBarInWorkDetail, "components", {
+    'switch-type': switchType
+}), _sideBarInWorkDetail);
 
 var workDetail = {
-    template: "\n            <div class='work-detail' ref='detail'>\n                <section class='current-content-wrap'>\n                    <div class='title-wrap'>\n                        <h2 class='title'>{{currentWork.name}}</h2>\n                        <span class='t-color current-work-type'>{{currentWork.type}}</span>\n                        <div class=\"work-link-wrap\" v-if=\"currentWork.type==='web'\">\n                            <a class='link-preview' :href='currentWork.link.preview' title=\"preivew\"><span><i class='fa fa-eye'></i>preview</span></a>\n                            <a :href='currentWork.link.repo' title=\"repo\"><span><i class='fa fa-github'></i>repo</span></a>\n                        </div>\n                        <div class=\"work-link-wrap\" v-if=\"currentWork.type==='video'\">\n                            <a class='link-preview' :href='currentWork.link.youtube' title=\"YouTube - Worldwide Audience\"><span><i class='fa fa-youtube'></i></span></a>\n                            <a :href='currentWork.link.bili' title=\"bilibili - Chinese Audience\"><span><i class='iconfont'>&#xe607;</i></span></a>\n                        </div>\n                        <ul class='tags'>\n                            <li v-for='i in currentWork.tags'>{{i}}</li>\n                        </ul>\n                    </div>\n                    <div class='work-content'>\n                        <div v-for=\"i in currentWork.descrip\" :class=\"[{'each-descrip-img': i.type==='img'},{'work-videoWrapper': i.type==='video'} ]\">\n                            <transition name='show-content'>\n                                <iframe :src=\"i.content.youtube\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen v-if=\"i.type==='video' && currentLanguage === 'en'\"></iframe>\n                                <iframe :src=\"i.content.bili\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen v-if=\"i.type==='video' && currentLanguage === 'zh'\"></iframe>\n                            </transition>\n                            <img :src='i.content' v-if=\"i.type==='img'\">\n                            <p v-html='i.content' v-if=\"i.type==='text'\"></p>\n                        </div>\n\n                        <p class='t-warning' v-if=\"currentWork.type==='video' && currentLanguage === 'zh' && !currentWork.biliID\">!No Bilibili Video Available, please choose other sources</p>\n                        <p class='t-warning' v-if=\"currentWork.type==='video' && currentLanguage === 'en' && !currentWork.youtubeID\">No YouTube Video Available, please choose other sources</p>\n\n                        <div v-if=\"currentWork.type==='video'\" class='video-source-wrap'>\n                            <p>Choose the video source based on your country:</p>\n                            <span @click=\"changeVideo('en')\" :class=\"[{active: currentLanguage === 'en'}, {'no-available': !currentWork.youtubeID}]\">YouTube</span><span @click=\"changeVideo('zh')\" :class=\"[{active: currentLanguage === 'zh'}, {'no-available': !currentWork.biliID}]\" >BiliBili</span>\n                        </div>\n                    </div>\n                </section>\n                <side-bar-in-work-detail :allwork=allwork :currentId=currentWork.id @switch-work-detail=\"switchWork\"></side-bar-in-work-detail>\n                <div class=\"close\" @click=\"$emit('close-detail')\">\n                    <span><i class=\"fa fa-times\"></i></span>\n                </div>\n            </div>\n    ",
+    template: "\n            <div class='work-detail' ref='detail'>\n                <section class='current-content-wrap'>\n                    <div class='title-wrap'>\n                        <h2 class='title'>{{currentWork.name}}</h2>\n                        <span class='t-color current-work-type'>{{currentWork.type}}</span>\n                        <div class=\"work-link-wrap\" v-if=\"currentWork.type==='web'\">\n                            <a class='link-preview' :href='currentWork.link.preview' title=\"preivew\"><span><i class='fa fa-eye'></i>preview</span></a>\n                            <a :href='currentWork.link.repo' title=\"repo\"><span><i class='fa fa-github'></i>repo</span></a>\n                        </div>\n                        <div class=\"work-link-wrap\" v-if=\"currentWork.type==='video'\">\n                            <a class='link-preview' :href='currentWork.link.youtube' title=\"YouTube - Worldwide Audience\"><span><i class='fa fa-youtube'></i></span></a>\n                            <a :href='currentWork.link.bili' title=\"bilibili - Chinese Audience\"><span><i class='iconfont'>&#xe607;</i></span></a>\n                        </div>\n                        <ul class='tags'>\n                            <li v-for='i in currentWork.tags'>{{i}}</li>\n                        </ul>\n                    </div>\n                    <div class='work-content'>\n                        <div v-for=\"i in currentWork.descrip\" :class=\"[{'each-descrip-img': i.type==='img'},{'work-videoWrapper': i.type==='video'} ]\">\n                            <transition name='show-content'>\n                                <iframe :src=\"i.content.youtube\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen v-if=\"i.type==='video' && currentLanguage === 'en'\"></iframe>\n                                <iframe :src=\"i.content.bili\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen v-if=\"i.type==='video' && currentLanguage === 'zh'\"></iframe>\n                            </transition>\n                            <img :src='i.content' v-if=\"i.type==='img'\">\n                            <p v-html='i.content' v-if=\"i.type==='text'\"></p>\n                        </div>\n\n                        <p class='t-warning' v-if=\"currentWork.type==='video' && currentLanguage === 'zh' && !currentWork.biliID\">!No Bilibili Video Available, please choose other sources</p>\n                        <p class='t-warning' v-if=\"currentWork.type==='video' && currentLanguage === 'en' && !currentWork.youtubeID\">No YouTube Video Available, please choose other sources</p>\n\n                        <div v-if=\"currentWork.type==='video'\" class='video-source-wrap'>\n                            <p>Choose the video source based on your country:</p>\n                            <span @click=\"changeVideo('en')\" :class=\"[{active: currentLanguage === 'en'}, {'no-available': !currentWork.youtubeID}]\">YouTube</span><span @click=\"changeVideo('zh')\" :class=\"[{active: currentLanguage === 'zh'}, {'no-available': !currentWork.biliID}]\" >BiliBili</span>\n                        </div>\n                    </div>\n                </section>\n                <side-bar-in-work-detail :allwork=allwork :currentId=currentWork.id @switch-work-detail=\"switchWork\" :worktypes=worktypes></side-bar-in-work-detail>\n                <div class=\"close\" @click=\"$emit('close-detail')\">\n                    <span><i class=\"fa fa-times\"></i></span>\n                </div>\n            </div>\n    ",
     data: function data() {
         return {
             currentWork: {},
             currentLanguage: ''
         };
     },
-    props: ['detail', 'allwork'],
+    props: ['detail', 'allwork', 'worktypes'],
 
     components: {
         "side-bar-in-work-detail": sideBarInWorkDetail
@@ -984,31 +1023,14 @@ var workDetail = {
     }
 };
 
-var switchType = {
-    template: "\n        <div class='switch-type clearfix'>\n            <ul class='type-wrap'>\n                <li :class=\"{'active': i === typeChosen}\" v-for='(i, index) in types' @click='switchType(i)'>{{i}}<span v-if='index !== types.length - 1' class='type-divide'> /</span></li>\n            </ul>\n        </div>\n    ",
-    data: function data() {
-        return {
-            typeChosen: 'all'
-        };
-    },
-    methods: {
-        switchType: function switchType(data) {
-            this.typeChosen = data;
-            this.$emit('switch-type', data);
-        }
-    },
-    props: ['types']
-};
-
 var workSection = {
-    template: "\n        <div class=\"work-section each-section\" :style=\"{background: sectionColor}\">\n            <switch-type :types=workTypes @switch-type=switchType></switch-type>\n             <section-title :order=order :name=sectionName></section-title>\n             <div class='section-content' ref='works'>\n                <each-work v-for='(i, index) in filteredWorks' :key=index v-bind='i' @view-work-detail=viewWorkDetail></each-work>\n             </div>\n             <button :class=\"['next-btn',{end: scrollToEnd}]\" @click=scrollRight><i class='fa fa-angle-right'></i></button>\n             <progress-bar :totalLength=allWorkLength :viewLength=viewLength :scrolledDistance=scrolledDistance></progress-bar>\n        </div>\n    ",
+    template: "\n        <div class=\"work-section each-section\" :style=\"{background: sectionColor}\">\n            <switch-type :types=worktypes @switch-type=switchType></switch-type>\n             <section-title :order=order :name=sectionName></section-title>\n             <div class='section-content' ref='works'>\n                <each-work v-for='(i, index) in filteredWorks' :key=index v-bind='i' @view-work-detail=viewWorkDetail></each-work>\n             </div>\n             <button :class=\"['next-btn',{end: scrollToEnd}]\" @click=scrollRight><i class='fa fa-angle-right'></i></button>\n             <progress-bar :totalLength=allWorkLength :viewLength=viewLength :scrolledDistance=scrolledDistance></progress-bar>\n        </div>\n    ",
 
     data: function data() {
         return {
             sectionColor: '#F5F5F5',
             order: '04',
             sectionName: 'Portfolio',
-            workTypes: ['all', 'web', 'design', 'video'],
             filteredWorks: [],
             works: [],
             allWorkLength: 0,
@@ -1017,6 +1039,7 @@ var workSection = {
             scrollToEnd: false
         };
     },
+    props: ['worktypes'],
     methods: {
         detectScrollDistance: function detectScrollDistance() {
             var value = this.getScrollDistance();
@@ -1178,7 +1201,8 @@ var footer = {
     data: {
         workDetail: {},
         workDetailOpened: false,
-        allWorks: null
+        allWorks: null,
+        workTypes: ['all', 'web', 'design', 'video']
     },
 
     methods: {

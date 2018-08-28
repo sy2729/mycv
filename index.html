@@ -16,10 +16,10 @@
         <skill-section></skill-section>
         <experience-section></experience-section>
         <education-section></education-section>
-        <work-section @view-work-detail=viewWorkDetail @all-work=getAllWork ></work-section>
+        <work-section @view-work-detail=viewWorkDetail @all-work=getAllWork :worktypes=workTypes></work-section>
         <footer-section></footer-section>
         <transition name='show-content'>
-            <work-detail :state=workDetailOpened :detail=workDetail @close-detail=closeDetail :allwork=allWorks v-if=workDetailOpened></work-detail>
+            <work-detail :state=workDetailOpened :detail=workDetail @close-detail=closeDetail :allwork=allWorks v-if=workDetailOpened :worktypes=workTypes></work-detail>
         </transition>
 
 
