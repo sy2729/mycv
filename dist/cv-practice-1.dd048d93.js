@@ -441,6 +441,138 @@ var cvData = {
         }],
         tags: ['Video', 'Life'],
         type: 'video'
+    }, {
+        name: 'Media and Life',
+        img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535431869/cv-img/work/media-life/media-life.png',
+        id: 3,
+        youtubeID: 'dmJO491mVao',
+        biliID: '',
+        link: {
+            youtube: 'https://youtu.be/8kWDH6cejB4',
+            bili: 'https://www.bilibili.com/video/av14943823'
+        },
+        descrip: [{
+            content: 'A reflection on the overwhelming information from our mobile devices and the essence of life. How the media and technology is shaping us and our society.',
+            type: 'text'
+        }, {
+            content: {
+                youtube: '',
+                bili: ''
+            },
+            type: 'video'
+        }],
+        tags: ['Video', 'Life'],
+        type: 'video'
+    }, {
+        name: 'Environmentalism Trip',
+        img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535431905/cv-img/work/Eenvironmentalism-trip/maxresdefault.webp',
+        id: 3,
+        youtubeID: 'hGptZmEDqkY',
+        biliID: '13016424',
+        link: {
+            youtube: 'https://youtu.be/8kWDH6cejB4',
+            bili: 'https://www.bilibili.com/video/av14943823'
+        },
+        descrip: [{
+            content: 'In August 2017, I accompanied with a team of young kids as a photographer to explore the beauty of nature and unveil the mistery of the forest. Leaded by several staffs of the environmental nonprofit conservation and education organization, the goal of this trip is to educate the kids about the environmentally friendly way of living with the nature.',
+            type: 'text'
+        }, {
+            content: {
+                youtube: '',
+                bili: ''
+            },
+            type: 'video'
+        }],
+        tags: ['Video', 'Life'],
+        type: 'video'
+    }, {
+        name: 'Interviewing the Dilligent Chinese Girl in Columbia University',
+        img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535433480/cv-img/work/interview-columbia/interview-columbia.png',
+        id: 3,
+        youtubeID: 'ALUSbmb9kP4',
+        biliID: '16099951',
+        link: {
+            youtube: 'https://youtu.be/8kWDH6cejB4',
+            bili: 'https://www.bilibili.com/video/av14943823'
+        },
+        descrip: [{
+            content: 'This is my friend\'s course project on interviewing interesting and inspiring people in NYC, listening to their stories, documenting them and learning from them.',
+            type: 'text'
+        }, {
+            content: {
+                youtube: '',
+                bili: ''
+            },
+            type: 'video'
+        }],
+        tags: ['Video', 'Life'],
+        type: 'video'
+    }, {
+        name: 'Bachelor Graduation Ceremony Video in CCNU',
+        img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535433401/cv-img/work/ccnu-graduation/ccnu-graduation.webp',
+        id: 3,
+        youtubeID: 'ZdtILGuo6IQ',
+        biliID: '11355324',
+        link: {
+            youtube: 'https://youtu.be/8kWDH6cejB4',
+            bili: 'https://www.bilibili.com/video/av14943823'
+        },
+        descrip: [{
+            content: 'Right before I graduate from my undergraduate school, I started to learn photography and videography and then made this video to record the great memories of the four years. I used sliders, photography lights, triapod, DSLR to accomplish this video production.',
+            type: 'text'
+        }, {
+            content: {
+                youtube: '',
+                bili: ''
+            },
+            type: 'video'
+        }],
+        tags: ['Video', 'Life'],
+        type: 'video'
+    }, {
+        name: 'GH5 Unboxing & Sample Shot Vlog',
+        img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535433653/cv-img/work/gh5-unboxing/gh5-unboxing.png',
+        id: 3,
+        youtubeID: '-1ZyOfgzbkM',
+        biliID: '20628682',
+        link: {
+            youtube: 'https://youtu.be/8kWDH6cejB4',
+            bili: 'https://www.bilibili.com/video/av14943823'
+        },
+        descrip: [{
+            content: 'I got my first GH5, which is a really great video-shooting camera. I shot some great sample videos in V-log mode and color graded them.',
+            type: 'text'
+        }, {
+            content: {
+                youtube: '',
+                bili: ''
+            },
+            type: 'video'
+        }],
+        tags: ['Video', 'Life'],
+        type: 'video'
+    }, {
+        name: 'Columbia University Chinese Spring Festival Celebration Micro Film',
+        img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535433677/cv-img/work/columbia-spring-festival-film/columbia-spring-festival-film.png',
+        id: 3,
+        youtubeID: 'kJ4Ere29BO0',
+        biliID: '',
+        link: {
+            youtube: 'https://youtu.be/8kWDH6cejB4',
+            bili: 'https://www.bilibili.com/video/av14943823'
+        },
+        descrip: [{
+            content: 'Every year, we Chinese International Students celebrate our Spring Festival in our unique way. This time, we shot a short film reflecting on our intensive life and optimistic attitude towards the future. I was responsible for shooting.',
+            type: 'text'
+        }, {
+            content: {
+                youtube: '',
+                bili: ''
+            },
+            type: 'video'
+        }],
+        tags: ['Video', 'Life'],
+        type: 'video'
     }]
 
 };
@@ -750,7 +882,7 @@ var educationSection = {
 
 var eachWork = {
     template: "\n        <div class=\"each-work\" :style=\"{ 'background-image': 'url(' + img + ')'}\" @click=viewEachWork>\n            <div class='work-cover'>\n                <div class=\"work-info-wrap\">\n                    <h3 class='work-name'>{{name}}</h3>\n                    <span class='current-type'><i :class=\"typeIconCode[type]\"></i></span>\n                </div>\n            </div>\n        </div>\n    ",
-    props: ['img', 'name', 'descrip', 'link', 'tags', 'id', 'type'],
+    props: ['img', 'name', 'descrip', 'link', 'tags', 'id', 'type', 'youtubeID', 'biliID'],
     data: function data() {
         return {
             typeIconCode: {
@@ -807,7 +939,7 @@ var sideBarInWorkDetail = {
 };
 
 var workDetail = {
-    template: "\n            <div class='work-detail' ref='detail'>\n                <section class='current-content-wrap'>\n                    <div class='title-wrap'>\n                        <h2 class='title'>{{currentWork.name}}</h2>\n                        <span class='t-color current-work-type'>{{currentWork.type}}</span>\n                        <div class=\"work-link-wrap\" v-if=\"currentWork.type==='web'\">\n                            <a class='link-preview' :href='currentWork.link.preview' title=\"preivew\"><span><i class='fa fa-eye'></i>preview</span></a>\n                            <a :href='currentWork.link.repo' title=\"repo\"><span><i class='fa fa-github'></i>repo</span></a>\n                        </div>\n                        <div class=\"work-link-wrap\" v-if=\"currentWork.type==='video'\">\n                            <a class='link-preview' :href='currentWork.link.youtube' title=\"YouTube - Worldwide Audience\"><span><i class='fa fa-youtube'></i></span></a>\n                            <a :href='currentWork.link.bili' title=\"bilibili - Chinese Audience\"><span><i class='iconfont'>&#xe607;</i></span></a>\n                        </div>\n                        <ul class='tags'>\n                            <li v-for='i in currentWork.tags'>{{i}}</li>\n                        </ul>\n                    </div>\n                    <div class='work-content'>\n                        <div v-for=\"i in currentWork.descrip\" :class=\"[{'each-descrip-img': i.type==='img'},{'work-videoWrapper': i.type==='video'} ]\">\n                            <iframe :src=\"i.content.youtube\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen v-if=\"i.type==='video' && currentLanguage === 'en'\"></iframe>\n                            <iframe :src=\"i.content.bili\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen v-if=\"i.type==='video' && currentLanguage === 'zh'\"></iframe>\n\n                            <img :src='i.content' v-if=\"i.type==='img'\">\n                            <p v-html='i.content' v-if=\"i.type==='text'\"></p>\n                        </div>\n\n                        <div v-if=\"currentWork.type==='video'\" class='video-source-wrap'>\n                            <p>Choose the video source based on your country:</p>\n                            <span @click=\"changeVideo('en')\" :class=\"{active: currentLanguage === 'en'}\">YouTube</span><span @click=\"changeVideo('zh')\" :class=\"{active: currentLanguage === 'zh'}\">BiliBili</span>\n                        </div>\n                    </div>\n                </section>\n                <side-bar-in-work-detail :allwork=allwork :currentId=currentWork.id @switch-work-detail=\"switchWork\"></side-bar-in-work-detail>\n                <div class=\"close\" @click=\"$emit('close-detail')\">\n                    <span><i class=\"fa fa-times\"></i></span>\n                </div>\n            </div>\n    ",
+    template: "\n            <div class='work-detail' ref='detail'>\n                <section class='current-content-wrap'>\n                    <div class='title-wrap'>\n                        <h2 class='title'>{{currentWork.name}}</h2>\n                        <span class='t-color current-work-type'>{{currentWork.type}}</span>\n                        <div class=\"work-link-wrap\" v-if=\"currentWork.type==='web'\">\n                            <a class='link-preview' :href='currentWork.link.preview' title=\"preivew\"><span><i class='fa fa-eye'></i>preview</span></a>\n                            <a :href='currentWork.link.repo' title=\"repo\"><span><i class='fa fa-github'></i>repo</span></a>\n                        </div>\n                        <div class=\"work-link-wrap\" v-if=\"currentWork.type==='video'\">\n                            <a class='link-preview' :href='currentWork.link.youtube' title=\"YouTube - Worldwide Audience\"><span><i class='fa fa-youtube'></i></span></a>\n                            <a :href='currentWork.link.bili' title=\"bilibili - Chinese Audience\"><span><i class='iconfont'>&#xe607;</i></span></a>\n                        </div>\n                        <ul class='tags'>\n                            <li v-for='i in currentWork.tags'>{{i}}</li>\n                        </ul>\n                    </div>\n                    <div class='work-content'>\n                        <div v-for=\"i in currentWork.descrip\" :class=\"[{'each-descrip-img': i.type==='img'},{'work-videoWrapper': i.type==='video'} ]\">\n                            <transition name='show-content'>\n                                <iframe :src=\"i.content.youtube\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen v-if=\"i.type==='video' && currentLanguage === 'en'\"></iframe>\n                                <iframe :src=\"i.content.bili\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen v-if=\"i.type==='video' && currentLanguage === 'zh'\"></iframe>\n                            </transition>\n                            <img :src='i.content' v-if=\"i.type==='img'\">\n                            <p v-html='i.content' v-if=\"i.type==='text'\"></p>\n                        </div>\n\n                        <p class='t-warning' v-if=\"currentWork.type==='video' && currentLanguage === 'zh' && !currentWork.biliID\">!No Bilibili Video Available, please choose other sources</p>\n                        <p class='t-warning' v-if=\"currentWork.type==='video' && currentLanguage === 'en' && !currentWork.youtubeID\">No YouTube Video Available, please choose other sources</p>\n\n                        <div v-if=\"currentWork.type==='video'\" class='video-source-wrap'>\n                            <p>Choose the video source based on your country:</p>\n                            <span @click=\"changeVideo('en')\" :class=\"[{active: currentLanguage === 'en'}, {'no-available': !currentWork.youtubeID}]\">YouTube</span><span @click=\"changeVideo('zh')\" :class=\"[{active: currentLanguage === 'zh'}, {'no-available': !currentWork.biliID}]\" >BiliBili</span>\n                        </div>\n                    </div>\n                </section>\n                <side-bar-in-work-detail :allwork=allwork :currentId=currentWork.id @switch-work-detail=\"switchWork\"></side-bar-in-work-detail>\n                <div class=\"close\" @click=\"$emit('close-detail')\">\n                    <span><i class=\"fa fa-times\"></i></span>\n                </div>\n            </div>\n    ",
     data: function data() {
         return {
             currentWork: {},
@@ -1105,7 +1237,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '52493' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '60147' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 

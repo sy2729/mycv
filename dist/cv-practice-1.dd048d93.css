@@ -24,6 +24,11 @@ a {
 .t-center {
   text-align: center; }
 
+.t-warning {
+  color: #C93639;
+  font-weight: bold;
+  text-decoration: underline; }
+
 .each-clickable, .header-bar {
   cursor: pointer;
   position: relative; }
@@ -519,13 +524,19 @@ a {
       padding: 25px; }
       #app .work-detail .current-content-wrap .work-content .video-source-wrap span {
         padding: 4px 10px;
-        border: 1px solid #C93639;
+        border: 1px solid #e69b9d;
         cursor: pointer;
-        color: #AAABAC; }
+        color: #e69b9d; }
         #app .work-detail .current-content-wrap .work-content .video-source-wrap span.active {
           color: #fefefe;
           background: #C93639;
           border-color: #C93639; }
+        #app .work-detail .current-content-wrap .work-content .video-source-wrap span.no-available {
+          cursor: not-allowed;
+          border-color: #AAABAC;
+          pointer-events: none;
+          background: #eee;
+          color: #ddd; }
       #app .work-detail .current-content-wrap .work-content .work-videoWrapper {
         overflow: hidden;
         padding-bottom: 56.25%;

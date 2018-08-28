@@ -9,10 +9,12 @@ a {color: inherit};
     clear: both;
 }
 $theme: #C93639;
+$light-theme: #e69b9d;
 .t-color {
     color: $theme;    
 }
 .t-center {text-align: center;}
+.t-warning {color: $theme; font-weight: bold; text-decoration: underline;}
 .each-clickable, .header-bar {
     cursor: pointer;
     position: relative;
@@ -724,14 +726,21 @@ $theme: #C93639;
                 .video-source-wrap {
                     span {
                         padding: 4px 10px;
-                        border: 1px solid $theme;
+                        border: 1px solid $light-theme;
                         cursor: pointer;
-                        color: #AAABAC;
+                        color: $light-theme;
 
                         &.active {
                             color: #fefefe;
                             background: $theme;
                             border-color: $theme;
+                        }
+                        &.no-available {
+                            cursor: not-allowed;
+                            border-color: #AAABAC;
+                            pointer-events: none;
+                            background: #eee;
+                            color: #ddd;
                         }
                     }
                 }

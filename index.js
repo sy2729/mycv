@@ -343,7 +343,7 @@ var eachWork = {
             </div>
         </div>
     `,
-    props: ['img', 'name', 'descrip', 'link', 'tags', 'id', 'type'],
+    props: ['img', 'name', 'descrip', 'link', 'tags', 'id', 'type', 'youtubeID', 'biliID'],
     data: function(){
         return {
             typeIconCode: {
@@ -435,16 +435,20 @@ var workDetail = {
                     </div>
                     <div class='work-content'>
                         <div v-for="i in currentWork.descrip" :class="[{'each-descrip-img': i.type==='img'},{'work-videoWrapper': i.type==='video'} ]">
-                            <iframe :src="i.content.youtube" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen v-if="i.type==='video' && currentLanguage === 'en'"></iframe>
-                            <iframe :src="i.content.bili" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen v-if="i.type==='video' && currentLanguage === 'zh'"></iframe>
-
+                            <transition name='show-content'>
+                                <iframe :src="i.content.youtube" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen v-if="i.type==='video' && currentLanguage === 'en'"></iframe>
+                                <iframe :src="i.content.bili" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen v-if="i.type==='video' && currentLanguage === 'zh'"></iframe>
+                            </transition>
                             <img :src='i.content' v-if="i.type==='img'">
                             <p v-html='i.content' v-if="i.type==='text'"></p>
                         </div>
 
+                        <p class='t-warning' v-if="currentWork.type==='video' && currentLanguage === 'zh' && !currentWork.biliID">!No Bilibili Video Available, please choose other sources</p>
+                        <p class='t-warning' v-if="currentWork.type==='video' && currentLanguage === 'en' && !currentWork.youtubeID">No YouTube Video Available, please choose other sources</p>
+
                         <div v-if="currentWork.type==='video'" class='video-source-wrap'>
                             <p>Choose the video source based on your country:</p>
-                            <span @click="changeVideo('en')" :class="{active: currentLanguage === 'en'}">YouTube</span><span @click="changeVideo('zh')" :class="{active: currentLanguage === 'zh'}">BiliBili</span>
+                            <span @click="changeVideo('en')" :class="[{active: currentLanguage === 'en'}, {'no-available': !currentWork.youtubeID}]">YouTube</span><span @click="changeVideo('zh')" :class="[{active: currentLanguage === 'zh'}, {'no-available': !currentWork.biliID}]" >BiliBili</span>
                         </div>
                     </div>
                 </section>
