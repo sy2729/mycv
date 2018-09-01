@@ -162,11 +162,11 @@ var sectionTitle = {
 var skillSection = {
     template: `
         <div class="skill-section each-section" :style="{background: sectionColor}">
-            <section-title :order=order :name=sectionName></section-title>
+            <section-title :order=order :name=skills.sectionName></section-title>
             <div class='section-content'>
-                <p class="content-description">{{description}}</p>
+                <p class="content-description">{{skills.description}}</p>
                 <div :class="['skill-wrap', {active: skillBarShort}]">
-                    <div class="each-skill" v-for='i in skillData'>
+                    <div class="each-skill" v-for='i in skills.allSkills'>
                         <div class="bar-info-wrap">
                             <p class='skill-name'>{{i.name}}</p>
                             <p class="skill-extent">{{i.extent}}%</p>
@@ -184,7 +184,6 @@ var skillSection = {
         return {
             order: '01',
             sectionName: 'Skills',
-            description: `I’m passionate about Web Development and User Interface design, with close observation of the latest trends in those design fields. I have solid skills in creating design prototype through front-end development and proficiency of using design software. With my pursuit of aesthetic details, I am able to precisely communicate my idea and design thoughts with my clients and partners.`,
             sectionColor: '#C93639',
             skillBarShort: true,
             skills: [],
@@ -207,6 +206,11 @@ var skillSection = {
 
     mounted(){
         ScrollReveal().reveal('.skill-wrap', { afterReveal: this.removeActive});
+    },
+    watch: {
+        'skillData': function () {
+            this.skills = this.$props.skillData;
+        }
     }
 };
 
@@ -261,9 +265,9 @@ var eachExperience = {
 var experienceSection = {
     template: `
         <div class="experience-section each-section" :style="{background: sectionColor}">
-             <section-title :order=order :name=sectionName></section-title>
+             <section-title :order=order :name=experiences.sectionName></section-title>
              <div class='section-content'>
-                <each-experience v-for='(i, index) in experienceData' :key=index v-bind='i'></each-experience>
+                <each-experience v-for='(i, index) in experiences.allExperiences' :key=index v-bind='i'></each-experience>
              </div>
         </div>
     `,
@@ -271,7 +275,6 @@ var experienceSection = {
         return {
             sectionColor: '#FFFFFF',
             order:'02',
-            sectionName: 'Experience',
             experiences: [],
         }
     },
@@ -282,7 +285,12 @@ var experienceSection = {
     beforeMount(){
         // this.experiences = cvData.experiences;
     },
-    props: ['experienceData']
+    props: ['experienceData'],
+    watch: {
+        'experienceData': function () {
+            this.experiences = this.$props.experienceData;
+        }
+    }
 };
 
 // education component
@@ -309,9 +317,9 @@ var eachEducation = {
 var educationSection = {
     template: `
         <div class="education-section each-section" :style="{background: sectionColor}">
-             <section-title :order=order :name=sectionName></section-title>
+             <section-title :order=order :name=educations.sectionName></section-title>
              <div class='section-content'>
-                <each-education v-for='(i, index) in educations' :key=index v-bind='i'></each-education>
+                <each-education v-for='(i, index) in educations.allEducations' :key=index v-bind='i'></each-education>
              </div>
         </div>
     `,
@@ -320,35 +328,18 @@ var educationSection = {
             sectionColor: '#fff',
             order: '03',
             sectionName: 'Education',
-            educations: [
-                {
-                    school: 'Teachers College, Columbia University',
-                    degree: 'Master',
-                    major: 'Instructional Technology and Media',
-                    startDate: '2017.09',
-                    endDate: '2019.05',
-                    activeState: true,
-                },
-                {
-                    school: 'Central China Normal University',
-                    degree: 'Bachelor',
-                    major: 'Chinese International Education',
-                    startDate: '2013.09',
-                    endDate: '2017.06',
-                },
-                {
-                    school: 'University of California, Berkeley',
-                    degree: 'Exchange',
-                    major: 'General Study',
-                    startDate: '2016.01',
-                    endDate: '2016.06',
-                },
-            ]
+            educations: [],
         }
     },
+    props: ['educationData'],
     components: {
         'section-title': sectionTitle,
         'each-education': eachEducation,
+    },
+    watch: {
+        'educationData': function(){
+            this.educations = this.$props.educationData;
+        }
     }
 };
 
@@ -569,9 +560,9 @@ var workSection = {
     template: `
         <div class="work-section each-section" :style="{background: sectionColor}">
             <switch-type :types=worktypes @switch-type=switchType></switch-type>
-             <section-title :order=order :name=sectionName></section-title>
+             <section-title :order=order :name=works.sectionName></section-title>
              <div class='section-content' ref='works'>
-                <each-work v-for='(i, index) in filteredWorks' :key=index v-bind='i' @view-work-detail=viewWorkDetail></each-work>
+                <each-work v-for='(i, index) in filteredWorks.allWorks' :key=index v-bind='i' @view-work-detail=viewWorkDetail></each-work>
              </div>
              <button :class="['next-btn',{end: scrollToEnd}]" @click=scrollRight><i class='fa fa-angle-right'></i></button>
              <progress-bar :totalLength=allWorkLength :viewLength=viewLength :scrolledDistance=scrolledDistance></progress-bar>
