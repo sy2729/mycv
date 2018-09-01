@@ -287,10 +287,11 @@ var nav = {
 };
 
 var header = {
-    template: '\n        <div class="header">\n            <div class="header-layer" ref=\'overlay\'></div>\n            <cv-nav @choose-to-view=\'headerSelect\'></cv-nav>\n\n            <div class="title-wrap" ref=\'titleWrap\'>\n                <h4 class="subtitle">Hello, I\'m</h4>\n                <h1 class="title">Shuai Yuan</h1>\n                <div class=\'arrow-wrap\' @click=arrowScroll ref=\'arrow\'><i class="fa fa-arrow-down"></i></div>\n            </div>\n        </div>\n    ',
+    template: '\n        <div class="header">\n            <div class="header-layer" ref=\'overlay\'></div>\n            <cv-nav @choose-to-view=\'headerSelect\'></cv-nav>\n\n            <div class="title-wrap" ref=\'titleWrap\'>\n                <h4 class="subtitle">Hello, I\'m</h4>\n                <h1 class="title">Shuai Yuan</h1>\n                <div class=\'arrow-wrap\' @click=arrowScroll ref=\'arrow\'><i class="fa fa-arrow-down"></i></div>\n            </div>\n\n            <div class=\'language-switch\'>\n                <span :class="[\'option\', {\'active\': currentLanguage === \'en\'}]" @click="switchLang(\'en\')">En</span>\n                <span>\uFF0F</span>\n                <span :class="[\'option\', {\'active\': currentLanguage === \'zh\'}]" @click="switchLang(\'zh\')">\u4E2D</span>\n            </div>\n        </div>\n    ',
     data: function data() {
         return {};
     },
+    props: ['currentLanguage'],
 
     methods: {
         scrollTo: function scrollTo(position, timeout) {
@@ -341,6 +342,13 @@ var header = {
         headerSelect: function headerSelect(data) {
             var value = document.querySelector('.work-section').offsetTop;
             this.scrollTo(value, 500);
+        },
+        switchLang: function switchLang(data) {
+            if (data === 'en' && this.$props.currentLanguage !== 'en') {
+                this.$emit('switch-language', 'en');
+            } else if (data === 'zh' && this.$props.currentLanguage !== 'zh') {
+                this.$emit('switch-language', 'zh');
+            }
         }
     },
 
@@ -788,7 +796,8 @@ var footer = {
         workDetailOpened: false,
         allWorks: null,
         workTypes: ['all', 'web', 'design', 'video'],
-        cvData: {}
+        cvData: {},
+        currentLanguage: ''
     },
 
     methods: {
@@ -814,21 +823,32 @@ var footer = {
             } else {
                 this.currentLanguage = 'en';
             }
+        },
+        switchLanguage: function switchLanguage(data) {
+            if (data === "zh") {
+                this.currentLanguage = 'zh';
+            } else if (data === "en") {
+                this.currentLanguage = 'en';
+            };
+            this.importLanguage(this.currentLanguage);
+        },
+        importLanguage: function importLanguage(data) {
+            var _this4 = this;
+
+            if (data === 'en') {
+                require("_bundle_loader")(require.resolve('./data')).then(function (e) {
+                    _this4.cvData = e.cvData;
+                });
+            } else {
+                require("_bundle_loader")(require.resolve('./data_zh')).then(function (e) {
+                    _this4.cvData = e.cvData;
+                });
+            }
         }
     },
     beforeMount: function beforeMount() {
-        var _this4 = this;
-
         this.judgeSystemLanguage();
-        if (this.currentLanguage === 'en') {
-            require("_bundle_loader")(require.resolve('./data')).then(function (e) {
-                _this4.cvData = e.cvData;
-            });
-        } else {
-            require("_bundle_loader")(require.resolve('./data_zh')).then(function (e) {
-                _this4.cvData = e.cvData;
-            });
-        }
+        this.importLanguage(this.currentLanguage);
     },
 
 

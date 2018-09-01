@@ -54,13 +54,19 @@ var header = {
                 <h1 class="title">Shuai Yuan</h1>
                 <div class='arrow-wrap' @click=arrowScroll ref='arrow'><i class="fa fa-arrow-down"></i></div>
             </div>
+
+            <div class='language-switch'>
+                <span :class="['option', {'active': currentLanguage === 'en'}]" @click="switchLang('en')">En</span>
+                <span>／</span>
+                <span :class="['option', {'active': currentLanguage === 'zh'}]" @click="switchLang('zh')">中</span>
+            </div>
         </div>
     `,
     data: function(){
         return {
-
         }
     },
+    props: ['currentLanguage'],
 
     methods: {
         scrollTo(position, timeout){
@@ -109,6 +115,13 @@ var header = {
         headerSelect(data){
             let value = document.querySelector('.work-section').offsetTop;
             this.scrollTo(value, 500);
+        },
+        switchLang(data){
+            if(data==='en' && this.$props.currentLanguage !== 'en') {
+                this.$emit('switch-language', 'en')
+            } else if (data === 'zh' && this.$props.currentLanguage !== 'zh') {
+                this.$emit('switch-language', 'zh')
+            }
         }
     },
 
@@ -765,7 +778,8 @@ new Vue({
         workDetailOpened: false,
         allWorks: null,
         workTypes: ['all', 'web', 'design', 'video'],
-        cvData: {}
+        cvData: {},
+        currentLanguage: '',
     },
 
     methods: {
@@ -792,19 +806,30 @@ new Vue({
                 this.currentLanguage = 'en';
             }
         },
+        switchLanguage(data){
+            if(data==="zh") {
+                this.currentLanguage = 'zh';
+            } else if (data === "en") {
+                this.currentLanguage = 'en';
+            };
+            this.importLanguage(this.currentLanguage);
+        },
+        importLanguage(data) {
+            if (data === 'en') {
+                import('./data').then((e) => {
+                    this.cvData = e.cvData;
+
+                })
+            } else {
+                import('./data_zh').then((e) => {
+                    this.cvData = e.cvData;
+                })
+            }
+        }
     },
     beforeMount(){
         this.judgeSystemLanguage();
-        if (this.currentLanguage === 'en') {
-            import('./data').then((e) => {
-                this.cvData = e.cvData;
-                
-            })
-        } else {
-            import('./data_zh').then((e) => {
-                this.cvData = e.cvData;
-            })
-        }
+        this.importLanguage(this.currentLanguage);
     },
 
     computed: {

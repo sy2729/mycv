@@ -159,6 +159,18 @@ a {
     transform: translateY(150px); }
   to {
     transform: translateY(165px); } }
+  #app .header .language-switch {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 5; }
+    #app .header .language-switch span {
+      color: #f4f4f4;
+      font-size: 1.1em;
+      cursor: pointer; }
+      #app .header .language-switch span.active {
+        color: #C93639;
+        font-size: 1.2em; }
 
 #app .each-section {
   display: flex;

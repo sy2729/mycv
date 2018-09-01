@@ -143,8 +143,7 @@ $light-theme: #e69b9d;
                 list-style: none;
                 cursor: pointer;
             }
-        }
-        
+        }   
     }
 
     .title-wrap {
@@ -191,8 +190,23 @@ $light-theme: #e69b9d;
                to {transform: translateY(165px);}
            }
        }
+    }
 
-        
+    .language-switch {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        z-index: 5;
+
+        span {
+            color: #f4f4f4;
+            font-size: 1.1em;
+            cursor: pointer;
+            &.active {
+                color: $theme;
+                font-size: 1.2em;
+            }
+        }
     }
    }
 
