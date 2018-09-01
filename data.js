@@ -19,7 +19,7 @@
             },
             {
                 logo: './img/experience/atos.png',
-                role: 'UX Designer',
+                role: 'UX Design Intern',
                 company: 'Atos',
                 beginDate: '2018.05',
                 endDate: 'present',
@@ -608,4 +608,4 @@
         }
     })
     
-export { cvData }
+export {cvData as cvData}

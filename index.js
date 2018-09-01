@@ -1,5 +1,5 @@
 // import {  } from "./index.scss";
-import { cvData } from "./data";
+// import { cvData } from "./data";
 import "./index.scss";
 
 // create component
@@ -147,7 +147,7 @@ var skillSection = {
             <div class='section-content'>
                 <p class="content-description">{{description}}</p>
                 <div :class="['skill-wrap', {active: skillBarShort}]">
-                    <div class="each-skill" v-for='i in skills'>
+                    <div class="each-skill" v-for='i in skillData'>
                         <div class="bar-info-wrap">
                             <p class='skill-name'>{{i.name}}</p>
                             <p class="skill-extent">{{i.extent}}%</p>
@@ -181,8 +181,9 @@ var skillSection = {
             this.skillBarShort = false;
         }
     },
+    props: ['skillData'],
     beforeMount(){
-        this.skills = cvData.skills;
+        
     },
 
     mounted(){
@@ -243,7 +244,7 @@ var experienceSection = {
         <div class="experience-section each-section" :style="{background: sectionColor}">
              <section-title :order=order :name=sectionName></section-title>
              <div class='section-content'>
-                <each-experience v-for='(i, index) in experiences' :key=index v-bind='i'></each-experience>
+                <each-experience v-for='(i, index) in experienceData' :key=index v-bind='i'></each-experience>
              </div>
         </div>
     `,
@@ -260,8 +261,9 @@ var experienceSection = {
         'each-experience': eachExperience,
     },
     beforeMount(){
-        this.experiences = cvData.experiences;
-    }
+        // this.experiences = cvData.experiences;
+    },
+    props: ['experienceData']
 };
 
 // education component
@@ -570,7 +572,7 @@ var workSection = {
             scrollToEnd: false,
         }
     },
-    props: ['worktypes'],
+    props: ['worktypes', 'workData'],
     methods: {
         detectScrollDistance(){
             let value = this.getScrollDistance();
@@ -651,19 +653,14 @@ var workSection = {
                 arr[i] = arr[j];
                 arr[j] = t;
             } 
-        } 
+        },
+
     },
     components: {
         'section-title': sectionTitle,
         'each-work': eachWork,
         'progress-bar': progressBar,
         'switch-type': switchType,
-    },
-    beforeMount(){
-        this.works = cvData.works;
-        this.shuffle(this.works)
-        // use all works by default
-        this.filteredWorks = this.works;
     },
     mounted(){
         // get alllength and view length of the work
@@ -679,15 +676,20 @@ var workSection = {
             this.getBarStyle();
             this.initialDistanceBeforeScroll = this.getInitialScrollDistance();
         });
-
-        // pass all work data to root
-        this.$emit('all-work', this.works)
     },
     updated(){
         // update the scrollbar visual everytime change the work content
         this.getBarStyle();
         this.detectScrollToEnd();
     },
+    watch: {
+        'workData': function(){
+            this.works = this.$props.workData;
+            this.shuffle(this.works)
+            // use all works by default
+            this.filteredWorks = this.works;
+        }
+    }
 }
 
 var creditWidget = {
@@ -763,6 +765,7 @@ new Vue({
         workDetailOpened: false,
         allWorks: null,
         workTypes: ['all', 'web', 'design', 'video'],
+        cvData: {}
     },
 
     methods: {
@@ -775,9 +778,33 @@ new Vue({
             this.workDetailOpened = false;
             document.body.style.overflow = 'unset';
         },
-        getAllWork(data){
-            this.allWorks = data;
+        judgeSystemLanguage() {
+            var type = navigator.appName;
+            if (type == "Netscape") {
+                var lang = navigator.language;//获取浏览器配置语言，支持非IE浏览器
+            } else {
+                var lang = navigator.userLanguage;//获取浏览器配置语言，支持IE5+ == navigator.systemLanguage
+            };
+            var lang = lang.substr(0, 2);//获取浏览器配置语言前两位
+            if (lang == "zh") {
+                this.currentLanguage = 'zh';
+            } else {
+                this.currentLanguage = 'en';
+            }
         },
+    },
+    beforeMount(){
+        this.judgeSystemLanguage();
+        if (this.currentLanguage === 'en') {
+            import('./data').then((e) => {
+                this.cvData = e.cvData;
+                
+            })
+        } else {
+            import('./data_zh').then((e) => {
+                this.cvData = e.cvData;
+            })
+        }
     },
 
     computed: {
