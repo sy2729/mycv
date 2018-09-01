@@ -667,7 +667,9 @@ var workSection = {
                 arr[j] = t;
             } 
         },
-
+        loadData(){
+            this.filteredWorks = this.works;
+        }
     },
     components: {
         'section-title': sectionTitle,
@@ -689,6 +691,7 @@ var workSection = {
             this.getBarStyle();
             this.initialDistanceBeforeScroll = this.getInitialScrollDistance();
         });
+        ScrollReveal().reveal('.work-section', { afterReveal: this.loadData });
     },
     updated(){
         // update the scrollbar visual everytime change the work content
@@ -700,7 +703,7 @@ var workSection = {
             this.works = this.$props.workData;
             this.shuffle(this.works)
             // use all works by default
-            this.filteredWorks = this.works;
+            // this.filteredWorks = this.works;
         }
     }
 }
