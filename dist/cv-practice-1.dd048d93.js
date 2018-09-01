@@ -696,14 +696,14 @@ var workSection = {
         },
         switchType: function switchType(data) {
             if (data.toLowerCase() === 'all') {
-                this.filteredWorks = this.works;
+                this.filteredWorks = JSON.parse(JSON.stringify(this.works));
             } else {
-                var results = this.works.filter(function (i) {
+                var results = this.works.allWorks.filter(function (i) {
                     if (i.type.toLowerCase() === data.toLowerCase()) {
                         return i;
                     }
                 });
-                this.filteredWorks = results;
+                this.filteredWorks.allWorks = results;
             };
         },
         shuffle: function shuffle(arr) {
@@ -718,7 +718,7 @@ var workSection = {
             }
         },
         loadData: function loadData() {
-            this.filteredWorks = this.works;
+            this.filteredWorks = JSON.parse(JSON.stringify(this.works));
         }
     },
     components: {
@@ -754,7 +754,7 @@ var workSection = {
     watch: {
         'workData': function workData() {
             this.works = this.$props.workData;
-            this.shuffle(this.works);
+            this.shuffle(this.works.allWorks);
             // use all works by default
             // this.filteredWorks = this.works;
         }
@@ -901,7 +901,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '62607' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '50295' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 

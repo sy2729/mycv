@@ -645,14 +645,14 @@ var workSection = {
 
         switchType(data){
             if(data.toLowerCase() === 'all') {
-                this.filteredWorks = this.works;
+                this.filteredWorks = JSON.parse(JSON.stringify(this.works));
             }else {
-                let results = this.works.filter((i) => {
+                let results = this.works.allWorks.filter((i) => {
                     if (i.type.toLowerCase() === data.toLowerCase()) {
                         return i
                     }
                 });
-                this.filteredWorks = results;
+                this.filteredWorks.allWorks = results;
             };
         },
         shuffle(arr) {
@@ -665,7 +665,7 @@ var workSection = {
             } 
         },
         loadData(){
-            this.filteredWorks = this.works;
+            this.filteredWorks = JSON.parse(JSON.stringify(this.works));
         }
     },
     components: {
@@ -698,7 +698,7 @@ var workSection = {
     watch: {
         'workData': function(){
             this.works = this.$props.workData;
-            this.shuffle(this.works)
+            this.shuffle(this.works.allWorks)
             // use all works by default
             // this.filteredWorks = this.works;
         }
