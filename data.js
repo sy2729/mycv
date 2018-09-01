@@ -1,6 +1,10 @@
 
 
     let cvData = {
+        header: {
+            greeting: `Hello, I'm`,
+            name: 'Shuai Yuan',
+        },
         experiences: [
             {
                 logo: './img/experience/tc.jpg',

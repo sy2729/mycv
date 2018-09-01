@@ -50,8 +50,8 @@ var header = {
             <cv-nav @choose-to-view='headerSelect'></cv-nav>
 
             <div class="title-wrap" ref='titleWrap'>
-                <h4 class="subtitle">Hello, I'm</h4>
-                <h1 class="title">Shuai Yuan</h1>
+                <h4 class="subtitle">{{header.greeting || 'nihao'}}</h4>
+                <h1 class="title">{{header.name || 'Wait Please'}}</h1>
                 <div class='arrow-wrap' @click=arrowScroll ref='arrow'><i class="fa fa-arrow-down"></i></div>
             </div>
 
@@ -64,9 +64,10 @@ var header = {
     `,
     data: function(){
         return {
+            header: {}
         }
     },
-    props: ['currentLanguage'],
+    props: ['currentLanguage', 'headerData'],
 
     methods: {
         scrollTo(position, timeout){
@@ -133,6 +134,11 @@ var header = {
         ScrollReveal().reveal('.arrow-wrap', { afterReveal: this.myCallback });
         this.detectLayerLoading();
 
+    },
+    watch: {
+        'headerData': function () {
+            this.header = this.$props.headerData;
+        }
     }
 }
 

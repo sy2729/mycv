@@ -11,7 +11,7 @@
 <body>
     
     <div id="app" ref='app'>
-        <header-section :current-language=currentLanguage @switch-language=switchLanguage></header-section>
+        <header-section :current-language=currentLanguage @switch-language=switchLanguage :header-data=cvData.header></header-section>
 
         <skill-section :skill-data=cvData.skills></skill-section>
         <experience-section :experience-data=cvData.experiences></experience-section>

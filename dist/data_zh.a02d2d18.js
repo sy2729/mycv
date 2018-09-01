@@ -111,6 +111,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var cvData = {
+    header: {
+        greeting: '你好，我是',
+        name: '袁帅'
+    },
     experiences: [{
         logo: './img/experience/tc.jpg',
         role: '课程助教 - JavaScript 编程',
@@ -623,7 +627,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '64990' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '62607' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 

@@ -200,11 +200,16 @@ $light-theme: #e69b9d;
 
         span {
             color: #f4f4f4;
-            font-size: 1.1em;
+            font-size: 1em;
             cursor: pointer;
+            vertical-align: middle;
+            vertical-align: text-bottom;
+            &.option {
+                padding: 3px 5px;
+            }
             &.active {
                 color: $theme;
-                font-size: 1.2em;
+                font-size: 1.4em;
             }
         }
     }

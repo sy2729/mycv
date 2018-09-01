@@ -166,11 +166,15 @@ a {
     z-index: 5; }
     #app .header .language-switch span {
       color: #f4f4f4;
-      font-size: 1.1em;
-      cursor: pointer; }
+      font-size: 1em;
+      cursor: pointer;
+      vertical-align: middle;
+      vertical-align: text-bottom; }
+      #app .header .language-switch span.option {
+        padding: 3px 5px; }
       #app .header .language-switch span.active {
         color: #C93639;
-        font-size: 1.2em; }
+        font-size: 1.4em; }
 
 #app .each-section {
   display: flex;
