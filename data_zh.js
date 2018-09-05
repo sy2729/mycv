@@ -76,6 +76,10 @@ let cvData = {
                 name: 'Vue / Riot / Firebase / MVC ...',
                 extent: '70'
             },
+            {
+                name: '搜索引擎优化（SEO）',
+                extent: '60'
+            },
         ] 
     },
     educations: {

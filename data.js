@@ -77,6 +77,10 @@
                     name: 'Vue / Riot / Firebase / MVC ...',
                     extent: '70'
                 },
+                {
+                    name: 'Search Engine Optimization (SEO)',
+                    extent: '60'
+                },
             ],
         },
         educations: {
