@@ -147,6 +147,16 @@ var cvData = {
             detail: {
                 descrip: ["协助教育学院网络办公室更新官网网站，通过T4内容管理系统完成从旧网站到新网站模版内容的迁移。", '协助进行质量测试和内容管理测试。', '进行网站样式测试和用户体验提升，提供相关CSS解决方案。']
             }
+        }, {
+            logo: './img/experience/baicizhan.png',
+            role: '内容编辑和运营',
+            company: '百词斩',
+            beginDate: '2017.01',
+            endDate: '2017.03',
+            activeState: false,
+            detail: {
+                descrip: ["负责用户系统教材的设计，翻译及改进;", "负责系统媒体素材的制作与资料搜集;"]
+            }
         }]
     },
     skills: {
@@ -164,6 +174,9 @@ var cvData = {
         }, {
             name: 'Vue / Riot / Firebase / MVC ...',
             extent: '70'
+        }, {
+            name: '搜索引擎优化（SEO）',
+            extent: '60'
         }]
     },
     educations: {
@@ -660,7 +673,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '50295' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '64714' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 

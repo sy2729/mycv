@@ -54,6 +54,19 @@
                         ],
                     },
                 },
+                {
+                    logo: './img/experience/baicizhan.png',
+                    role: 'Content Operation',
+                    company: 'Chaoyouai Technology',
+                    beginDate: '2017.01',
+                    endDate: '2017.03',
+                    activeState: false,
+                    detail: {
+                        descrip: [
+                            "Produced audio media and graphic materials for users of the company’s educational application.",
+                        ],
+                    },
+                },
 
             ],
         },

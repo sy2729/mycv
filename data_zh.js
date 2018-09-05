@@ -53,7 +53,20 @@ let cvData = {
                     ],
                 },
             },
-
+            {
+                logo: './img/experience/baicizhan.png',
+                role: '内容编辑和运营',
+                company: '百词斩',
+                beginDate: '2017.01',
+                endDate: '2017.03',
+                activeState: false,
+                detail: {
+                    descrip: [
+                        "负责用户系统教材的设计，翻译及改进;",
+                        "负责系统媒体素材的制作与资料搜集;",
+                    ],
+                },
+            },
         ]
     },
     skills: {

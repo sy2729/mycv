@@ -148,6 +148,16 @@ var cvData = {
             detail: {
                 descrip: ["Assist the TC office of the Web in refreshing the college's website, assist the External Affairs Web Office in transferring current websites to the new site template in T4 content management system", 'Help with quality assurance testing, and other content migration tasks', 'Help with site style debugging and user experience improvement with CSS solutions']
             }
+        }, {
+            logo: './img/experience/baicizhan.png',
+            role: 'Content Operation',
+            company: 'Chaoyouai Technology',
+            beginDate: '2017.01',
+            endDate: '2017.03',
+            activeState: false,
+            detail: {
+                descrip: ["Produced audio media and graphic materials for users of the company’s educational application."]
+            }
         }]
     },
     skills: {
@@ -165,6 +175,9 @@ var cvData = {
         }, {
             name: 'Vue / Riot / Firebase / MVC ...',
             extent: '70'
+        }, {
+            name: 'Search Engine Optimization (SEO)',
+            extent: '60'
         }]
     },
     educations: {
@@ -661,7 +674,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '50295' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '64714' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
