@@ -96,24 +96,24 @@ $light-theme: #e69b9d;
         // height: 470px;
         height: 100vh;
         width: 100%;
-        background: transparent url('https://res.cloudinary.com/shuaiyuan/image/upload/v1535384838/cv-img/hero.jpg') center no-repeat;
+        background: transparent url('https://res.cloudinary.com/shuaiyuan/image/upload/v1536811622/cv-img/1.jpg') center no-repeat;
         background-size: cover;
         background-attachment: fixed;
         position: relative;
         overflow: hidden;
 
-        .header-layer {
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 100%;
-            background: transparent url('https://res.cloudinary.com/shuaiyuan/image/upload/v1535384915/cv-img/hero-layer.png') center no-repeat;
-            background-size: cover;
-            background-attachment: fixed;
-            z-index: 3;
-            pointer-events: none;
-        }
+        // .header-layer {
+        //     position: absolute;
+        //     left: 0;
+        //     top: 0;
+        //     height: 100%;
+        //     width: 100%;
+        //     background: transparent url('https://res.cloudinary.com/shuaiyuan/image/upload/v1535384915/cv-img/hero-layer.png') center no-repeat;
+        //     background-size: cover;
+        //     background-attachment: fixed;
+        //     z-index: 3;
+        //     pointer-events: none;
+        // }
     
         nav {
         display: flex;

@@ -285,9 +285,9 @@ var nav = {
         }
     }
 };
-
+/* <div class="header-layer" ref='overlay'></div> */
 var header = {
-    template: '\n        <div class="header">\n            <div class="header-layer" ref=\'overlay\'></div>\n            <cv-nav @choose-to-view=\'headerSelect\'></cv-nav>\n\n            <div class="title-wrap" ref=\'titleWrap\'>\n                <h4 class="subtitle">{{header.greeting || \'nihao\'}}</h4>\n                <h1 class="title">{{header.name || \'Wait Please\'}}</h1>\n                <div class=\'arrow-wrap\' @click=arrowScroll ref=\'arrow\'><i class="fa fa-arrow-down"></i></div>\n            </div>\n\n            <div class=\'language-switch\'>\n                <span :class="[\'option\', {\'active\': currentLanguage === \'en\'}]" @click="switchLang(\'en\')">En</span>\n                <span>\uFF0F</span>\n                <span :class="[\'option\', {\'active\': currentLanguage === \'zh\'}]" @click="switchLang(\'zh\')">\u4E2D</span>\n            </div>\n        </div>\n    ',
+    template: '\n        <div class="header">\n\n            <cv-nav @choose-to-view=\'headerSelect\'></cv-nav>\n\n            <div class="title-wrap" ref=\'titleWrap\'>\n                <h4 class="subtitle">{{header.greeting || \'nihao\'}}</h4>\n                <h1 class="title">{{header.name || \'Wait Please\'}}</h1>\n                <div class=\'arrow-wrap\' @click=arrowScroll ref=\'arrow\'><i class="fa fa-arrow-down"></i></div>\n            </div>\n\n            <div class=\'language-switch\'>\n                <span :class="[\'option\', {\'active\': currentLanguage === \'en\'}]" @click="switchLang(\'en\')">En</span>\n                <span>\uFF0F</span>\n                <span :class="[\'option\', {\'active\': currentLanguage === \'zh\'}]" @click="switchLang(\'zh\')">\u4E2D</span>\n            </div>\n        </div>\n    ',
     data: function data() {
         return {
             header: {}
@@ -360,7 +360,8 @@ var header = {
 
     mounted: function mounted() {
         ScrollReveal().reveal('.arrow-wrap', { afterReveal: this.myCallback });
-        this.detectLayerLoading();
+        this.loadText();
+        // this.detectLayerLoading();
     },
 
     watch: {
@@ -901,7 +902,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '64714' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '51529' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 

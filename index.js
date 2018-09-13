@@ -42,11 +42,11 @@ var nav = {
         }
     }
 };
-
+/* <div class="header-layer" ref='overlay'></div> */
 var header = {
     template: `
         <div class="header">
-            <div class="header-layer" ref='overlay'></div>
+
             <cv-nav @choose-to-view='headerSelect'></cv-nav>
 
             <div class="title-wrap" ref='titleWrap'>
@@ -132,7 +132,8 @@ var header = {
 
     mounted(){
         ScrollReveal().reveal('.arrow-wrap', { afterReveal: this.myCallback });
-        this.detectLayerLoading();
+        this.loadText();
+        // this.detectLayerLoading();
 
     },
     watch: {
