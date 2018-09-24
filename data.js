@@ -9,6 +9,20 @@
             sectionName: 'experiences',
             allExperiences: [
                 {
+                    logo: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1537750483/cv-img/download.png',
+                    role: 'Web Technologist - Association committee',
+                    company: 'Columbia University - CUSSCA',
+                    beginDate: '2018.09',
+                    endDate: 'present',
+                    activeState: true,
+                    detail: {
+                        descrip: [
+                            'Participate in affairs of Columbia University Chinese Students Association',
+                            "Work as technologist and maintain the association's official website",
+                        ],
+                    },
+                },
+                {
                     logo: './img/experience/tc.jpg',
                     role: 'Course Assistant - JavaScript Programming',
                     company: 'Teachers College, Columbia University',
@@ -51,6 +65,22 @@
                             "Assist the TC office of the Web in refreshing the college's website, assist the External Affairs Web Office in transferring current websites to the new site template in T4 content management system",
                             'Help with quality assurance testing, and other content migration tasks',
                             'Help with site style debugging and user experience improvement with CSS solutions',
+                        ],
+                    },
+                },
+                {
+                    logo: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1537753292/cv-img/logo.png',
+                    role: 'Front-End Developer',
+                    company: 'Renited',
+                    beginDate: '2017.11',
+                    endDate: '2018.01',
+                    activeState: false,
+                    detail: {
+                        descrip: [
+                            "Build company’s new landing page through the Streaming Building System Gulp",
+                            "Utilize Element UI in combined with Vue.js to beautify the user system, take part in the development of several components",
+                            "Use CSS framework Bootstrap to modify company’s previous landing page",
+                            "Communicate and collaborate with the back-end developer and product manager to enhance the user experience",
                         ],
                     },
                 },

@@ -8,6 +8,20 @@ let cvData = {
         sectionName: '工作经验',
         allExperiences: [
             {
+                logo: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1537750483/cv-img/download.png',
+                role: '网络维护和建设 - 学生会委员会',
+                company: '哥伦比亚大学 - 中国学生会',
+                beginDate: '2018.09',
+                endDate: 'present',
+                activeState: true,
+                detail: {
+                    descrip: [
+                        '作为委员会和干事参加哥伦比亚大学中国学生会的一系列活动',
+                        "作为公共媒体部门的干事参与学生学者联合会的媒体宣传和制作事物，同时参与官网的维护和建设",
+                    ],
+                },
+            },
+            {
                 logo: './img/experience/tc.jpg',
                 role: '课程助教 - JavaScript 编程',
                 company: '哥伦比亚大学教育学院',
@@ -50,6 +64,22 @@ let cvData = {
                         "协助教育学院网络办公室更新官网网站，通过T4内容管理系统完成从旧网站到新网站模版内容的迁移。",
                         '协助进行质量测试和内容管理测试。',
                         '进行网站样式测试和用户体验提升，提供相关CSS解决方案。',
+                    ],
+                },
+            },
+            {
+                logo: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1537753292/cv-img/logo.png',
+                role: '前端开发',
+                company: 'Renited',
+                beginDate: '2017.11',
+                endDate: '2018.01',
+                activeState: false,
+                detail: {
+                    descrip: [
+                        "使用 Gulp 构建工具负责公司新 Landing page 开发",
+                        "使用 Element UI 结合 Vue.js 负责用户操作系统界面美化和修改，开发少数组件",
+                        "使用 Bootstrap 框架修改公司旧 Landing page",
+                        "和产品经理以及后端工程师沟通协作，完善用户体验",
                     ],
                 },
             },
