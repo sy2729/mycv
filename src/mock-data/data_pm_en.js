@@ -23,7 +23,7 @@
                     },
                 },
                 {
-                    logo: './img/experience/tc.jpg',
+                    logo: './img/tc.jpg',
                     role: 'Course Assistant - JavaScript Programming',
                     company: 'Teachers College, Columbia University',
                     beginDate: '2018.09',
@@ -38,7 +38,7 @@
                     },
                 },
                 {
-                    logo: './img/experience/atos.png',
+                    logo: './img/atos.png',
                     role: 'UX Design Intern',
                     company: 'Atos',
                     beginDate: '2018.05',
@@ -54,7 +54,7 @@
                     },
                 },
                 {
-                    logo: './img/experience/tc.jpg',
+                    logo: './img/tc.jpg',
                     role: 'Web Developer',
                     company: 'Teachers College, Columbia University',
                     beginDate: '2018.03',
@@ -85,7 +85,7 @@
                     },
                 },
                 {
-                    logo: './img/experience/baicizhan.png',
+                    logo: './img/baicizhan.png',
                     role: 'Content Operation',
                     company: 'Chaoyouai Technology',
                     beginDate: '2017.01',
@@ -109,6 +109,10 @@
                     extent: '70'
                 },
                 {
+                    name: 'Sass / Parcel / Webpack',
+                    extent: '70'
+                },
+                {
                     name: 'UX / UI Design',
                     extent: '60'
                 },
@@ -117,8 +121,16 @@
                     extent: '60'
                 },
                 {
-                    name: 'Vue / Riot / Firebase / MVC ...',
+                    name: 'Vue&Vuex / Riot / Firebase / MVC ...',
                     extent: '70'
+                },
+                {
+                    name: 'React&Redux',
+                    extent: '50'
+                },
+                {
+                    name: 'Wechat Mini-Program',
+                    extent: '60'
                 },
                 {
                     name: 'Search Engine Optimization (SEO)',

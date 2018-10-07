@@ -22,7 +22,7 @@ let cvData = {
                 },
             },
             {
-                logo: './img/experience/tc.jpg',
+                logo: './img/tc.jpg',
                 role: '课程助教 - JavaScript 编程',
                 company: '哥伦比亚大学教育学院',
                 beginDate: '2018.09',
@@ -37,7 +37,7 @@ let cvData = {
                 },
             },
             {
-                logo: './img/experience/atos.png',
+                logo: './img/atos.png',
                 role: '用户体验设计实习生（UX Design Intern）',
                 company: '源讯科技（Atos）- 美国',
                 beginDate: '2018.05',
@@ -53,7 +53,7 @@ let cvData = {
                 },
             },
             {
-                logo: './img/experience/tc.jpg',
+                logo: './img/tc.jpg',
                 role: '网络开发实习',
                 company: '哥伦比亚大学教育学院',
                 beginDate: '2018.03',
@@ -84,7 +84,7 @@ let cvData = {
                 },
             },
             {
-                logo: './img/experience/baicizhan.png',
+                logo: './img/baicizhan.png',
                 role: '内容编辑和运营',
                 company: '百词斩',
                 beginDate: '2017.01',
