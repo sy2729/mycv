@@ -54,5 +54,13 @@ export default {
         this.$store.dispatch('judgeSystemLanguage', this.$route.path)
       }
   },
+  // watch: {
+  //   '$route'(to, from) {
+  //      let route = this.$route.path;
+  //       if(this.cvData.works === undefined) {
+  //         this.$store.dispatch('judgeSystemLanguage', this.$route.path)
+  //       }      
+  //   }
+  // }
 }
 </script>

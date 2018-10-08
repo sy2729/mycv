@@ -4,7 +4,10 @@
             <cv-nav @choose-to-view='headerSelect'></cv-nav>
 
             <div class="title-wrap" ref='titleWrap'>
-                <h4 class="subtitle">{{header.greeting || 'nihao'}}</h4>
+                <h4 class="subtitle" v-if='header.target'>
+                    尊敬的<span class="subtitle subtitle-target">{{header.target}}</span>面试官您好，我是
+                </h4>
+                <h4 class="subtitle" v-else>{{header.greeting || 'nihao'}}</h4>
                 <h1 class="title">{{header.name || 'Wait Please'}}</h1>
                 <div class='arrow-wrap' @click=arrowScroll ref='arrow'><i class="fa fa-arrow-down"></i></div>
             </div>
@@ -150,7 +153,12 @@ export default {
 
         .subtitle {
             font-weight: 100;
-            
+
+            .subtitle-target {
+                font-size: 1.2em;
+                color: $theme;
+                font-weight: bold;
+            }
         }
 
         .title {

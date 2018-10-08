@@ -28,6 +28,11 @@ export default new Router({
       path: '/pm/mafengwo',
       name: 'pm/mafengwo',
       component: () => import(/* webpackChunkName: "about" */ './views/PM.vue')
+    },
+    {
+      path: '/pm/aiqiyi',
+      name: 'pm/aiqiyi',
+      component: () => import(/* webpackChunkName: "about" */ './views/PM.vue')
     }
   ]
 })

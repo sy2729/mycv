@@ -17,7 +17,12 @@ export default new Vuex.Store({
                 mafengwo: {
                     zh: 'data_pm_mafengwo_zh',
                     en: 'data_pm_mafengwo_en',
-                }
+                },
+                aiqiyi: {
+                    zh: 'data_pm_aiqiyi_zh',
+                    // en: 'data_pm_mafengwo_en',
+                },
+
             },
             // ...
         },
@@ -30,13 +35,27 @@ export default new Vuex.Store({
     mutations: {
         importData(data, fileContent){
             if(this.state.currentLanguage === 'en') {
-                import(`@/mock-data/${fileContent['en']}.js`).then((e) => {
-                     this.state.cvData = e.cvData;
-                })
+                if(fileContent.en) {
+                    import(`@/mock-data/${fileContent['en']}.js`).then((e) => {
+                        this.state.cvData = e.cvData;
+                   })
+                }else {
+                    this.state.currentLanguage = 'zh'
+                    import(`@/mock-data/${fileContent['zh']}.js`).then((e) => {
+                        this.state.cvData = e.cvData;
+                   })
+                };
             }else {
-                import(`@/mock-data/${fileContent['zh']}.js`).then((e) => {
-                    this.state.cvData = e.cvData;
-               })
+                if(fileContent.zh) {
+                    import(`@/mock-data/${fileContent['zh']}.js`).then((e) => {
+                        this.state.cvData = e.cvData;
+                   })
+                }else {
+                    this.state.currentLanguage = 'en'
+                    import(`@/mock-data/${fileContent['en']}.js`).then((e) => {
+                        this.state.cvData = e.cvData;
+                   })
+                }
             }
         },
 
