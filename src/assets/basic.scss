@@ -150,16 +150,17 @@ a {color: inherit; text-decoration: none};
                 transform: translateY(-50%) scale(1);
 
                 &.active {
-                    animation: slideBackForth 3s ease-in-out forwards;
+                    // animation: slideBackForth 3s ease-in-out forwards;
+                    // opacity: 1 !important;
                 }
 
-                @keyframes slideBackForth {
-                    0%{left: 50%; opacity: 0; z-index: 2;}
-                    50%{left: 0; opacity: 1; z-index: 2; transform: translateY(-50%) scale(1) translateX(-100%);}
-                    51%{left: 0; opacity: 1; z-index: 3; transform: translateY(-50%) scale(1) translateX(-100%);}
+                // @keyframes slideBackForth {
+                //     0%{left: 50%; opacity: 0; z-index: 2;}
+                //     50%{left: 0; opacity: 1; z-index: 2; transform: translateY(-50%) scale(1) translateX(-100%);}
+                //     51%{left: 0; opacity: 1; z-index: 3; transform: translateY(-50%) scale(1) translateX(-100%);}
                     
-                    100%{left: 20%; z-index: 3;}
-                }
+                //     100%{left: 20%; z-index: 3;}
+                // }
             }
         }
 

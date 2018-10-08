@@ -136,14 +136,14 @@ export default {
         .title-wrap {
         position: absolute;
         top: 50%;
-        left: 50%;
+        // left: 50%;
         transform: translateY(-50%) scale(1.3);
         color: #fff;
         padding: 20px 0;
         opacity: 0;
         transition: all 3s;
+        left: 15%;
         &.active {
-            left: 15%;
             opacity: 1;
         }
         
