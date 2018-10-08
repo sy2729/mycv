@@ -2,7 +2,7 @@
     <div class="skill-section each-section" :style="{background: sectionColor}">
         <section-title :order=order :name=skills.sectionName></section-title>
         <div class='section-content'>
-            <p class="content-description">{{skills.description}}</p>
+            <p class="content-description" v-html='skills.description'></p>
             <div :class="['skill-wrap', {active: skillBarShort}]">
                 <div class="each-skill" v-for='(i, index) in skills.allSkills' :key=index>
                     <div class="bar-info-wrap">

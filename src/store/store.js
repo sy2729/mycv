@@ -13,8 +13,12 @@ export default new Vuex.Store({
             },
             pm: {
                 zh: 'data_pm_zh',
-                en: 'data_pm_en'
-            }
+                en: 'data_pm_en',
+                mafengwo: {
+                    zh: 'data_pm_mafengwo_zh',
+                    en: 'data_pm_mafengwo_en',
+                }
+            },
             // ...
         },
         cvData: {},
@@ -36,6 +40,23 @@ export default new Vuex.Store({
             }
         },
 
+        analyseRoute(data, routeData){
+            let fileContent;
+            
+            let route = routeData.split('/')
+            if (route.length <= 1){
+                fileContent = this.state.files[route[0]];
+            }else {
+                route.shift();
+                fileContent = this.state.files;
+                route.forEach((i)=>{
+                    fileContent = fileContent[i];
+                })
+            }
+            this.state.fileContent = fileContent;
+            // return fileContent
+        }
+
     },
 
     actions: {
@@ -52,15 +73,18 @@ export default new Vuex.Store({
             } else {
                 this.state.currentLanguage = 'en';
             }
-            let fileContent = this.state.files[data];
-            context.commit('importData', fileContent);
+
+            // console.log(data)
+            context.commit('analyseRoute', data);
+            context.commit('importData', this.state.fileContent);
         },
 
         switchLanguage(context, data){
             let {language, route_name} = data;
             this.state.currentLanguage = language;
-            let fileContent = this.state.files[route_name];
-            context.commit('importData', fileContent);
+
+            context.commit('analyseRoute', route_name);
+            context.commit('importData', this.state.fileContent);
         }
     }
 })

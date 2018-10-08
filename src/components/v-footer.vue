@@ -5,7 +5,7 @@
             </div>
             <div class="footer-footer">
                 <ul class="social-media">
-                    <li v-for='(i, index) in media' :key='index'><a :href='i.link'>{{i.name}}</a></li>
+                    <li v-for='(i, index) in media' :key='index'><a target='_blank' :href='i.link'>{{i.name}}</a></li>
                 </ul>
 
                 <img :src=logoImg>

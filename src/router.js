@@ -23,6 +23,11 @@ export default new Router({
       path: '/pm',
       name: 'pm',
       component: () => import(/* webpackChunkName: "about" */ './views/PM.vue')
+    },
+    {
+      path: '/pm/mafengwo',
+      name: 'pm/mafengwo',
+      component: () => import(/* webpackChunkName: "about" */ './views/PM.vue')
     }
   ]
 })

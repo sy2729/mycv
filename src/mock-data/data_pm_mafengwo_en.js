@@ -2,7 +2,7 @@
 
     let cvData = {
         header: {
-            greeting: `Hello, I'm`,
+            greeting: `Dear HR of Mafengwo, I'm`,
             name: 'Shuai Yuan',
         },
         experiences: {

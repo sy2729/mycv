@@ -82,7 +82,9 @@ export default {
             this.scrollTo(value, 500);
         },
         switchLang(data){
-            let route_name = this.$route.name;
+            // console.log(this.$route.path)
+            let route_name = this.$route.path;
+            route_name = route_name.length <= 1?this.$route.name:this.$route.path;
             if(data==='en' && this.$props.currentLanguage !== 'en') {
                 this.$store.dispatch('switchLanguage', {route_name, language: data})
             } else if (data === 'zh' && this.$props.currentLanguage !== 'zh') {

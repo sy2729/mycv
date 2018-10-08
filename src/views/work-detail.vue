@@ -7,12 +7,12 @@
                 <h2 class='title'>{{currentWork.name}}</h2>
                 <span class='t-color current-work-type'>{{currentWork.type}}</span>
                 <div class="work-link-wrap" v-if="currentWork.type==='web'">
-                    <a class='link-preview' :href='currentWork.link.preview' title="preivew"><span><i class='fa fa-eye'></i>preview</span></a>
-                    <a :href='currentWork.link.repo' title="repo"><span><i class='fa fa-github'></i>repo</span></a>
+                    <a target='_blank' class='link-preview' :href='currentWork.link.preview' title="preivew"><span><i class='fa fa-eye'></i>preview</span></a>
+                    <a target='_blank' :href='currentWork.link.repo' title="repo"><span><i class='fa fa-github'></i>repo</span></a>
                 </div>
                 <div class="work-link-wrap" v-if="currentWork.type==='video'">
-                    <a class='link-preview' :href='currentWork.link.youtube' title="YouTube - Worldwide Audience"><span><i class='fa fa-youtube'></i></span></a>
-                    <a :href='currentWork.link.bili' title="bilibili - Chinese Audience"><span><i class='iconfont'>&#xe607;</i></span></a>
+                    <a target='_blank' class='link-preview' :href='currentWork.link.youtube' title="YouTube - Worldwide Audience"><span><i class='fa fa-youtube'></i></span></a>
+                    <a target='_blank' :href='currentWork.link.bili' title="bilibili - Chinese Audience"><span><i class='iconfont'>&#xe607;</i></span></a>
                 </div>
                 <ul class='tags'>
                     <li v-for='(i, index) in currentWork.tags' :key='index'>{{i}}</li>
