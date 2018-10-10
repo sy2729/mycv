@@ -22,6 +22,10 @@ export default new Vuex.Store({
                     zh: 'data_pm_aiqiyi_zh',
                     // en: 'data_pm_mafengwo_en',
                 },
+                byteDance: {
+                    zh: 'data_pm_byteDance_zh',
+                    // en: 'data_pm_mafengwo_en',
+                },
 
             },
             // ...

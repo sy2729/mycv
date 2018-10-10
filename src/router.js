@@ -33,6 +33,16 @@ export default new Router({
       path: '/pm/aiqiyi',
       name: 'pm/aiqiyi',
       component: () => import(/* webpackChunkName: "about" */ './views/PM.vue')
+    },
+    {
+      path: '/pm/byteDance',
+      name: 'pm/byteDance',
+      component: () => import(/* webpackChunkName: "about" */ './views/PM.vue')
+    },
+    {
+      path: '*',
+      name: 'not-found',
+      component: () => import(/* webpackChunkName: "about" */ './views/notFound.vue')
     }
   ]
 })
