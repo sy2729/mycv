@@ -26,6 +26,10 @@ export default new Vuex.Store({
                     zh: 'data_pm_byteDance_zh',
                     // en: 'data_pm_mafengwo_en',
                 },
+                bilibili: {
+                    zh: 'data_pm_bilibili_zh',
+                    // en: 'data_pm_mafengwo_en',
+                },
 
             },
             // ...

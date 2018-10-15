@@ -155,7 +155,7 @@ export default {
             font-weight: 100;
 
             .subtitle-target {
-                font-size: 1.2em;
+                font-size: 32px;
                 color: $theme;
                 font-weight: bold;
             }
