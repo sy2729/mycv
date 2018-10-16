@@ -63,9 +63,16 @@ export default {
     computed: {
         ...mapState([
             'cvData',
-            'currentLanguage',
             'workTypes'
         ]),
+        currentLanguage: {
+            set: function(value) {
+                this.$store.state.currentLanguage = value;
+            },
+            get: function(value) {
+                return this.$store.state.currentLanguage
+            }
+        }
         // currentWork(){
         //     return this.$store.getters.cvData.works
         // }
@@ -93,6 +100,8 @@ export default {
             this.$refs.detail.scrollTop = 0;
         },
         changeVideo(data){
+            this.currentLanguage = 'zh';
+            return
             if(data === 'en' && this.currentLanguage !== 'en') {
                 this.currentLanguage = 'en';
             } else if (data === 'zh' && this.currentLanguage !== 'zh') {
