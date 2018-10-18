@@ -45,6 +45,11 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/PM.vue')
     },
     {
+      path: '/pm/chaoyouai',
+      name: 'pm/chaoyouai',
+      component: () => import(/* webpackChunkName: "about" */ './views/PM.vue')
+    },
+    {
       path: '*',
       name: 'not-found',
       component: () => import(/* webpackChunkName: "about" */ './views/notFound.vue')

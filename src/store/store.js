@@ -30,6 +30,10 @@ export default new Vuex.Store({
                     zh: 'data_pm_bilibili_zh',
                     // en: 'data_pm_mafengwo_en',
                 },
+                chaoyouai: {
+                    zh: 'data_pm_chaoyouai_zh',
+                    // en: 'data_pm_mafengwo_en',
+                },
 
             },
             // ...
@@ -42,26 +46,43 @@ export default new Vuex.Store({
     },
     mutations: {
         importData(data, fileContent){
+            this.loopDataIn = (newD, oldD)=>{
+                for(let key in oldD.base) {
+                    if(!newD.cvData[key]) {
+                        newD.cvData[key] = oldD.base[key];
+                    }
+                };
+                return newD.cvData;
+            }
+
             if(this.state.currentLanguage === 'en') {
                 if(fileContent.en) {
                     import(`@/mock-data/${fileContent['en']}.js`).then((e) => {
-                        this.state.cvData = e.cvData;
+                        import('@/mock-data/data_base_en.js').then((f)=>{
+                            this.state.cvData = this.loopDataIn(e,f)
+                        })
                    })
                 }else {
                     this.state.currentLanguage = 'zh'
                     import(`@/mock-data/${fileContent['zh']}.js`).then((e) => {
-                        this.state.cvData = e.cvData;
+                        import('@/mock-data/data_base_zh.js').then((f)=>{
+                            this.state.cvData = this.loopDataIn(e,f)
+                        })
                    })
                 };
             }else {
                 if(fileContent.zh) {
                     import(`@/mock-data/${fileContent['zh']}.js`).then((e) => {
-                        this.state.cvData = e.cvData;
+                        import('@/mock-data/data_base_zh.js').then((f)=>{
+                            this.state.cvData = this.loopDataIn(e,f)
+                        })
                    })
                 }else {
                     this.state.currentLanguage = 'en'
                     import(`@/mock-data/${fileContent['en']}.js`).then((e) => {
-                        this.state.cvData = e.cvData;
+                        import('@/mock-data/data_base_en.js').then((f)=>{
+                            this.state.cvData = this.loopDataIn(e,f)
+                        })
                    })
                 }
             }
@@ -102,8 +123,8 @@ export default new Vuex.Store({
             }
 
             // console.log(data)
-            context.commit('analyseRoute', data);
-            context.commit('importData', this.state.fileContent);
+            context.commit('analyseRoute', data)
+            context.commit('importData', this.state.fileContent)
         },
 
         switchLanguage(context, data){
