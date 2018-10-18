@@ -1,0 +1,130 @@
+<template>
+    <footer :style="{background: sectionColor}">
+            <div class="footer-content">
+                <p>Get in touch with me!<a :href="'mailto:' + email">Click Here</a></p>
+            </div>
+            <div class="footer-footer">
+                <ul class="social-media">
+                    <li v-for='(i, index) in media' :key='index'><a target='_blank' :href='i.link'>{{i.name}}</a></li>
+                </ul>
+
+                <img :src=logoImg>
+
+                <p class='creat-stamp'>&copy; 2018 Made in China</p>
+
+                <div class="credit-sign" @click='openCredit'>?</div>
+                <transition name='jump'>
+                    <credit-widget v-if="creditOpened" @closeWidget=closeWidget></credit-widget>
+                </transition>
+
+            </div>
+    </footer>
+</template>
+
+<script>
+import creditWidget from './basic/credit-widget';
+
+export default {
+    name: 'vFooter',
+    data: function(){
+        return {
+            sectionColor: '#202020',
+            email: 'sy2729@tc.columbia.edu',
+            logoImg: './img/logo.png',
+            media: [
+                {
+                    name: 'Blog',
+                    link: 'https://sy2729.github.io/',
+                },
+                {
+                    name: 'Github',
+                    link: 'https://github.com/sy2729',
+                },
+            ],
+            creditOpened: false,
+        }
+    },
+    methods: {
+        openCredit(){
+            this.creditOpened = true;
+        },
+        closeWidget(){
+            this.creditOpened = false;
+        }
+    },
+
+    components: {
+        creditWidget,
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+    footer {
+        .footer-content {
+            height: 210px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #f4f4f4;
+            
+            p {
+                font-size: 1.2em;
+
+                a {
+                    color: inherit;
+                }
+            }
+        }
+
+        .footer-footer {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            color: #A0A0A0;
+            height: 60px;
+            background: #1D1D1D;
+            position: relative;
+
+            .social-media {
+                display: flex;
+                li {
+                    margin: 0 10px;
+                    list-style: none;
+
+                    a {
+                        color: inherit;
+                        text-decoration: none;
+                    }
+                }
+            }
+
+            img {
+                width: 30px;
+            }
+
+            .creat-stamp {
+                text-transform: uppercase;
+            }
+
+            .credit-sign {
+                position: absolute;
+                height: 15px;
+                width: 15px;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                border-radius: 50%;
+                background: #A0A0A0;
+                color: #1D1D1D;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 13px;
+                cursor: pointer;
+            }
+        }
+    }
+</style>
+

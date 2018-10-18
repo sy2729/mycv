@@ -1,0 +1,299 @@
+* {margin: 0; padding: 0; box-sizing: border-box;}
+p, h1, h2, h3, h4, h5, li {
+    line-height: 1.5em; 
+    font-family: Arial, Helvetica, sans-serif;
+}
+p, li, span {font-size: 14px;}
+$activeBoxShadow: 2px 2px 10px 0 rgba(201, 54, 57, 0.1), -2px -2px 10px 0 rgba(201, 54, 57, 0.1);
+a {color: inherit; text-decoration: none};
+.clearfix:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.t-color {
+    color: $theme;    
+}
+.t-center {text-align: center;}
+.t-warning {color: $theme; font-weight: bold; text-decoration: underline;}
+.each-clickable, .header-bar {
+    cursor: pointer;
+    position: relative;
+    &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 3px;
+        background: $theme;
+        top: 0;
+        height: 100%;
+        opacity: 0;
+        transition: opacity .4s;
+    }
+
+    &:hover:after{
+        opacity: 1;
+    }
+
+    &.viewDetail:after {
+        opacity: 1;
+    }
+}
+
+.header-bar {
+    cursor: unset;
+    background: #ddd;
+    pointer-events: none;
+    &:after {
+        opacity: 1;
+    }
+}
+
+// alibaba icon-font
+@font-face {
+  font-family: 'iconfont';  /* project id 810977 */
+  src: url('//at.alicdn.com/t/font_810977_jbh6layqzx.eot');
+  src: url('//at.alicdn.com/t/font_810977_jbh6layqzx.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_810977_jbh6layqzx.woff') format('woff'),
+  url('//at.alicdn.com/t/font_810977_jbh6layqzx.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_810977_jbh6layqzx.svg#iconfont') format('svg');
+}
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.each-section {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    padding: 75px 125px 75px 20px;
+    color: #222;
+
+
+    .section-title-wrap {
+         // width: 30%;
+         min-width: 300px;
+         font-weight: thin;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+
+         .section-title {
+             // max-width: 50px;
+             text-transform: uppercase;
+         }
+
+     }
+     .section-content {
+         // flex: 1 1 auto;
+         min-width: 280px;
+         width: calc(100% - 300px);
+         // max-width: 400px;
+         
+         .content-description {
+             color: #EAB2B2;
+             font-size: 0.8em;
+             margin-bottom: 30px;
+             width: 60%;
+             min-width: 280px;
+         }
+     }
+}
+.switch-type {
+    ul.type-wrap {
+        display: flex;
+        flex-direction: row !important;
+        margin: 20px 0;
+        list-style: none;
+        color: #9B9B9B;
+
+        li {
+            cursor: pointer;
+            margin-right: 10px;
+            &.active {
+                color: $theme;
+            }
+            &:hover {
+                color: $theme;
+            }
+            .type-divide {
+                color: #9B9B9B;
+                margin-left: 10px;
+            }
+        }
+    }
+}
+
+
+@media screen and ( max-width:744px) {
+    #app {
+
+        .header {
+            background-attachment: scroll;
+            
+            .header-layer {
+                background-attachment: scroll;
+
+            }
+
+            nav {
+                .nav-options {
+                    flex: 1 1 auto;
+                }
+            }
+
+            .title-wrap {
+                transform: translateY(-50%) scale(1);
+
+                &.active {
+                    // animation: slideBackForth 3s ease-in-out forwards;
+                    // opacity: 1 !important;
+                }
+
+                // @keyframes slideBackForth {
+                //     0%{left: 50%; opacity: 0; z-index: 2;}
+                //     50%{left: 0; opacity: 1; z-index: 2; transform: translateY(-50%) scale(1) translateX(-100%);}
+                //     51%{left: 0; opacity: 1; z-index: 3; transform: translateY(-50%) scale(1) translateX(-100%);}
+                    
+                //     100%{left: 20%; z-index: 3;}
+                // }
+            }
+        }
+
+        .each-section {
+            padding: 125px 50px;
+            .section-title-wrap {
+                margin: 10px auto;
+
+                .section-title {
+                    text-align: center;
+                }
+            }
+
+            .section-content {
+                margin: 10px auto;
+                width: 100%;
+
+                .content-description {
+                    width: 100%;
+                }
+
+                .each-experience {
+                    padding: 20px;
+                    margin: 10px auto 0;
+                    height: unset;
+
+                    &.viewDetail {
+                        height: unset;
+                        min-height: 180px;
+                        overflow-y: unset;
+                    }
+                }
+
+                .each-education {
+                    width: 100%;
+                    margin:10px auto 0;
+                }
+            }
+        }
+        .work-detail {
+            flex-direction: column;
+
+
+            .close {
+                transform: rotate(45deg) scale(0.6);
+            }
+            .current-content-wrap {
+                padding: 0;
+                margin: 0 auto;
+            }
+
+            .sideBar {
+                margin-top: 30px;
+                min-width: unset;
+                width: 100%;
+            }
+        }
+
+        .work-section {
+            .next-btn {
+                right: 50px !important;
+                transform: translate(50%, 50%);
+            }
+        }
+    }
+}
+
+@media screen and ( max-width:544px) {
+    #app {
+        .header {
+            nav {
+                img {
+                    width: 10%;
+                }
+            }
+        }
+
+        .each-section {
+            padding: 75px 15px;
+        }
+
+        .skill-section {
+            min-height: 100vh;
+        }
+
+        .work-section {
+
+            .switch-type {
+                .type-wrap {
+                    float: unset;
+                    justify-content: center;
+                }
+            }
+
+            .next-btn {
+                transform: translate(100%, 50%);
+            }
+        }
+
+         .work-detail {
+             padding: 0;
+
+             .current-content-wrap {
+                 .title-wrap {
+                     .current-work-type {
+                         position: unset;
+                     }
+                 }
+             }
+         }
+    }
+}
+
+
+// vue transition animation
+.show-content-enter-active {
+  transition: opacity 1s;
+}
+
+.show-content-leave-active {
+    opacity: 0;
+}
+
+.show-content-enter, .show-content-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
+.jump-enter-active, .jump-leave-active {
+  transition: transform .4s ease-in-out;
+//   transition: opacity 1s;
+}
+
+.jump-enter, .jump-leave-to /* .fade-leave-active below version 2.1.8 */ {
+//   opacity: 0;
+    transform: translateY(60px);
+}
