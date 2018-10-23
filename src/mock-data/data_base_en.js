@@ -283,8 +283,8 @@
                 {
                     name: 'Atos OneSource Landing Page',
                     link: {
-                        preview: `https://sy2729.github.io/atosonesource-market/dist/MARKET.html`,
-                        repo: `https://github.com/sy2729/atosonesource-market`
+                        preview: `https://sy2729.github.io/market-vue-reconstruct/dist/`,
+                        repo: `https://github.com/sy2729/market-vue-reconstruct`
                     },
                     img: 'http://res.cloudinary.com/shuaiyuan/image/upload/q_60/v1535382853/cv-img/work/atos-landing/atos-landing-2.png',
                     id: 2,
