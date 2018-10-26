@@ -543,7 +543,7 @@
                 },
                 {
                     name: 'Where AM I From',
-                    img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535384138/cv-img/work/where-am-I-from/where-am-I-from.png',
+                    img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1540560996/cv-img/work/where-am-I-from/IMG_0273.gif',
                     id: 3,
                     youtubeID: '8kWDH6cejB4',
                     biliID: '14943823',
@@ -595,7 +595,7 @@
                 },
                 {
                     name: 'Environmentalism Trip',
-                    img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535431905/cv-img/work/Eenvironmentalism-trip/maxresdefault.webp',
+                    img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1540561671/cv-img/work/Eenvironmentalism-trip/IMG_0278.gif',
                     id: 3,
                     youtubeID: 'hGptZmEDqkY',
                     biliID: '13016424',
@@ -673,7 +673,7 @@
                 },
                 {
                     name: 'GH5 Unboxing & Sample Shot Vlog',
-                    img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535433653/cv-img/work/gh5-unboxing/gh5-unboxing.png',
+                    img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1540561819/cv-img/work/gh5-unboxing/IMG_0276.gif',
                     id: 3,
                     youtubeID: '-1ZyOfgzbkM',
                     biliID: '20628682',
