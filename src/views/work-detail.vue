@@ -8,6 +8,7 @@
         <!-- {{currentWork}}
         {{currentWorkId}} -->
         <section class='current-content-wrap'>
+            {{currentWork}}
             <div class='title-wrap'>
                 <h2 class='title'>{{currentWork.name}}</h2>
                 <span class='t-color current-work-type'>{{currentWork.type}}</span>
@@ -102,6 +103,7 @@ export default {
     },
     methods: {
         switchWork(data){
+            // console.log(data)
             this.currentWork = data;
             this.$refs.detail.scrollTop = 0;
         },
@@ -157,7 +159,7 @@ export default {
         position: relative;
 
         .bg-cover {
-            position: absolute;
+            position: fixed;
             z-index: 9;
             top: 0;
             left: 0;

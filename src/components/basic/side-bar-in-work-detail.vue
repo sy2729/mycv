@@ -2,7 +2,7 @@
     <aside class='sideBar'>
         <switch-type @switch-type=switchType :types=worktypes></switch-type>
         <ul>
-            <router-link v-for='(i, index) in filteredWorks' :key='index' :to='`/work?id=${index}`'>
+            <router-link v-for='(i, index) in filteredWorks' :key='index' :to='`/work?id=${i.id - 1}`'>
                 <li :class="{'header-bar': i.id === currentId}" @click='switchWork(i.id)' :data-id=i.id ><span class="li-name">{{i.name}}</span> <span class="li-tag">{{i.type}}</span></li>
             </router-link>
         </ul>
@@ -24,13 +24,14 @@ export default {
         switchWork(data){
             this.filteredWorks.map((i)=>{
                 if(data === i.id) {
+                    console.log(i)
                     this.$emit('switch-work-detail', i)
                 }
             })
         },
 
         switchType(data) {
-            console.log(data)
+            // console.log(data)
             if (data.toLowerCase() === 'all') {
                 this.filteredWorks = this.works;
             } else {
