@@ -8,7 +8,6 @@
         <!-- {{currentWork}}
         {{currentWorkId}} -->
         <section class='current-content-wrap'>
-            {{currentWork}}
             <div class='title-wrap'>
                 <h2 class='title'>{{currentWork.name}}</h2>
                 <span class='t-color current-work-type'>{{currentWork.type}}</span>

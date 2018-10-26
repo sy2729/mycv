@@ -24,7 +24,6 @@ export default {
         switchWork(data){
             this.filteredWorks.map((i)=>{
                 if(data === i.id) {
-                    console.log(i)
                     this.$emit('switch-work-detail', i)
                 }
             })
