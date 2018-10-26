@@ -667,6 +667,48 @@ let base = {
                 tags: ['视频', '生活'],
                 type: 'video',
             },
+            {
+                name: '快餐店点餐系统管理界面模拟',
+                link: {
+                    preview: 'https://sy2729.github.io/restaurant-pos-sys/dist/#/',
+                    repo: 'https://github.com/sy2729/restaurant-pos-sys/'
+                },
+                img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1540484019/cv-img/work/pos-system/Screen_Shot_2018-10-25_at_12.13.04_PM.png',
+                id: undefined,
+                descrip: [
+                    {
+                        content: `借助饿了么Element UI框架，使用Vue-cli搭建快餐店收银点餐系统，实现点餐，计费结账等功能`,
+                        type: 'text',
+                    },
+                    {
+                        content: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1540484019/cv-img/work/pos-system/Screen_Shot_2018-10-25_at_12.13.04_PM.png',
+                        type: 'img'
+                    }
+                ],
+                tags: ['网页开发', 'Vue', 'Element-UI'],
+                type: 'web',
+            },
+            {
+                name: '纽约时报网交互效果实现并封装开源',
+                link: {
+                    preview: 'https://sy2729.github.io/nytimes-scrolling/index.html',
+                    repo: 'https://github.com/sy2729/nytimes-scrolling'
+                },
+                img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1540484420/cv-img/work/nytimes-scrolling/Screen_Shot_2018-10-25_at_12.19.48_PM.png',
+                id: undefined,
+                descrip: [
+                    {
+                        content: `纽约时报官网上呈现的<a href="https://www.nytimes.com/interactive/2018/10/18/nyregion/new-york-city-inequality-gentrification.html?action=click&module=Top%20Stories&pgtype=Homepage">页面滚动式动态叙事效果</a>，看了之后很喜欢，于是在jQuery的基础上仿写了该效果，并且在Github上开源`,
+                        type: 'text',
+                    },
+                    {
+                        content: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1540484420/cv-img/work/nytimes-scrolling/Screen_Shot_2018-10-25_at_12.19.48_PM.png',
+                        type: 'img'
+                    }
+                ],
+                tags: ['Jquery', 'js插件', '网页特效'],
+                type: 'web',
+            }
 
         ]
     },

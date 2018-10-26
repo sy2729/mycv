@@ -1,5 +1,10 @@
 <template>
-    <div class='work-detail' ref='detail'>
+    <div class='work-detail' ref='detail' @click="clearFocus">
+        <div class="bg-cover" v-if="focusedImage">
+            <div class="focused-content">
+                <img :src='focusedImage' :alt="focusedImage">
+            </div>
+        </div>
         <!-- {{currentWork}}
         {{currentWorkId}} -->
         <section class='current-content-wrap'>
@@ -24,7 +29,7 @@
                         <iframe :src="i.content.youtube" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen v-if="i.type==='video' && currentLanguage === 'en'"></iframe>
                         <iframe :src="i.content.bili" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen v-if="i.type==='video' && currentLanguage === 'zh'"></iframe>
                     </transition>
-                    <img :src='i.content' v-if="i.type==='img'">
+                    <img :src='i.content' v-if="i.type==='img'" v-on:click.stop='viewLargePicture(i)'>
                     <p v-html='i.content' v-if="i.type==='text'"></p>
                 </div>
 
@@ -58,6 +63,7 @@ export default {
             currentWork: {},
             allWorks: [],
             currentWorkId: undefined,
+            focusedImage: undefined
         }
     },
     computed: {
@@ -110,6 +116,12 @@ export default {
         },
         getId(){
            this.currentWorkId = this.$route.query.id;
+        },
+        viewLargePicture(data) {
+            this.focusedImage = data.content;
+        },
+        clearFocus() {
+            this.focusedImage = undefined;
         }
     },
     beforeMount(){
@@ -142,6 +154,27 @@ export default {
         align-items: baseline;
         background: #F6F6F6;
         z-index: 5;
+        position: relative;
+
+        .bg-cover {
+            position: absolute;
+            z-index: 9;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+            overflow: overlay;
+
+            .focused-content {
+                width: 70%; 
+                margin: 30px auto;
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+        }
 
 
         .current-content-wrap {
@@ -240,12 +273,12 @@ export default {
                 }
 
                 p {
-                        margin: 20px 0;
-                        line-height: 2em;
+                    margin: 20px 0;
+                    line-height: 2em;
 
-                        a {
-                            color: $theme;
-                        }
+                    a {
+                        color: $theme !important;
+                    }
 
                     &.t-center {
                         margin: 20px 0 -25px;
@@ -257,6 +290,7 @@ export default {
                     width: 70%;
                     margin: 30px auto;
                     min-width: 260px;
+                    cursor: pointer;
                     img {
                         width: 90%;
                         height: auto;
