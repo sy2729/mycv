@@ -621,7 +621,7 @@
                 },
                 {
                     name: 'Interviewing the Dilligent Chinese Girl in Columbia University',
-                    img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535433480/cv-img/work/interview-columbia/interview-columbia.png',
+                    img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1540596193/cv-img/work/interview-columbia/IMG_0282.gif',
                     id: 3,
                     youtubeID: 'ALUSbmb9kP4',
                     biliID: '16099951',
@@ -647,7 +647,7 @@
                 },
                 {
                     name: 'Bachelor Graduation Ceremony Video in CCNU',
-                    img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535433401/cv-img/work/ccnu-graduation/ccnu-graduation.webp',
+                    img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1540596236/cv-img/work/ccnu-graduation/IMG_0281.gif',
                     id: 3,
                     youtubeID: 'ZdtILGuo6IQ',
                     biliID: '11355324',
