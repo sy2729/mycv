@@ -1,7 +1,11 @@
 const path = require('path')
 
 module.exports = {
-    baseUrl: './',
+    // baseUrl: './',
+    baseUrl: '../docs',
+    // baseUrl: process.env.NODE_ENV === 'production'
+    // ? '/my-project/'
+    // : '/',
     chainWebpack: config => {
         const types = ['vue-modules', 'vue', 'normal-modules', 'normal']
         types.forEach(type => addStyleResource(config.module.rule('scss').oneOf(type)))
