@@ -2,7 +2,7 @@
     <aside class='sideBar'>
         <switch-type @switch-type=switchType :types=worktypes></switch-type>
         <ul>
-            <router-link v-for='i in filteredWorks' :key='i.id' :to='`/work?id=${i.id - 1}`'>
+            <router-link v-for='i in filteredWorks' :key='i.id' :to='`/work?id=${i.id}`'>
                 <li :class="{'header-bar': i.id === currentId}" @click='switchWork(i.id)' :data-id=i.id ><span class="li-name">{{i.name}} - {{i.id}}</span> <span class="li-tag">{{i.type}}</span></li>
             </router-link>
         </ul>
@@ -30,7 +30,6 @@ export default {
         },
 
         switchType(data) {
-            // console.log(data)
             if (data.toLowerCase() === 'all') {
                 this.filteredWorks = this.works;
             } else {
@@ -53,11 +52,6 @@ export default {
             this.works = this.$props.allwork;
             this.filteredWorks = this.works;
         },
-        '$route'(to, from) {
-            
-            this.getId();
-            this.currentWork = this.$store.getters.cvData.works.allWorks[this.currentWorkId];
-        }
     },
     components: {
         switchType,

@@ -715,7 +715,7 @@ let base = {
 }
 
 base.works.allWorks.map((i, index) => {
-    i.id = index + 1;
+    i.id = index;
     i.type = i.type.toLowerCase();
 
     if (i.type === 'video') {
