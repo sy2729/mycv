@@ -2,8 +2,8 @@
     <aside class='sideBar'>
         <switch-type @switch-type=switchType :types=worktypes></switch-type>
         <ul>
-            <router-link v-for='(i, index) in filteredWorks' :key='index' :to='`/work?id=${i.id - 1}`'>
-                <li :class="{'header-bar': i.id === currentId}" @click='switchWork(i.id)' :data-id=i.id ><span class="li-name">{{i.name}}</span> <span class="li-tag">{{i.type}}</span></li>
+            <router-link v-for='i in filteredWorks' :key='i.id' :to='`/work?id=${i.id - 1}`'>
+                <li :class="{'header-bar': i.id === currentId}" @click='switchWork(i.id)' :data-id=i.id ><span class="li-name">{{i.name}} - {{i.id}}</span> <span class="li-tag">{{i.type}}</span></li>
             </router-link>
         </ul>
     </aside>
@@ -52,6 +52,11 @@ export default {
         allwork: function(val) {
             this.works = this.$props.allwork;
             this.filteredWorks = this.works;
+        },
+        '$route'(to, from) {
+            
+            this.getId();
+            this.currentWork = this.$store.getters.cvData.works.allWorks[this.currentWorkId];
         }
     },
     components: {
@@ -62,8 +67,9 @@ export default {
 
 <style lang="scss">
     .sideBar {
-            min-width: 300px;
-            width: 30%;
+            // width: 30%;
+            min-width: 400px;
+            max-width: 450px;
             display: table;
             height: 100%;
             padding: 20px;

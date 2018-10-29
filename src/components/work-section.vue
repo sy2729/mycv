@@ -3,7 +3,7 @@
         <switch-type :types=worktypes @switch-type=switchType></switch-type>
             <section-title :order=order :name=works.sectionName></section-title>
             <div class='section-content' ref='works'>
-            <router-link v-for='(i, index) in filteredWorks.allWorks' :key=i.id :to='`/work?id=${i.id}`'>
+            <router-link v-for='i in filteredWorks.allWorks' :key=i.id :to='`/work?id=${i.id}`'>
                 <each-work v-bind='i'></each-work>
             </router-link>
             </div>
