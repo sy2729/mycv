@@ -67,7 +67,6 @@ export default {
 
 <style lang="scss">
     .sideBar {
-            // width: 30%;
             min-width: 400px;
             max-width: 450px;
             display: table;
