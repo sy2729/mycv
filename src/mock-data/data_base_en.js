@@ -723,6 +723,49 @@
                     tags: ['Video', 'Life'],
                     type: 'video',
                 },
+                {
+                    name: 'New York Times Scrolling Effect Reproduction',
+                    link: {
+                        preview: 'https://sy2729.github.io/nytimes-scrolling/index.html',
+                        repo: 'https://github.com/sy2729/nytimes-scrolling'
+                    },
+                    // img: './img/work/canvas-draw/canvas-draw-2.png',
+                    img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1540484420/cv-img/work/nytimes-scrolling/Screen_Shot_2018-10-25_at_12.19.48_PM.png',
+                    id: 3,
+                    descrip: [
+                        {
+                            content: `Using jQuery to achieve the NY Times story-telling news effect, while release it as a library;`,
+                            type: 'text',
+                        },
+                        {
+                            content: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1540484420/cv-img/work/nytimes-scrolling/Screen_Shot_2018-10-25_at_12.19.48_PM.png',
+                            type: 'img'
+                        },
+                    ],
+                    tags: ['Web Dev', 'jQuery'],
+                    type: 'web',
+                },
+                {
+                    name: 'Restaurant Order Pos System Interface',
+                    link: {
+                        preview: 'https://sy2729.github.io/restaurant-pos-sys/dist/#/',
+                        repo: 'https://github.com/sy2729/restaurant-pos-sys'
+                    },
+                    img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1540484019/cv-img/work/pos-system/Screen_Shot_2018-10-25_at_12.13.04_PM.png',
+                    id: 3,
+                    descrip: [
+                        {
+                            content: `Using Vue.js and Element UI to quickly build (2 hours) Fast Food Restaurant Order Post System with ordering function`,
+                            type: 'text',
+                        },
+                        {
+                            content: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1540484019/cv-img/work/pos-system/Screen_Shot_2018-10-25_at_12.13.04_PM.png',
+                            type: 'img'
+                        },
+                    ],
+                    tags: ['Web Dev', 'jQuery'],
+                    type: 'web',
+                },
 
             ],
         },
