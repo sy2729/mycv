@@ -3,7 +3,7 @@
         <switch-type @switch-type=switchType :types=worktypes></switch-type>
         <ul>
             <router-link v-for='i in filteredWorks' :key='i.id' :to='`/work?id=${i.id}`'>
-                <li :class="{'header-bar': i.id === currentId}" @click='switchWork(i.id)' :data-id=i.id ><span class="li-name">{{i.name}} - {{i.id}}</span> <span class="li-tag">{{i.type}}</span></li>
+                <li :class="{'header-bar': i.id === currentId}" @click='switchWork(i.id)' :data-id=i.id ><span class="li-name">{{i.name}}</span> <span class="li-tag">{{i.type}}</span></li>
             </router-link>
         </ul>
     </aside>

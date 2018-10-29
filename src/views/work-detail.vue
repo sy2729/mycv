@@ -91,9 +91,13 @@ export default {
             this.currentWork = this.$store.getters.cvData.works.allWorks[this.currentWorkId];
         },
         '$route'(to, from) {
-            
             this.getId();
-            this.currentWork = this.$store.getters.cvData.works.allWorks[this.currentWorkId];
+            var currentWork = this.$store.getters.cvData.works.allWorks;
+            currentWork = currentWork.filter((i)=>{
+                return i.id === this.currentWorkId - 0;
+            });
+            this.currentWork = currentWork[0];
+            // this.currentWork = this.$store.getters.cvData.works.allWorks[this.currentWorkId];
         }
     },
 
@@ -127,6 +131,7 @@ export default {
     },
     beforeMount(){
         this.getId();
+        // console.log(this.currentWorkId)
         // let name = this.$route.name;
         let name = 'dev'
         
@@ -134,7 +139,10 @@ export default {
             this.$store.dispatch('judgeSystemLanguage', name)
         }else {
             this.allWorks = this.cvData.works.allWorks
-            this.currentWork = this.allWorks[this.currentWorkId];
+            var currentWork = this.allWorks.filter((i)=>{
+                return i.id === this.currentWorkId - 0;
+            });
+            this.currentWork = currentWork[0]
         }
     },
     
