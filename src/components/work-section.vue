@@ -1,14 +1,18 @@
 <template>
-    <div class="work-section each-section" :style="{background: sectionColor}">
+    <div :class="['work-section', 'each-section', {'full': mode === 'full'}]" :style="{background: sectionColor}">
         <switch-type :types=worktypes @switch-type=switchType></switch-type>
-            <section-title :order=order :name=works.sectionName></section-title>
-            <div class='section-content' ref='works'>
+        <section-title :order=order :name=works.sectionName>
+            <div class="expand-btn circle-btn flex justify-center align-center sticky" @click=changeMode>
+                <i :class="['fa',{'fa-angle-down': mode !== 'full'}, {'fa-angle-up': mode === 'full'}]"></i>
+            </div>
+        </section-title>
+        <div class='section-content' ref='works'>
             <router-link v-for='i in filteredWorks.allWorks' :key=i.id :to='`/work?id=${i.id}`'>
                 <each-work v-bind='i'></each-work>
             </router-link>
-            </div>
-            <button :class="['next-btn',{end: scrollToEnd}]" @click=scrollRight><i class='fa fa-angle-right'></i></button>
-            <progress-bar :totalLength=allWorkLength :viewLength=viewLength :scrolledDistance=scrolledDistance></progress-bar>
+        </div>
+        <button :class="['next-btn', 'flex', 'absolute', 'justify-center', 'align-center', 'circle-btn',{'deactive': scrollToEnd}]" @click=scrollRight v-if="mode !== 'full'"><i class='fa fa-angle-right'></i></button>
+        <progress-bar :totalLength=allWorkLength :viewLength=viewLength :scrolledDistance=scrolledDistance v-if="mode !== 'full'"></progress-bar>
     </div>
 </template>
 
@@ -28,6 +32,7 @@ export default {
     name: 'workSection',
     data: function(){
         return {
+            initWorkType: 'web',
             sectionColor: '#F5F5F5',
             order: '04',
             sectionName: 'Portfolio',
@@ -37,6 +42,7 @@ export default {
             viewLength: 20,
             scrolledDistance: 0,
             scrollToEnd: false,
+            mode: 'full'
         }
     },
     props: ['worktypes', 'workData'],
@@ -123,6 +129,10 @@ export default {
         },
         loadData(){
             this.filteredWorks = JSON.parse(JSON.stringify(this.works));
+            this.switchType(this.initWorkType)
+        },
+        changeMode(){
+            this.mode = this.mode === 'full' ? 'horizontal' : 'full';
         }
     },
     components: {
@@ -174,6 +184,30 @@ export default {
             flex-basis: 100%;
             .type-wrap {
                 float: right;
+            }
+        }
+        .expand-btn {
+            width: 40px;
+            height: 40px;
+        }
+
+        &.full {
+            align-items: flex-start;
+            
+            .section-title-wrap {
+                position: sticky;
+                top: 50px;
+            }
+        }
+
+
+        &.full .section-content{
+            justify-content: space-around;
+            flex-wrap: wrap;
+            overflow: unset;
+            
+            .each-work {
+                margin: 20px 5px;
             }
         }
         .section-content {
@@ -230,55 +264,18 @@ export default {
         }
         
         .next-btn {
-            position: absolute;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            // position: absolute;
+            // display: flex;
+            // justify-content: center;
+            // align-items: center;
             height: 40px;
             width: 40px;
-            font-size: 1.35em;
-            color: #fefefe;
             top: 50%;
             transform: translate(50%, -50%);
             right: 125px;
-            border: none;
-            background: #f4f4f4;
-            border-radius: 50%;
-            box-shadow: 2px 2px 10px 0 rgba(100, 100, 100, 0.5);
-            cursor: pointer;
 
-            i {
-                position: relative;
-                z-index: 3;
-            }
 
-            &:focus {
-                outline: none;
-            }
-
-            &:after {
-                content: '';
-                border-radius: inherit;
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;                
-                background: $theme;
-                transition: all .4s ease-in-out;
-                transform-origin: center;
-                z-index: 2;
-            }
-
-            &.end {
-                color: #ddd;
-                cursor: not-allowed;
-
-                &:after {
-                    background: #ddd;
-                    transform: scale(0);
-                }
-            }
+            
         }
         
         .progress-out {

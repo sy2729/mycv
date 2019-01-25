@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        workTypes: ['all', 'web', 'design', 'video'],
+        workTypes: ['web', 'design', 'video'],
         files: {
             dev: {
                 zh: 'data_zh',
@@ -57,7 +57,9 @@ export default new Vuex.Store({
 
             if(this.state.currentLanguage === 'en') {
                 if(fileContent.en) {
+                    // import the old data (base data)
                     import(`@/mock-data/${fileContent['en']}.js`).then((e) => {
+                        // import the new data
                         import('@/mock-data/data_base_en.js').then((f)=>{
                             this.state.cvData = this.loopDataIn(e,f)
                         })

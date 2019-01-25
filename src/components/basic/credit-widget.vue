@@ -1,6 +1,6 @@
 <template>
     <div class='credit-wrap'>
-            <p>Credit to XXXXX's Design on Dribbble</p>
+            <p>Credit to <a target="_blank" href="https://dribbble.com/shots/3569588-Personal-CV"> Jenia Stratila's</a> Design on <a target="_blank" href="https://dribbble.com">Dribbble</a></p>
             <div class='close' @click="$emit('closeWidget')">X</div>
     </div>
 </template>
@@ -23,6 +23,10 @@ export default {
         align-items: center;
         background: #F8CD64;
         color: #f4f4f4;
+
+        a {
+            text-decoration: underline;
+        }
 
         .close {
             position: absolute;

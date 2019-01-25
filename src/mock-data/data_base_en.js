@@ -13,8 +13,8 @@
                     role: 'Web Technologist - Association committee',
                     company: 'Columbia University - CUSSCA',
                     beginDate: '2018.09',
-                    endDate: 'present',
-                    activeState: true,
+                    endDate: '2018.12',
+                    activeState: false,
                     detail: {
                         descrip: [
                             'Participate in affairs of Columbia University Chinese Students Association',
@@ -27,8 +27,8 @@
                     role: 'Course Assistant - JavaScript Programming',
                     company: 'Teachers College, Columbia University',
                     beginDate: '2018.09',
-                    endDate: 'present',
-                    activeState: true,
+                    endDate: '2018.12',
+                    activeState: false,
                     detail: {
                         descrip: [
                             'Assist the Instructor in scheduling and operating the class, and grading the work',
@@ -42,8 +42,8 @@
                     role: 'UX Design Intern',
                     company: 'Atos',
                     beginDate: '2018.05',
-                    endDate: 'present',
-                    activeState: true,
+                    endDate: '2019.01',
+                    activeState: false,
                     detail: {
                         descrip: [
                             'Collaborate with other designers and design web & mobile products from concept to hi-fi prototypes ',
@@ -106,10 +106,14 @@
             allSkills: [
                 {
                     name: 'HTML & CSS & JavaSCript',
-                    extent: '70'
+                    extent: '80'
                 },
                 {
                     name: 'Sass / Parcel / Webpack',
+                    extent: '70'
+                },
+                {
+                    name: 'Node/Express',
                     extent: '70'
                 },
                 {
@@ -763,8 +767,119 @@
                             type: 'img'
                         },
                     ],
+                    tags: ['Web Dev', 'Vue', 'Element UI'],
+                    type: 'web',
+                },
+                {
+                    name: 'Atos Digital Dashboard Animation Design And Dev',
+                    link: {
+                        preview: 'https://sy2729.github.io/atos-digital-dashboard-panel-transition/index.html',
+                        repo: 'https://github.com/sy2729/atos-digital-dashboard-panel-transition'
+                    },
+                    img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1548384664/cv-img/work/digital-dashboard-animation/digital_dashboard_animation_small.gif',
+                    id: 3,
+                    descrip: [
+                        {
+                            content: `Using JavaScript (ES6) with jQuery to quickly build the digital dashboard demonstration of the animation design`,
+                            type: 'text',
+                        },
+                        {
+                            content: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1548384873/cv-img/work/digital-dashboard-animation/digital_dashboard_animation_large.gif',
+                            type: 'img'
+                        },
+                    ],
                     tags: ['Web Dev', 'jQuery'],
                     type: 'web',
+                },
+                {
+                    name: 'RESTful API With Vallina NodeJS',
+                    link: {
+                        repo: 'https://github.com/sy2729/node-master-assignments/tree/master/hw2'
+                    },
+                    img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1548398617/cv-img/work/restaurant-Restful-API/console_activity.png',
+                    id: 3,
+                    descrip: [
+                        {
+                            content: `Use the vallina NodeJS to build RESTful API that could support a Chinese restaurant's operation`,
+                            type: 'text',
+                        },
+                        {
+                            content: 'https://res.cloudinary.com/shuaiyuan/image/upload/q_37/v1548398138/cv-img/work/restaurant-Restful-API/Restaurant_Restful_API.png',
+                            type: 'img'
+                        },
+                        {
+                            content: 'It has a user login system (with session Token), menu display, place item in cart, and checkout and place the order functionality. ',
+                            type: 'text'
+                        },
+                        {
+                            content: 'All interactions between the frond-end and back-end are recorded in the file system and logged out',
+                            type: 'text'
+                        },
+                        {
+                            content: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1548398800/cv-img/work/restaurant-Restful-API/file_records.png',
+                            type: 'img'
+                        },
+                        {
+                            content: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1548398617/cv-img/work/restaurant-Restful-API/console_activity.png',
+                            type: 'img'
+                        },
+                        {
+                            content: `For more detailed documentation, please visit the <a href='https://res.cloudinary.com/shuaiyuan/image/upload/v1548398618/cv-img/work/restaurant-Restful-API/detailed_documentation.png'>the Github Documentation</a>`,
+                            type: 'text'
+                        },
+                        {
+                            content: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1548398618/cv-img/work/restaurant-Restful-API/detailed_documentation.png',
+                            type: 'img'
+                        },
+                    ],
+                    tags: ['Web Dev', 'Back-End', 'NodeJS'],
+                    type: 'web',
+                },
+                {
+                    name: 'Atos Timeline Component',
+                    link: {
+                        repo: 'https://github.com/sy2729/atos-second-timeline',
+                        preview: 'https://sy2729.github.io/atos-second-timeline/index.html'
+                    },
+                    img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1548399705/cv-img/work/atos-timeline/atos-time-line.png',
+                    id: 3,
+                    descrip: [
+                        {
+                            content: `This is a Vue component based on Vue-Swiper, that I created to complement for the Wordpress template when creating the homepage for Digital Transformation Team.`,
+                            type: 'text'
+                        },
+                        {
+                            content: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1548399705/cv-img/work/atos-timeline/atos-time-line.png',
+                            type: 'img'
+                        },
+                    ],
+                    tags: ['Web Dev', 'Vue', 'Vue-Swiper'],
+                    type: 'web',
+                },
+                {
+                    name: 'Atos Evolve Animation Design',
+                    img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1548400588/cv-img/work/atos-evolve-animation/loading.gif',
+                    id: 3,
+                    descrip: [
+                        {
+                            content: `One animation is for guiding user to use the application`,
+                            type: 'text'
+                        },
+                        {
+                            content: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1548400586/cv-img/work/atos-evolve-animation/card-swiping.gif',
+                            type: 'img'
+                        },
+                        {
+                            content: `Another is to show that data is being proccessed and loading with the input user information`,
+                            type: 'text'
+                        },
+                        {
+                            content: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1548400588/cv-img/work/atos-evolve-animation/loading.gif',
+                            type: 'img'
+                        },
+                    ],
+                    tags: ['Animation Design', 'After Effects'],
+                    type: 'Design',
                 },
 
             ],

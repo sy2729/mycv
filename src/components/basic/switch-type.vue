@@ -11,7 +11,7 @@ export default {
     name: 'switchType',
      data: function () {
         return {
-            typeChosen: 'all',
+            typeChosen: 'web',
         }
     },
     methods: {

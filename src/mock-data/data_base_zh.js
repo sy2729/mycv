@@ -7,8 +7,8 @@ let base = {
                 role: '网络维护和建设 - 学生会委员会',
                 company: '哥伦比亚大学 - 中国学生会',
                 beginDate: '2018.09',
-                endDate: 'present',
-                activeState: true,
+                endDate: '2018.12',
+                activeState: false,
                 detail: {
                     descrip: [
                         '作为委员会和干事参加哥伦比亚大学中国学生会的一系列活动',
@@ -21,8 +21,8 @@ let base = {
                 role: '课程助教 - JavaScript 编程',
                 company: '哥伦比亚大学教育学院',
                 beginDate: '2018.09',
-                endDate: '现在',
-                activeState: true,
+                endDate: '2018.12',
+                activeState: false,
                 detail: {
                     descrip: [
                         '协助教师组织教学和课堂，并批改课程作业。',
@@ -36,8 +36,8 @@ let base = {
                 role: '用户体验设计实习生（UX Design Intern）',
                 company: '源讯科技（Atos）- 美国',
                 beginDate: '2018.05',
-                endDate: '现在',
-                activeState: true,
+                endDate: '2019.01',
+                activeState: false,
                 detail: {
                     descrip: [
                         '和其他设计师协作并提供PC客户端和移动端从概念图到高保真原型图等一系列设计。',
@@ -708,7 +708,28 @@ let base = {
                 ],
                 tags: ['Jquery', 'js插件', '网页特效'],
                 type: 'web',
-            }
+            },
+            {
+                name: 'Atos 电子管理系统UI动效设计及开发',
+                link: {
+                    preview: 'https://sy2729.github.io/atos-digital-dashboard-panel-transition/index.html',
+                    repo: 'https://github.com/sy2729/atos-digital-dashboard-panel-transition'
+                },
+                img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1548384664/cv-img/work/digital-dashboard-animation/digital_dashboard_animation_small.gif',
+                id: 3,
+                descrip: [
+                    {
+                        content: `使用ES6和jQuery开发卡片组件库，实现电子管理界面板的动画效果设计，为后端开发提供参考`,
+                        type: 'text',
+                    },
+                    {
+                        content: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1548384873/cv-img/work/digital-dashboard-animation/digital_dashboard_animation_large.gif',
+                        type: 'img'
+                    },
+                ],
+                tags: ['Web Dev', 'jQuery'],
+                type: 'web',
+            },
 
         ]
     },

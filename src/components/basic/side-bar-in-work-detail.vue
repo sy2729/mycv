@@ -22,11 +22,12 @@ export default {
     props: ['worktypes', 'allwork'],
     methods: {
         switchWork(data){
+            // filter the work from the data
             this.filteredWorks.map((i)=>{
                 if(data === i.id) {
                     this.$emit('switch-work-detail', i)
                 }
-            })
+            });
         },
 
         switchType(data) {

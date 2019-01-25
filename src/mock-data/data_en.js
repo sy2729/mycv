@@ -19,6 +19,10 @@
                     extent: '70'
                 },
                 {
+                    name: 'Node/Express MongoDB/Mongoose - Back End',
+                    extent: '70'
+                },
+                {
                     name: 'UX / UI Design',
                     extent: '60'
                 },

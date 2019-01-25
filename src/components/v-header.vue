@@ -23,6 +23,7 @@
 
 <script>
 import cvNav from './v-nav.vue';
+import imgLoader from './../mixins/img-loader.js';
 
 export default {
     data(){
@@ -68,15 +69,15 @@ export default {
         myCallback(){
             this.$refs.arrow.classList.add('active');
         },
-        detectLayerLoading(){
-            // detect the layer loading
-            let img = document.createElement('img');
-            img.setAttribute("src", 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535384915/cv-img/hero-layer.png');
-            img.onload = ()=>{
-                img = null;
-                this.loadText();
-            }
-        },
+        // detectLayerLoading(){
+        //     // detect the layer loading
+        //     let img = document.createElement('img');
+        //     img.setAttribute("src", 'https://res.cloudinary.com/shuaiyuan/image/upload/v1535384915/cv-img/hero-layer.png');
+        //     img.onload = ()=>{
+        //         img = null;
+        //         this.loadText();
+        //     }
+        // },
         loadText(){
             this.$refs.titleWrap.classList.add('active')
         },
@@ -112,13 +113,10 @@ export default {
             this.header = this.$props.headerData;
         }
     },
+    mixins: [imgLoader],
     created() {
-        let img = document.createElement('img');
-            img.setAttribute("src", this.bgUrlClear);
-            img.onload = ()=>{
-                img = null;
-                this.bgUrl = this.bgUrlClear;
-            }
+        // loading clearer image
+        this.run(this.bgUrl, this.bgUrlClear, 'bgUrl')
     }
 }
 </script>

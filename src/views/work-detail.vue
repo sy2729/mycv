@@ -1,6 +1,6 @@
 <template>
-    <div class='work-detail' ref='detail' @click="clearFocus">
-        <div class="bg-cover" v-if="focusedImage">
+    <div class='work-detail flex relative' ref='detail' @click="clearFocus">
+        <div class="bg-cover fixed" v-if="focusedImage">
             <div class="focused-content">
                 <img :src='focusedImage' :alt="focusedImage">
             </div>
@@ -8,9 +8,9 @@
         <!-- {{currentWork}}
         {{currentWorkId}} -->
         <section class='current-content-wrap'>
-            <div class='title-wrap'>
+            <div class='title-wrap relative'>
                 <h2 class='title'>{{currentWork.name}}</h2>
-                <span class='t-color current-work-type'>{{currentWork.type}}</span>
+                <span class='t-color current-work-type absolute'>{{currentWork.type}}</span>
                 <div class="work-link-wrap" v-if="currentWork.type==='web'">
                     <a target='_blank' class='link-preview' :href='currentWork.link.preview' title="preivew"><span><i class='fa fa-eye'></i>preview</span></a>
                     <a target='_blank' :href='currentWork.link.repo' title="repo"><span><i class='fa fa-github'></i>repo</span></a>
@@ -19,17 +19,18 @@
                     <a target='_blank' class='link-preview' :href='currentWork.link.youtube' title="YouTube - Worldwide Audience"><span><i class='fa fa-youtube'></i></span></a>
                     <a target='_blank' :href='currentWork.link.bili' title="bilibili - Chinese Audience"><span><i class='iconfont'>&#xe607;</i></span></a>
                 </div>
-                <ul class='tags'>
+                <ul class='tags flex flex-wrap'>
                     <li v-for='(i, index) in currentWork.tags' :key='index'>{{i}}</li>
                 </ul>
             </div>
             <div class='work-content'>
-                <div v-for="(i, index) in currentWork.descrip" :class="[{'each-descrip-img': i.type==='img'},{'work-videoWrapper': i.type==='video'} ]" :key='index'>
+                <div v-for="i in currentWork.descrip" :class="[{'each-descrip-img': i.type==='img'},{'work-videoWrapper': i.type==='video'} ]" :key='i.content'>
                     <transition name='show-content'>
                         <iframe :src="i.content.youtube" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen v-if="i.type==='video' && currentLanguage === 'en'"></iframe>
                         <iframe :src="i.content.bili" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen v-if="i.type==='video' && currentLanguage === 'zh'"></iframe>
                     </transition>
-                    <img :src='i.content' v-if="i.type==='img'" v-on:click.stop='viewLargePicture(i)'>
+                    <!-- <img :src='i.content' v-if="i.type==='img'" v-on:click.stop='viewLargePicture(i)'> -->
+                    <img-loader :img='i.content' v-if="i.type==='img'" v-on:click.stop.native='viewLargePicture(i)'></img-loader>
                     <p v-html='i.content' v-if="i.type==='text'"></p>
                 </div>
 
@@ -53,6 +54,7 @@
 
 <script>
 import sideBarInWorkDetail from '@/components/basic/side-bar-in-work-detail';
+import imgLoader from '@/components/basic/img-loader';
 import {mapState} from 'vuex';
 export default {
     name: 'workDetail',
@@ -103,12 +105,14 @@ export default {
 
     components: {
         "side-bar-in-work-detail": sideBarInWorkDetail,
+        imgLoader
     },
     methods: {
         switchWork(data){
-            // console.log(data)
+            // plugin the data
             this.currentWork = data;
-            this.$refs.detail.scrollTop = 0;
+            // scroll back to the top
+            window.scrollTo(0, 0);
         },
         changeVideo(data){
             this.currentLanguage = 'zh';
@@ -159,14 +163,11 @@ export default {
         // right: 0;
         padding: 30px;
         overflow-y: auto;
-        display: flex;
         align-items: baseline;
         background: #F6F6F6;
         z-index: 5;
-        position: relative;
 
         .bg-cover {
-            position: fixed;
             z-index: 9;
             top: 0;
             left: 0;
@@ -193,10 +194,8 @@ export default {
             background: #FEFFFF;
             .title-wrap {
                 padding: 25px;
-                position: relative;
 
                 .current-work-type {
-                    position: absolute;
                     right: 10px;
                     top: 35px;
 
@@ -229,9 +228,7 @@ export default {
 
                 .tags {
                     list-style: none;
-                    display: flex;
                     margin: 10px 0;
-                    flex-wrap: wrap;
                     font-size: 14px;
                     li {
                         padding: 2px 10px;

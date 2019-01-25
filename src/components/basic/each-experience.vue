@@ -55,20 +55,15 @@ export default {
     .each-experience {
                padding: 10px 40px;
                min-height: 75px;
-            //    height: 75px;
+            //    background: #fff; 
                border: 1px solid #F4F4F4;
                margin-top: 10px;
                margin-right: 10px;
                position: relative;
                transition: min-height .4s;
-            //    transition: height .4s;
                display: flex;
                justify-content: center;
                align-items: center;
-
-                &.active {
-                    box-shadow: $activeBoxShadow;
-                }
 
                 &.viewDetail {
                     min-height: 120px;
@@ -83,6 +78,9 @@ export default {
                     top: 20px;
                     color: #ddd;
                     opacity: 0;
+                }
+                &:hover {
+                    box-shadow: $activeBoxShadow;
                 }
                 &:hover .change-state {
                     opacity: 1;

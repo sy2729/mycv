@@ -4,6 +4,7 @@
             <p class="order">{{order}}.</p>
             <p class="section-name">{{name}}</p>
         </div>
+        <slot />
     </div>
 </template>
 
