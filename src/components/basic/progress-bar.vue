@@ -27,20 +27,20 @@ export default {
 
 <style lang="scss" scoped>
     .progress-out {
-            margin: 30px 0 10px;
-            width: 60%;
-            min-width: 200px;
-            position: relative;
-            background-color: #DEDEDE;
-            height: 2px;
-            overflow: hidden;
-            .progress-in {
-                position: absolute;
-                left: 0;
-                top: 0;
-                height: 100%;
-                background-color: $theme;
-            }
+        margin: 30px auto;
+        width: 60%;
+        min-width: 200px;
+        position: relative;
+        background-color: #DEDEDE;
+        height: 2px;
+        overflow: hidden;
+        .progress-in {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            background-color: $theme;
+        }
     }
 </style>
 

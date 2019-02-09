@@ -156,11 +156,7 @@ export default {
 <style lang="scss" scoped>
 
     .work-detail {
-        // position: fixed;
-        // top: 0;
-        // left: 0;
-        // bottom: 0;
-        // right: 0;
+        min-height: 100vh;
         padding: 30px;
         overflow-y: auto;
         align-items: baseline;
@@ -281,6 +277,7 @@ export default {
                 p {
                     margin: 20px 0;
                     line-height: 2em;
+                    font-size: 1em;
 
                     a {
                         color: $theme !important;
@@ -297,16 +294,6 @@ export default {
                     margin: 30px auto;
                     min-width: 260px;
                     cursor: pointer;
-                    img {
-                        width: 90%;
-                        height: auto;
-                        margin: 0 auto;
-                        display: block;
-                        // float: right;
-                        padding: 20px 0;
-                        max-width: 400px;
-                        min-width: 200px;
-                    }
                 }
             }
         }

@@ -338,6 +338,7 @@
                 },
                 {
                     name: 'Care Guru',
+                    display: false,
                     link: {
                         preview: 'https://sy2729.github.io/careGuru/',
                         repo: 'https://github.com/sy2729/careGuru'
@@ -880,6 +881,56 @@
                     ],
                     tags: ['Animation Design', 'After Effects'],
                     type: 'Design',
+                },
+                {
+                    name: 'News Bar Effect - A Simple JS Library',
+                    img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1549468957/cv-img/work/news-bar/news-bar-cover.png',
+                    id: 3,
+                    link: {
+                        preview: "https://sy2729.github.io/scroll-news/index.html",
+                        repo: "https://github.com/sy2729/scroll-news"
+                    },
+                    descrip: [
+                        {
+                            content: `Built a simple news bar effect using vanillina JavaScript`,
+                            type: 'text'
+                        },
+                        {
+                            content: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1549469270/cv-img/work/news-bar/news-bar.gif',
+                            type: 'img'
+                        }
+                    ],
+                    tags: ['Open Source Library', 'vanillina JS'],
+                    type: 'Web',
+                },
+                {
+                    name: 'Wechat Conversation Generator',
+                    img: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1549473458/cv-img/work/wechat-conversation-generator/wechat-generator-cover.png',
+                    id: 3,
+                    link: {
+                        preview: "https://sy2729.github.io/wechat-conversation-simulator/",
+                        repo: "https://github.com/sy2729/wechat-conversation-simulator"
+                    },
+                    descrip: [
+                        {
+                            content: `This is a wechat conversation generator built with React & Ant Design`,
+                            type: 'text'
+                        },
+                        {
+                            content: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1548848695/cv-img/work/wechat-conversation-generator/wechat-conversation-generator.png',
+                            type: 'img'
+                        },
+                        {
+                            content: `The user interface`,
+                            type: 'text'
+                        },
+                        {
+                            content: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1549473751/cv-img/work/wechat-conversation-generator/wechat-conversation-generator-panel-1.png',
+                            type: 'img'
+                        }
+                    ],
+                    tags: ['React', 'Ant Design UI'],
+                    type: 'Web',
                 },
 
             ],

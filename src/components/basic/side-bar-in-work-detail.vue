@@ -15,6 +15,7 @@ export default {
     name: 'sideBarInWorkDetail',
     data: function () {
         return {
+            initWorkType: 'web',
             filteredWorks: [],
             works: [],
         }
@@ -47,6 +48,7 @@ export default {
     beforeMount(){
         this.works = this.$props.allwork;
         this.filteredWorks = this.works;
+        this.switchType(this.initWorkType)
     },
     watch: {
         allwork: function(val) {

@@ -8,7 +8,7 @@
         </section-title>
         <div class='section-content' ref='works'>
             <router-link v-for='i in filteredWorks.allWorks' :key=i.id :to='`/work?id=${i.id}`'>
-                <each-work v-bind='i'></each-work>
+                <each-work v-bind='i' v-if="i.display || true"></each-work>
             </router-link>
         </div>
         <button :class="['next-btn', 'flex', 'absolute', 'justify-center', 'align-center', 'circle-btn',{'deactive': scrollToEnd}]" @click=scrollRight v-if="mode !== 'full'"><i class='fa fa-angle-right'></i></button>
@@ -276,23 +276,6 @@ export default {
 
 
             
-        }
-        
-        .progress-out {
-            margin: 30px 0 10px;
-            width: 60%;
-            min-width: 200px;
-            position: relative;
-            background-color: #DEDEDE;
-            height: 2px;
-            overflow: hidden;
-            .progress-in {
-                position: absolute;
-                left: 0;
-                top: 0;
-                height: 100%;
-                background-color: $theme;
-            }
         }
     }
 </style>

@@ -22,7 +22,7 @@ export default {
         justify-content: center;
         align-items: center;
         background: #F8CD64;
-        color: #f4f4f4;
+        color: #222;
 
         a {
             text-decoration: underline;
