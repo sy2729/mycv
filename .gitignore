@@ -1,7 +1,19 @@
 .DS_Store
 node_modules
 # /dist
-/old
+
+#source file
+src
+vue.config.js
+postcss.config.js
+.browserslistrc
+babel.config.js
+.parcelignore
+public
+package.json
+dist
+
+
 
 # local env files
 .env.local
