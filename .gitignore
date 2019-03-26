@@ -3,7 +3,7 @@ node_modules
 # /dist
 
 #source file
-src
+# src
 vue.config.js
 postcss.config.js
 .browserslistrc
