@@ -6,6 +6,7 @@
     <ImgLoader :loading="placeholder" img="/img/design/design-4.png"/>
     <ImgLoader :loading="placeholder" img="/img/design/design-5.png"/>
     <ImgLoader :loading="placeholder" img="/img/design/design-6.png"/>
+    <ImgLoader :loading="placeholder" img="/img/design/design-7.png"/>
     <router-link to="/"><button class="btn fixed top left-1 top-1 bold">到主页, 查看更多信息</button></router-link>
   </div>
 </template>
