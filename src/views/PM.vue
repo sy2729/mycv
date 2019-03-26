@@ -22,6 +22,7 @@ import workSection from '@/components/work-section.vue'
 import vFooter from '@/components/v-footer.vue'
 import cvButton from '@/components/cv-button.vue'
 import { mapState } from 'vuex'
+import local from '@/store/local.js'
 
 export default {
   name: 'home',
