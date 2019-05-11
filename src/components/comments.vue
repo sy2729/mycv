@@ -209,7 +209,7 @@ export default {
       .name {text-transform: capitalize;}
     }
 
-    @media screen and (max-width: 400px) {
+    @media screen and (max-width: 600px) {
       width: 90%;
 
       form {

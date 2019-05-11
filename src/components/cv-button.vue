@@ -5,7 +5,7 @@
       <div v-tooltip.top-center="'切换到中文模式'" :class="['inner-wrap', 'button-on', 'relative', {'active': buttonState === 'zh'}]" @click="switchLan('zh')">
         <span>中</span>
       </div>
-      <div :class="['inner-wrap', 'button-download', 'relative']" v-tooltip.top-center="msg">
+      <div :class="['inner-wrap', 'button-download', 'relative', 'pointer']" v-tooltip.top-center="msg">
         <div class="icon-wrap flex align-center justify-center">
           <a :href="cvFileLocation" target="_blank"><i class='iconfont'>&#xe619;</i></a>
         </div>
@@ -39,7 +39,7 @@ export default {
   computed:{
     buttonWrapClass() {
       let stateClass = this.hoverState || this.initialLoad ? '' : 'fold';
-      return `cv-button btn outter-wrap flex relative justify-space-between align-center ${stateClass}`
+      return `cv-button fixed btn outter-wrap over-hidden flex relative justify-space-between align-center ${stateClass}`
     },
     buttonBGClass() {
       let stateClass = this.buttonState === 'en' ? 'right' : 'left' 
@@ -104,7 +104,6 @@ export default {
 // #FFFFFF
 .outter-wrap {
   width: 200px;
-  overflow: hidden;
   transition: width .6s;
 
   &.fold {
@@ -118,7 +117,6 @@ export default {
   .inner-wrap {
     color: #fefefe;
     padding: 15px 20px;
-    cursor: pointer;
 
     &.button-download {
       color: $theme;

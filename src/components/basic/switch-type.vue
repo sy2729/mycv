@@ -1,6 +1,6 @@
 <template>
     <div class='switch-type clearfix'>
-            <ul class='type-wrap'>
+            <ul class='type-wrap f-right'>
                 <li :class="{'active': i === typeChosen}" v-for='(i, index) in types' @click='switchType(i)' :key='index'>{{i}}<span v-if='index !== types.length - 1' class='type-divide'> /</span></li>
             </ul>
     </div>

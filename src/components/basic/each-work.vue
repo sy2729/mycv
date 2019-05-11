@@ -1,8 +1,8 @@
 <template>
-    <div class="each-work" :style="{ 'background-image': 'url(' + presentImg + ')'}" @click=viewEachWork>
-        <div class='work-cover'>
+    <div class="each-work relative pointer" :style="{ 'background-image': 'url(' + presentImg + ')'}" @click=viewEachWork>
+        <div class='work-cover absolute top left flex align-center justify-center'>
             <div class="banner absolute full" v-if="star"><img :src="banner" alt=""></div>
-            <div class="work-info-wrap">
+            <div class="work-info-wrap t-center">
                 <h3 class='work-name'>{{name}}</h3>
                 <span class='current-type'><i :class="typeIconCode[type]"></i></span>
             </div>

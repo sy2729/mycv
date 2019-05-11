@@ -1,17 +1,14 @@
 <template>
-    <div :class="['work-section', 'each-section', {'full': mode === 'full'}]" :style="{background: sectionColor}">
+    <div :class="['work-section', 'each-section', 'relative', {'full': mode === 'full'}]" :style="{background: sectionColor}">
         <switch-type :types=worktypes @switch-type=switchType></switch-type>
         <section-title :order=order :name=works.sectionName>
-            <div class="expand-btn circle-btn flex justify-center align-center sticky" @click=changeMode>
+            <div class="expand-btn relative circle-btn flex justify-center align-center sticky" @click=changeMode>
                 <i :class="['fa',{'fa-angle-down': mode !== 'full'}, {'fa-angle-up': mode === 'full'}]"></i>
             </div>
         </section-title>
-        <div class='section-content' ref='works'>
+        <div class='section-content flex flex-nowrap' ref='works'>
             <router-link v-for='i in filteredWorks.allWorks' :key=i.id :to='`/work?id=${i.id}`'>
-                <vue-lazy-component direction="horizontal">
-                    <each-work v-bind='i' v-if="i.display || true"></each-work>
-                    <work-skeleton slot="skeleton"></work-skeleton> 
-                </vue-lazy-component>
+                <each-work v-bind='i' v-if="i.display || true"></each-work>
             </router-link>
         </div>
         <button :class="['next-btn', 'flex', 'absolute', 'justify-center', 'align-center', 'circle-btn',{'deactive': scrollToEnd}]" @click=scrollRight v-if="mode !== 'full'"><i class='fa fa-angle-right'></i></button>
@@ -29,8 +26,7 @@ import eachWork from './basic/each-work';
 import progressBar from './basic/progress-bar';
 import switchType from './basic/switch-type';
 import { starFirst } from '../utils/workArrange';
-import { component as VueLazyComponent } from '@xunlei/vue-lazy-component'
-import workSkeleton from './basic/work-skeleton'
+// import workSkeleton from './basic/work-skeleton'
 
 
 export default {
@@ -149,8 +145,7 @@ export default {
         eachWork,
         progressBar,
         switchType,
-        'vue-lazy-component': VueLazyComponent,
-        workSkeleton
+        // workSkeleton
     },
     mounted(){
         if(this.$props.workData) {
@@ -196,12 +191,8 @@ export default {
 
 <style lang="scss">
     .work-section {
-        position: relative;
         .switch-type {
             flex-basis: 100%;
-            .type-wrap {
-                float: right;
-            }
         }
         .expand-btn {
             width: 40px;
@@ -253,38 +244,27 @@ export default {
             }
         }
         .section-content {
-            display: flex;
-            flex-wrap: nowrap;
             overflow-x: scroll;
 
             .each-work {
-                position: relative;
                 min-width: 280px;
                 height: 250px;
                 background: transparent center no-repeat;
                 background-size: cover;
-                cursor: pointer;
                 margin-right: 10px;
                 box-shadow: 2px 2px 6px 0 rgba(110, 110, 110, 0.5);
 
                 .work-cover {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
                     width: 100%;
                     height: 100%;
                     background: rgba(100, 100, 100, 0.5);
                     /* opacity: 0; */
                     transition: opacity .5s;
                     color: #f4f4f4;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
 
                     .work-info-wrap {
                         width: 70%;
                         margin: 0 auto;
-                        text-align: center;
                         text-shadow: 2px 2px 2px rgba(100, 100, 100, .5);
 
                         .current-type {
@@ -325,8 +305,6 @@ export default {
             top: 50%;
             transform: translate(50%, -50%);
             right: 125px;
-
-
             
         }
     }

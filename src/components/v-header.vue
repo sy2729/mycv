@@ -1,15 +1,15 @@
 <template>
-    <div class="header" :style="{backgroundImage: `url(${bgUrl})`}">
+    <div class="header w-100 h-100vh relative over-hidden" :style="{backgroundImage: `url(${bgUrl})`}">
 
             <!-- <cv-nav @choose-to-view='headerSelect'></cv-nav> -->
 
-            <div class="title-wrap" ref='titleWrap'>
+            <div class="title-wrap absolute hide" ref='titleWrap'>
                 <h4 class="subtitle" v-if='header.target'>
-                    尊敬的<span class="subtitle subtitle-target">{{header.target}}</span>面试官您好，我是
+                    尊敬的<span class="subtitle subtitle-target bold">{{header.target}}</span>面试官您好，我是
                 </h4>
                 <h4 class="subtitle" v-else>{{header.greeting || 'nihao'}}</h4>
                 <h1 class="title">{{header.name || 'Wait Please'}}</h1>
-                <div class='arrow-wrap' @click=arrowScroll ref='arrow'><i class="fa fa-arrow-down"></i></div>
+                <div class='arrow-wrap pointer flex align-center justify-center' @click=arrowScroll ref='arrow'><i class="fa fa-arrow-down"></i></div>
             </div>
 
             <!-- <div class='language-switch'>
@@ -127,24 +127,17 @@ export default {
 <style lang="scss" scoped>
     .header {
         // height: 470px;
-        height: 100vh;
-        width: 100%;
         background: transparent center no-repeat;
         background-size: cover;
         background-attachment: fixed;
-        position: relative;
-        overflow: hidden;
     }
 
 
         .title-wrap {
-        position: absolute;
         top: 50%;
-        // left: 50%;
         transform: translateY(-50%) scale(1.3);
         color: #fff;
         padding: 20px 0;
-        opacity: 0;
         transition: all 3s;
         left: 15%;
         &.active {
@@ -158,7 +151,7 @@ export default {
             .subtitle-target {
                 font-size: 32px;
                 color: $theme;
-                font-weight: bold;
+                /* font-weight: bold; */
             }
         }
 
@@ -172,10 +165,6 @@ export default {
            border-radius: 50%;
            border: 1px solid #f4f4f4;
            transform: translateY(150px);
-           cursor: pointer;
-           display: flex;
-           justify-content: center;
-           align-items: center;
 
            &.active {
                animation: jump .5s alternate ease-in-out infinite;
@@ -188,7 +177,7 @@ export default {
        }
     }
 
-    .language-switch {
+    /* .language-switch {
         position: absolute;
         bottom: 10px;
         right: 10px;
@@ -208,5 +197,5 @@ export default {
                 font-size: 1.4em;
             }
         }
-    }
+    } */
 </style>

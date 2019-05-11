@@ -1,10 +1,10 @@
 <template>
-    <footer :style="{background: sectionColor}">
-            <div class="footer-content">
+    <footer class="sticky" :style="{background: sectionColor}">
+            <div class="footer-content w-100 flex justify-center align-center">
                 <p>Get in touch with me!<a :href="'mailto:' + email">Click Here</a></p>
             </div>
-            <div class="footer-footer">
-                <ul class="social-media">
+            <div class="footer-footer flex justify-space-around align-center relative">
+                <ul class="social-media flex">
                     <li v-for='(i, index) in media' :key='index'><a target='_blank' :href='i.link'>{{i.name}}</a></li>
                 </ul>
 
@@ -12,7 +12,7 @@
 
                 <p class='creat-stamp'>&copy; 2018-2019</p>
 
-                <div class="credit-sign" @click='openCredit'>?</div>
+                <div class="credit-sign absolute flex align-center justify-center pointer" @click='openCredit'>?</div>
                 <transition name='jump'>
                     <credit-widget v-if="creditOpened" @closeWidget=closeWidget></credit-widget>
                 </transition>
@@ -61,15 +61,10 @@ export default {
 
 <style lang="scss" scoped>
     footer {
-        position: sticky;
         top: -210px;
-        z-index: 10;
+        z-index: 4;
         .footer-content {
             height: 210px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             color: #f4f4f4;
             
             p {
@@ -82,16 +77,11 @@ export default {
         }
 
         .footer-footer {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
             color: #A0A0A0;
             height: 60px;
             background: #1D1D1D;
-            position: relative;
 
             .social-media {
-                display: flex;
                 li {
                     margin: 0 10px;
                     list-style: none;
@@ -112,7 +102,6 @@ export default {
             }
 
             .credit-sign {
-                position: absolute;
                 height: 15px;
                 width: 15px;
                 right: 20px;
@@ -121,11 +110,7 @@ export default {
                 border-radius: 50%;
                 background: #A0A0A0;
                 color: #1D1D1D;
-                display: flex;
-                justify-content: center;
-                align-items: center;
                 font-size: 13px;
-                cursor: pointer;
             }
         }
     }

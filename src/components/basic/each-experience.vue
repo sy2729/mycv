@@ -1,11 +1,11 @@
 <template>
-    <div :class="['each-experience', 'each-clickable',{active: activeState, viewDetail: viewDetailState}]" @click=viewEach>
+    <div :class="['each-experience', 'flex', 'justify-center', 'align-center', 'each-clickable', 'relative',{active: activeState, viewDetail: viewDetailState}]" @click=viewEach>
              <transition name='show-content'>
-                <div class="summary-wrap" v-if=!viewDetailState>
+                <div class="summary-wrap w-100 flex align-center" v-if=!viewDetailState>
                     <div class='experience-logo-wrap'>
                         <img :src=logo class='experience-logo'>
                     </div>
-                    <div class="experience-info-wrap">
+                    <div class="experience-info-wrap flex justify-space-between">
                         <div class="experience-info">
                             <p class='company'>{{company}}</p>
                             <p class='role'>{{role}}</p>
@@ -21,7 +21,7 @@
              </transition>
 
             <transition name='show-content'>
-                <div class='experience-detail' v-if=viewDetailState>
+                <div class='experience-detail w-100' v-if=viewDetailState>
                     <div class="experience-abstract-info flex justify-space-between">
                         <div class="experience-info">
                             <p class='company'>{{company}}</p>
@@ -40,7 +40,7 @@
                 </div>
             </transition>
 
-            <div class='change-state view-summary' v-if=viewDetailState>Back</div>
+            <div class='change-state absolute hide view-summary' v-if=viewDetailState>Back</div>
         </div>
 </template>
 
@@ -71,11 +71,7 @@ export default {
                border: 1px solid #F4F4F4;
                margin-top: 10px;
                margin-right: 10px;
-               position: relative;
                transition: min-height .4s;
-               display: flex;
-               justify-content: center;
-               align-items: center;
 
                 &.viewDetail {
                     min-height: 120px;
@@ -85,11 +81,9 @@ export default {
                 }
 
                 .change-state {
-                    position: absolute;
                     right: 20px;
                     top: 20px;
                     color: #ddd;
-                    opacity: 0;
                 }
                 &:hover {
                     box-shadow: $activeBoxShadow;
@@ -100,23 +94,16 @@ export default {
 
 
             .summary-wrap {
-                width: 100%;
-                display: flex;
-                align-items: center;
                 .experience-logo-wrap {
                     min-width: 100px;
                     .experience-logo {
-                            width: 40px;
-                            height: auto;
+                        width: 40px;
+                        height: auto;
                     }
                 }
 
                 .experience-info-wrap {
-                    display: flex;
-                    justify-content: space-between;
                     flex: 1 1 auto;
-
-                    
                 }
             }
 
@@ -136,7 +123,6 @@ export default {
             }
 
             .experience-detail {
-                width: 100%;
                 padding-top: 10px;
 
                 ul {
