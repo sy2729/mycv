@@ -8,7 +8,10 @@
         </section-title>
         <div class='section-content' ref='works'>
             <router-link v-for='i in filteredWorks.allWorks' :key=i.id :to='`/work?id=${i.id}`'>
-                <each-work v-bind='i' v-if="i.display || true"></each-work>
+                <vue-lazy-component direction="horizontal">
+                    <each-work v-bind='i' v-if="i.display || true"></each-work>
+                    <work-skeleton slot="skeleton"></work-skeleton> 
+                </vue-lazy-component>
             </router-link>
         </div>
         <button :class="['next-btn', 'flex', 'absolute', 'justify-center', 'align-center', 'circle-btn',{'deactive': scrollToEnd}]" @click=scrollRight v-if="mode !== 'full'"><i class='fa fa-angle-right'></i></button>
@@ -26,7 +29,8 @@ import eachWork from './basic/each-work';
 import progressBar from './basic/progress-bar';
 import switchType from './basic/switch-type';
 import { starFirst } from '../utils/workArrange';
-
+import { component as VueLazyComponent } from '@xunlei/vue-lazy-component'
+import workSkeleton from './basic/work-skeleton'
 
 
 export default {
@@ -145,6 +149,8 @@ export default {
         eachWork,
         progressBar,
         switchType,
+        'vue-lazy-component': VueLazyComponent,
+        workSkeleton
     },
     mounted(){
         if(this.$props.workData) {
@@ -161,6 +167,11 @@ export default {
         // watch the browser resize to recalculate the initial left value
         window.addEventListener('resize', this.recalculateBar);
         ScrollReveal().reveal('.work-section', { afterReveal: this.loadData });
+
+        // detect mobile to change display mode
+        if(window.innerWidth < 500) {
+          this.changeMode();
+        }
     },
     beforeDestroy() {
         window.removeEventListener('resize', this.recalculateBar);

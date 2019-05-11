@@ -1,7 +1,7 @@
 <template>
 <div class="component-wrap p-t-3 p-b-3">
   <div class="comment-wrap">
-    <h2>Comment Board</h2>
+    <h2>{{langSet.commentBoard}}</h2>
     <div class="loadng relative" v-if="comments.length === 0">
       loading...
     </div>
@@ -17,30 +17,30 @@
             {{i.content}}
           </p>
         </li>
-        <li class="each-comment relative m-1 p-1 pointer" @click="loadMore">
-          {{loadMoreMsg}}
+        <li :class="['each-comment', 'relative', 'm-1', 'p-1', 'pointer', 'loadMsgPrompt', {'time': langSet.loadMoreMsg === langSet.loadMoreMsgEnd}]" @click="loadMore">
+          {{langSet.loadMoreMsg}}
         </li>
       </ul>
     </div>
 
-    <button class="reveal-button m-t-1 m-b-3" @click="showForm" v-if="!formShow">Leave your comment</button>
+    <button class="reveal-button m-t-1 m-b-3" @click="showForm" v-if="!formShow">{{langSet.commentPromptButton}}</button>
     <form class="comment-form m-t-3" v-if="formShow" @submit="submitComment" ref="form">
       <div>
         <label for="name">
-          <input name="name" class="m-r-1" type="text" placeholder="name">
+          <input name="name" class="m-r-1 m-t-1" type="text" :placeholder="langSet.namePlaceholder">
         </label>
         <label for="email">
-          <input name="email" type="text" placeholder="email">
+          <input name="email" type="text" class="m-t-1" :placeholder="langSet.emailPlaceholder">
         </label>
       </div>
       <div>
-        <textarea class="m-t-1" name="content" id="" cols="30" rows="10" placeholder="I just wanna say..."></textarea>
+        <textarea class="m-t-1" name="content" id="" cols="30" rows="10" :placeholder="langSet.contentPlaceholder"></textarea>
       </div>
       <div class="flex flex-wrap">
-        <input type="text" name="code" class="m-r-1" placeholder="Enter the code">
-        <div class="code pointer" v-html="code" @click="fillCode"></div>
+        <input type="text" name="code" class="m-r-1 m-t-1" :placeholder="langSet.codePlaceholder">
+        <div class="code pointer m-t-1" v-html="code" @click="fillCode"></div>
       </div>
-      <input class="m-t-1" type="submit" value='submit'>
+      <input class="m-t-1" type="submit" :value='langSet.submit'>
     </form>
   </div>
 </div>
@@ -59,16 +59,39 @@ export default {
       currentPage: 0,
       comments: [],
       code: null,
-      loadMoreMsg: 'Load More'
+      // loadMoreMsg: 'Load More',
+      langSet: {
+        // commentBoard: "Comment Board",
+        // commentPromptButton: "Leave your comment",
+        // loadMoreMsg: 'Load More',
+        // loadMoreMsgEnd: 'No More Comments',
+        // namePlaceholder: 'name',
+        // emailPlaceholder: 'email',
+        // contentPlaceholder: 'I just wanna say...',
+        // codePlaceholder: "enter the code",
+        // submit: "submit"
+      }
     }
   },
+  props: ['currentLanguage'],
+  watch:{
+    currentLanguage(a,b) {
+      console.log(a);
+      this.importLangSet(a)
+    }
+  },
+
 
   created(){
     getComments({from: this.currentPage, num: this.limit})
       .then((data)=>{
-        console.log(data)
+        // console.log(data)
         this.comments = data;
       })
+
+    //import Language JSON
+    this.importLangSet(this.$props.currentLanguage)
+    
   },
 
   methods: {
@@ -85,7 +108,7 @@ export default {
       if (content && name && email && code) {
         postComments({name, email, content, code})
         .then((data)=>{
-          console.log(data)
+          // console.log(data)
           if(data.code === 0) { //if the code is not correct
             this.fillCode();
             this.$notify({
@@ -134,7 +157,7 @@ export default {
               this.comments.push(e);
             })
           }else {
-            this.loadMoreMsg = 'No More Comments';
+            this.langSet.loadMoreMsg = this.langSet.loadMoreMsgEnd;
           }
         })
         .catch(e=>{
@@ -145,12 +168,19 @@ export default {
               text: 'something wrong happened'
             });
         })
+    },
+    importLangSet(lang){
+      import(`../lang/${lang}.json`)
+        .then(data=>{
+          this.langSet = Object.assign({},this.langSet, data)
+        })
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+  .loadMsgPrompt {color: $theme;}
   .time {color: #4D4D4D;}
   p, h2, span, li {color: #A6A6A6;}
   .reveal-button {width: 250px;padding: 10px 15px;}
@@ -163,6 +193,8 @@ export default {
 
     .each-comment {
       list-style: none;
+      margin-left: 0;
+      padding-left: 0;
 
       &::after {
         content: "";
@@ -175,6 +207,16 @@ export default {
       }
 
       .name {text-transform: capitalize;}
+    }
+
+    @media screen and (max-width: 400px) {
+      width: 90%;
+
+      form {
+        input[type="submit"] {
+          width: 100%;
+        }
+      }
     }
   }
 </style>

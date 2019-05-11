@@ -1,0 +1,11 @@
+{
+  "commentBoard": "留言板",
+  "commentPromptButton":"留下您的脚印吧",
+  "namePlaceholder":"姓名",
+  "emailPlaceholder":"邮箱",
+  "contentPlaceholder":"很高兴认识你",
+  "codePlaceholder":"输入验证码",
+  "submit":"提交",
+  "loadMoreMsg":"加载更多",
+  "loadMoreMsgEnd":"没有更多消息了"
+}

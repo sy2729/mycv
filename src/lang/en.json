@@ -1,0 +1,11 @@
+{
+  "commentBoard": "Comment Board",
+  "commentPromptButton":"Leave your comment",
+  "namePlaceholder":"name",
+  "emailPlaceholder":"email",
+  "contentPlaceholder":"I just wanna say...",
+  "codePlaceholder":"enter the code",
+  "submit":"submit",
+  "loadMoreMsg":"Load More",
+  "loadMoreMsgEnd":"No More Comments"
+}
