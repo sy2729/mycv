@@ -8,6 +8,12 @@
     <experience-section :experience-data=cvData.experiences />
     <education-section :education-data=cvData.educations />
     <v-footer />
+    <vue-lazy-component>
+      <!-- real component-->
+      <comments/>
+      <!-- skeleton component -->
+      <!-- <st-series-sohu-skeleton slot="skeleton"/> -->
+    </vue-lazy-component>
     <!-- {{getUserIcons}} -->
   </div>
 </template>
@@ -22,6 +28,7 @@ import educationSection from '@/components/education-section.vue'
 import workSection from '@/components/work-section.vue'
 import vFooter from '@/components/v-footer.vue'
 import cvButton from '@/components/cv-button.vue'
+import { component as VueLazyComponent } from '@xunlei/vue-lazy-component'
 import { mapState } from 'vuex'
 import { getCVBtnState } from "@/api";
 import local from "@/store/local.js";
@@ -52,7 +59,9 @@ export default {
     educationSection,
     workSection,
     vFooter,
-    cvButton
+    cvButton,
+    'vue-lazy-component': VueLazyComponent,
+    comments: ()=>import('@/components/comments.vue')
   },
   created(){
     if(this.cvData.works === undefined) {

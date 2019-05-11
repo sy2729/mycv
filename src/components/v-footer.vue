@@ -61,6 +61,9 @@ export default {
 
 <style lang="scss" scoped>
     footer {
+        position: sticky;
+        top: -210px;
+        z-index: 10;
         .footer-content {
             height: 210px;
             width: 100%;

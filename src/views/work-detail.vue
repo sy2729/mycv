@@ -13,7 +13,7 @@
                 <span class='t-color current-work-type absolute'>{{currentWork.type}}</span>
                 <div class="work-link-wrap" v-if="currentWork.type==='web'">
                     <a target='_blank' :class="['link-preview',{ 'disabled': currentWork.link.preview === '' }]" :href="currentWork.link.preview ? currentWork.link.preview : 'javascript:;'" title="preivew"><span><i class='fa fa-eye'></i>preview</span></a>
-                    <a target='_blank' :class="[{ 'disabled': currentWork.link.repo === '' }]" :href="currentWork.link.repo ? currentWork.link.repo : 'javascript:;'" title="repo"><span><i class='fa fa-github'></i>repo</span></a>
+                    <a target='_blank' :class="[{ 'disabled': currentWork.link.repo === '' }]" :href="currentWork.link.repo ? currentWork.link.repo : 'javascript:;'" title="repo"><span><i class='fab fa-github'></i>repo</span></a>
                 </div>
                 <div class="work-link-wrap" v-if="currentWork.type==='video'">
                     <a target='_blank' :class="['link-preview',{ 'disabled': currentWork.youtubeID === '' }]" :href="currentWork.youtubeID ? currentWork.link.youtube: 'javascript:;'" title="YouTube - Worldwide Audience"><span><i class='fa fa-youtube'></i></span></a>
