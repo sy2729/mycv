@@ -22,7 +22,7 @@ export const postComments = (e)=> {
   let {name, email, content, code} = e;
   return axios.post(`/comments?code=${code}`, {
     name, email, content
-  })
+  }, {withCredentials: true})
     .then(res=> {
       return res.data;
     })
