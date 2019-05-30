@@ -1,8 +1,8 @@
 <template>
     <div class="experience-section each-section" :style="{background: sectionColor}">
              <section-title :order=order :name=experiences.sectionName></section-title>
-             <div class='section-content'>
-                <each-experience v-for='(i, index) in experiences.allExperiences' :key=index v-bind='i'></each-experience>
+             <div class='section-content flex flex-wrap justify-space-around'>
+                <each-experience class="each-experience" v-for='(i, index) in experiences.allExperiences' :key=index v-bind='i'></each-experience>
              </div>
         </div>
 </template>
@@ -15,7 +15,7 @@ export default {
     data: function(){
         return {
             sectionColor: '#FFFFFF',
-            order:'02',
+            order:'03',
             experiences: [],
         }
     },
@@ -43,4 +43,9 @@ export default {
            
 //        }
 //    }
+
+.each-experience {
+    width: 45%;
+    max-height: max-content;
+}
 </style>

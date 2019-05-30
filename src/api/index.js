@@ -20,6 +20,7 @@ export const getComments = (e)=> {
 
 export const postComments = (e)=> {
   let {name, email, content, code} = e;
+  console.log(code)
   return axios.post(`/comments?code=${code}`, {
     name, email, content
   }, {withCredentials: true})
@@ -34,6 +35,15 @@ export const postComments = (e)=> {
 
 export const getCode = ()=> {
   return axios.get(`/captcha`)
+    .then(res=> {
+      return res.data;
+    })
+    .catch(e=>e)
+}
+
+
+export const getBlog = ()=> {
+  return axios.get(`/blog`)
     .then(res=> {
       return res.data;
     })

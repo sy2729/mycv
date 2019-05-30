@@ -15,7 +15,7 @@ export default {
     data: function(){
         return {
             sectionColor: '#fff',
-            order: '03',
+            order: '04',
             sectionName: 'Education',
             educations: [],
         }

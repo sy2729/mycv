@@ -1,7 +1,7 @@
 <template>
     <footer class="sticky" :style="{background: sectionColor}">
             <div class="footer-content w-100 flex justify-center align-center">
-                <p>Get in touch with me!<a :href="'mailto:' + email">Click Here</a></p>
+                <p>Get in touch with me!<a class="contact-button" :href="'mailto:' + email">Click Here</a></p>
             </div>
             <div class="footer-footer flex justify-space-around align-center relative">
                 <ul class="social-media flex">
@@ -72,6 +72,11 @@ export default {
 
                 a {
                     color: inherit;
+                    padding: 10px 15px;
+                    background: $theme;
+                    background-image: linear-gradient(-226deg, #B52B28 0%, #CA4B48 31%, #BA423F 100%);
+                    border-radius: 25px;
+                    margin-left: 10px;
                 }
             }
         }

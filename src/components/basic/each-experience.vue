@@ -5,42 +5,45 @@
                     <div class='experience-logo-wrap'>
                         <img :src=logo class='experience-logo'>
                     </div>
-                    <div class="experience-info-wrap flex justify-space-between">
+                    <div class="experience-info-wrap">
                         <div class="experience-info">
                             <p class='company'>{{company}}</p>
+                            <p class='experience-date'>
+                                <span>{{beginDate}}</span>
+                                    -
+                                <span>{{endDate}}</span>
+                            </p>
                             <p class='role'>{{role}}</p>
-                        </div>
-
-                        <p class='experience-date'>
-                            <span>{{beginDate}}</span>
-                                -
-                            <span>{{endDate}}</span>
-                        </p>   
+                        </div>   
                     </div>
                 </div>
              </transition>
 
             <transition name='show-content'>
-                <div class='experience-detail w-100' v-if=viewDetailState>
-                    <div class="experience-abstract-info flex justify-space-between">
+                <div class='experience-detail w-100 relative ov-hide' v-if=viewDetailState>
+                    <div class="experience-abstract-info">
                         <div class="experience-info">
                             <p class='company'>{{company}}</p>
+                            <p class='experience-date'>
+                                <span>{{beginDate}}</span>
+                                    -
+                                <span>{{endDate}}</span>
+                            </p>   
                             <p class='role'>{{role}}</p>
                         </div>
-
-                        <p class='experience-date'>
-                            <span>{{beginDate}}</span>
-                                -
-                            <span>{{endDate}}</span>
-                        </p>   
                     </div>
                     <ul>
                         <li v-for='(i, index) in detail && detail.descrip' :key='index'>{{i}}</li>
                     </ul>
+                    <div class="company-logo-bg-wrap absolute">
+                        <img :src=logo class='experience-logo'>
+                        <!-- <div class="company-logo-bg w-100"></div>
+                        <div class="company-logo-bg-cover w-100"></div> -->
+                    </div>
                 </div>
             </transition>
 
-            <div class='change-state absolute hide view-summary' v-if=viewDetailState>Back</div>
+            <!-- <div class='change-state absolute hide view-summary' v-if=viewDetailState>Back</div> -->
         </div>
 </template>
 
@@ -68,16 +71,30 @@ export default {
                padding: 10px 40px;
                min-height: 75px;
             //    background: #fff; 
-               border: 1px solid #F4F4F4;
+               /* border: 1px solid #ededed; */
                margin-top: 10px;
-               margin-right: 10px;
+               /* margin-right: 10px; */
                transition: min-height .4s;
+                min-width: 300px;
 
                 &.viewDetail {
                     min-height: 120px;
                     align-items: flex-start;
                     // height: 180px;
                     overflow-y: scroll;
+
+                    .company-logo-bg-wrap {
+                        bottom: 0; right: 0;
+                        transition: transform 1s ease-in-out;
+                        transform: translate(0%, 100%);
+                        
+                        img {height: 200px; opacity: .08;}
+                    }
+                    &:hover {
+                        .company-logo-bg-wrap {
+                            transform: translate(0%, 0%);
+                        }
+                    }
                 }
 
                 .change-state {
@@ -104,6 +121,7 @@ export default {
 
                 .experience-info-wrap {
                     flex: 1 1 auto;
+                    min-width: 100px;
                 }
             }
 
@@ -119,7 +137,7 @@ export default {
 
             .experience-date {
                 justify-self: flex-end;
-                color: #9B9B9B;
+                color: #767676;
             }
 
             .experience-detail {
@@ -128,7 +146,44 @@ export default {
                 ul {
                     width: 89%;
                     padding: 20px;
+                    list-style: none;
+                    padding-left: 0;
                 }
             }
+
+            @media screen and(max-width: 700px) {
+                min-width: unset;
+                width: 100% !important;
+
+                &:after {
+                    opacity: 0 !important;
+                }
+            }
+    }
+
+
+    .each-clickable, .header-bar {
+        cursor: pointer;
+        position: relative;
+        &:after {
+            content: '';
+            position: absolute;
+            left: 10px;
+            background: $theme;
+            top: 10px;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity .4s;
+        }
+
+        &:hover:after{
+            opacity: 1;
+        }
+
+        &.viewDetail:after {
+            opacity: 1;
+        }
     }
 </style>

@@ -35,7 +35,7 @@ export default {
         return {
             initWorkType: 'web',
             sectionColor: '#F5F5F5',
-            order: '04',
+            order: '02',
             sectionName: 'Portfolio',
             filteredWorks: [],
             works: [],
