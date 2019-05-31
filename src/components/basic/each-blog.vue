@@ -53,7 +53,7 @@ export default {
   methods:{
     calculateUrl(title, date){
       if(!date) {return undefined}
-      let number = moment(date).format('YYYY/MM/DD').split('/')  // ---- 04/29/2019
+      let number = moment(new Date(date)).format('YYYY/MM/DD').split('/')  // ---- 04/29/2019
       if(date.toLowerCase().includes('eastern')) {
         number[number.length - 1] = number[number.length - 1] - 0 + 1
       }
@@ -68,7 +68,7 @@ export default {
       return string
     },
     convertDate(string) {
-      return moment(string).format('YYYY/MM/DD')
+      return moment(new Date(string)).format('YYYY/MM/DD')
     }
   },
 }
