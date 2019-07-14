@@ -3,7 +3,9 @@
     <cv-button :current-language='currentLanguage' :cv-path='cvData.cvPath' v-if="showCVBtn"></cv-button>
     <v-header :header-data='cvData.header' :current-language='currentLanguage' />
     <!-- <vue-lazy-component> -->
-    <skill-section :skill-data=cvData.skills />
+    <skill-section 
+      :skill-data=cvData.skills
+      :current-language='currentLanguage' />
     <!-- </vue-lazy-component> -->
     <!-- <vue-lazy-component> -->
     <work-section :worktypes=workTypes :work-data=cvData.works />

@@ -1,7 +1,8 @@
 <template>
-  <div class="image-loader">
-    <img :src="placeholder" alt="Descriptive Image" ref='imgEl'>
-    <p class="loading-text" v-if="loadingState">image loading...</p>
+  <div class="image-loader" >
+    <img :src="placeholder" alt="Descriptive Image" ref='imgEl' :style="{'height': height + 'px', 'width': width + 'px'}">
+    <p class="loading-text" v-if="loadingState">{{loadingText || 'image loading...'}}</p>
+    <p class="loading-text" >{{loadingText || null}}</p>
   </div>
 </template>
 
@@ -16,6 +17,17 @@ export default {
     loading: {
       type: String,
       default: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1548391627/cv-img/logo-animation.gif'
+    },
+    loadingText: {
+      type: String,
+    },
+    height: {
+      type: String | Number,
+      default: 'unset'
+    },
+    width: {
+      type: Number | String,
+      default: 'unset'
     }
   },
   data(){
@@ -57,7 +69,6 @@ export default {
     img {
       display: block;
       margin: 0 auto;
-      width: 100%;
       transition: opacity .4s;
     }
 

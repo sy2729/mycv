@@ -42,6 +42,11 @@
       </div>
       <input class="m-t-1" type="submit" :value='langSet.submit'>
     </form>
+
+    <!-- the bottom mark -->
+    <div class="white ">
+      <p class="relative comment-bottom-mark p-t-1">(Partially) Designed and Coded by Shuai Yuan with 💗</p>
+    </div>
   </div>
 </div>
 </template>
@@ -216,6 +221,19 @@ export default {
         input[type="submit"] {
           width: 100%;
         }
+      }
+    }
+
+    .comment-bottom-mark {
+      color: rgb(77, 76, 76);
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 1px;
+        width: 50px;
+        background: rgb(77, 76, 76);
       }
     }
   }

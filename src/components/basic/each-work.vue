@@ -1,10 +1,11 @@
 <template>
     <div class="each-work relative pointer" :style="{ 'background-image': 'url(' + presentImg + ')'}" @click=viewEachWork>
-        <div class='work-cover absolute top left flex align-center justify-center'>
+        <div class='work-cover absolute top left'>
             <div class="banner absolute full" v-if="star"><img :src="banner" alt=""></div>
-            <div class="work-info-wrap t-center">
-                <h3 class='work-name'>{{name}}</h3>
-                <span class='current-type'><i :class="typeIconCode[type]"></i></span>
+            <div class="work-info-wrap p-1 t-left">
+                <h3 class='work-name thin'>{{name}}</h3>
+                <a :title="'preview the ' + name " @click.stop="()=>null" :href="link.preview" target="_blank" class="p-1 preview-link" v-if="type==='web' && link && link.preview"><i class='iconfont'>&#xe649;</i></a>
+                <!-- <span class='current-type'><i :class="typeIconCode[type]"></i></span> -->
             </div>
             <div class="work-tag absolute flex flex-wrap">
                 <!-- only get the first 4 tags, otherwise it will overflow -->
@@ -52,6 +53,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+    .preview-link {
+        border-radius: 50%;
+        &:hover {
+            background: #434142;
+        }
+    }
 </style>
 

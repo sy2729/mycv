@@ -2,6 +2,20 @@ let base = {
     experiences: {
         sectionName: '工作经验',
         allExperiences: [
+            // {
+            //     logo: '/img/makeblock.png',
+            //     role: '产品管理培训生',
+            //     company: '深圳创客工厂科技有限公司',
+            //     beginDate: '2019.07',
+            //     endDate: '现在',
+            //     activeState: true,
+            //     detail: {
+            //         descrip: [
+            //             '-----',
+            //             "-----",
+            //         ],
+            //     },
+            // },
             {
                 logo: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1537750483/cv-img/download.png',
                 role: '网络维护和建设 - 学生会委员会',
@@ -134,7 +148,7 @@ let base = {
                 major: '教育技术与媒体',
                 startDate: '2017.09',
                 endDate: '2019.05',
-                activeState: true,
+                activeState: false,
             },
             {
                 school: '华中师范大学',

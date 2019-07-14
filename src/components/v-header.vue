@@ -1,15 +1,20 @@
 <template>
-    <div class="header w-100 h-100vh relative over-hidden" :style="{backgroundImage: `url(${bgUrl})`}">
-
+    <div class="header w-100 h-100vh relative over-hidden" >
+            <div class="header-bg w-100 h-100vh relative background-cover background-cover-fixed" :style="{backgroundImage: `url(${bgUrl})`}"></div>
+            <div class="logo absolute background-cover" :style="{backgroundImage: `url(${logoUrl})`}"></div>
             <!-- <cv-nav @choose-to-view='headerSelect'></cv-nav> -->
 
-            <div class="title-wrap absolute hide" ref='titleWrap'>
-                <h4 class="subtitle" v-if='header.target'>
-                    尊敬的<span class="subtitle subtitle-target bold">{{header.target}}</span>面试官您好，我是
-                </h4>
-                <h4 class="subtitle" v-else>{{header.greeting || 'nihao'}}</h4>
-                <h1 class="title">{{header.name || 'Wait Please'}}</h1>
-                <div class='arrow-wrap pointer flex align-center justify-center' @click=arrowScroll ref='arrow'><i class="fa fa-arrow-down"></i></div>
+            <div class="title-wrap absolute hide flex justify-center align-center" ref='titleWrap'>
+                <div class="title-wrap-inner absolute" v-if="!videoPlaying">
+                    <h4 class="subtitle" v-if='header.target'>
+                        尊敬的<span class="subtitle subtitle-target bold">{{header.target}}</span>面试官您好，我是
+                    </h4>
+                    <h4 class="subtitle" v-else>{{header.greeting || 'nihao'}}</h4>
+                    <h1 class="title">{{header.name || 'Wait Please'}}</h1>
+                    <!-- <div class='arrow-wrap pointer flex align-center justify-center' @click=arrowScroll ref='arrow'><i class="fa fa-arrow-down"></i></div> -->
+                </div>
+                <!-- <video v-else class="absolute left top w-100" controls autoplay :src="bgVideoUrl"></video> -->
+                <!-- <i class="fa fa-play-circle pointer" @click="videoPlaying = true"></i> -->
             </div>
 
             <!-- <div class='language-switch'>
@@ -29,8 +34,11 @@ export default {
     data(){
         return {
              bgUrl: './img/bg-blur.jpg',
-             bgUrlClear: './img/bg-clear.jpg',
-             header: {}
+             bgUrlClear: './img/bg-clear-v2.png',
+             logoUrl: './img/logo.png',
+             header: {},
+             bgVideoUrl: './img/bg-video.mp4',
+             videoPlaying: false
         }
     },
     props: [
@@ -127,43 +135,80 @@ export default {
 <style lang="scss" scoped>
     .header {
         // height: 470px;
-        background: transparent center no-repeat;
-        background-size: cover;
-        background-attachment: fixed;
+        &:before {
+            content: "";
+            position: absolute;
+            left: 0;top: 0;width: 100%;height: 100%;
+            background: #FEFFFF;
+            /* background-image: linear-gradient(-229deg, #C8C8C8 0%, #E9EAE6 65%, #C2C4BE 100%); */
+        }
+
+        .logo {right: 30px; top: 30px; width: 110px; height: 125px; transform: scale(.8);}
+
+        .header-bg {
+            @media screen and (max-width: 600px) {
+                background-attachment: unset;
+                background-image: url('/img/bg-clear.jpg') !important;
+
+            }
+        }
     }
 
 
         .title-wrap {
-        top: 50%;
-        transform: translateY(-50%) scale(1.3);
-        color: #fff;
-        padding: 20px 0;
-        transition: all 3s;
-        left: 15%;
-        &.active {
-            opacity: 1;
-        }
+            /* border: 15px solid rgba(212,103,104, .5); */
+            width: 430px;
+            height: 255px;
+            max-height: 320px;
+            top: 50%;
+            right: 0;
+            transform: scale(1.2);
+            transform-origin: right;
+            /* transform: translate(50%,-50%) scale(1.3); */
+            color: #222;
+            padding: 20px 0;
+            transition: all 3s;
+
+            .fa-play-circle {font-size: 2em; color: $theme;}
+
+            &.active {
+                opacity: 1;
+            }
+
+            .title-wrap-inner {
+                left: 0;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                .subtitle {
+                    font-weight: 100;
+
+                    .subtitle-target {
+                        font-size: 32px;
+                        color: $theme;
+                        /* font-weight: bold; */
+                    }
+                }
+
+                .title {
+                    font-size: 3em;
+                    font-weight: 700;
+                }
+
+
+                @media screen and (max-width: 600px) {
+                    transform: unset;
+                    color: #FEFFFF;
+                }
+            }
         
 
-        .subtitle {
-            font-weight: 100;
+        
 
-            .subtitle-target {
-                font-size: 32px;
-                color: $theme;
-                /* font-weight: bold; */
-            }
-        }
-
-        .title {
-            font-weight: 700;
-        }
-
-       .arrow-wrap {
+       /* .arrow-wrap {
            width: 32px;
            height: 32px;
            border-radius: 50%;
-           border: 1px solid #f4f4f4;
+           border: 1px solid #222;
            transform: translateY(150px);
 
            &.active {
@@ -174,7 +219,7 @@ export default {
                from {transform: translateY(150px);}
                to {transform: translateY(165px);}
            }
-       }
+       } */
     }
 
     /* .language-switch {

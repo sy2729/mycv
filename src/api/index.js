@@ -42,8 +42,19 @@ export const getCode = ()=> {
 }
 
 
+/* *********** BLOG **********************/
 export const getBlog = ()=> {
   return axios.get(`/blog`)
+    .then(res=> {
+      return res.data;
+    })
+    .catch(e=>e)
+}
+
+
+/* *********** SKILL **********************/
+export const getSkill = (lang)=> {
+  return axios.get(`/skill?lang=${lang}`)
     .then(res=> {
       return res.data;
     })

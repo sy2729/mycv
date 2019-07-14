@@ -263,12 +263,12 @@ export default {
                     color: #f4f4f4;
 
                     .work-info-wrap {
-                        width: 70%;
+                        width: 100%;
                         margin: 0 auto;
                         text-shadow: 2px 2px 2px rgba(100, 100, 100, .5);
-
+                        .work-name {margin-bottom: 10px;}
                         .current-type {
-                            font-size: 1.5em;
+                            font-size: 1.2em;
                             font-weight: 100;
                         }
                     }

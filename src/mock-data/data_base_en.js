@@ -177,7 +177,7 @@
                     major: 'Instructional Technology and Media',
                     startDate: '2017.09',
                     endDate: '2019.05',
-                    activeState: true,
+                    activeState: false,
                 },
                 {
                     school: 'Central China Normal University',

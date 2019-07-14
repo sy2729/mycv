@@ -57,6 +57,7 @@ export default {
       if(date.toLowerCase().includes('eastern')) {
         number[number.length - 1] = number[number.length - 1] - 0 + 1
       }
+      number = number.map(e=>e - 0 < 10 ? `0${e - 0}` : e);
       number = number.join('/')
       return `${number}/${title}`
     },
