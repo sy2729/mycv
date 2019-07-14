@@ -115,27 +115,27 @@ let base = {
         allSkills: [
             {
                 name: 'HTML & CSS & JavaSCript',
-                extent: '70'
+                extent: 70
             },
             {
                 name: 'Sass / Parcel / Webpack',
-                extent: '70'
+                extent: 70
             },
             {
                 name: 'Node&Express / MongoDB&Mongoose',
-                extent: '70'
+                extent: 70
             },
             {
                 name: 'Vue&Vuex / React',
-                extent: '70'
+                extent: 70
             },
             {
                 name: 'UX / UI Design - 用户体验和用户界面设计',
-                extent: '60'
+                extent: 60
             },
             {
                 name: 'Videography - 视频拍摄剪辑',
-                extent: '60'
+                extent: 60
             },
         ] 
     },

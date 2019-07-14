@@ -4,13 +4,13 @@
         <div class='section-content'>
             <!-- <p class="content-description" v-html='skills.description'></p> -->
             <div :class="['skill-wrap', {active: skillBarShort}]">
-                <div class="each-skill w-100" v-for='(i, index) in skills' :key=index>
+                <div class="each-skill w-100" v-for='(i, index) in skills.allSkills' :key=index>
                     <div class="bar-info-wrap flex justify-space-between align-center">
                         <p class='skill-name'>{{i.name}}</p>
-                        <time-num-updater class="skill-extent" :scale=i.scale />
+                        <time-num-updater class="skill-extent" :scale=i.extent />
                     </div>
                     <div class="bar-outter w-100 relative">
-                        <div class="bar-inner absolute top left h-100" :style="{width: i.scale + '%'}"></div>
+                        <div class="bar-inner absolute top left h-100" :style="{width: i.extent + '%'}"></div>
                     </div>
                 </div>
                 
@@ -51,11 +51,16 @@ export default {
     },
     watch: {
         'currentLanguage': function () {
-            this.fetchSkill();
+            // this.fetchSkill();
+        },
+        'skillData':function(){
+            if(this.$props.skillData) {
+                this.skills = this.$props.skillData;
+            };    
         }
     },
     created(){
-        this.fetchSkill();
+        // this.fetchSkill();
     },
     mounted(){
         ScrollReveal().reveal('.skill-wrap', { afterReveal: this.removeActive});

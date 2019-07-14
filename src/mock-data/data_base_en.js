@@ -106,27 +106,27 @@
             allSkills: [
                 {
                     name: 'HTML & CSS & JavaSCript',
-                    extent: '80'
+                    extent: 80
                 },
                 {
                     name: 'Sass / Parcel / Webpack',
-                    extent: '70'
+                    extent: 70
                 },
                 {
                     name: 'Node/Express',
-                    extent: '70'
+                    extent: 70
                 },
                 {
                     name: 'UX / UI Design',
-                    extent: '60'
+                    extent: 60
                 },
                 {
                     name: 'Videography',
-                    extent: '60'
+                    extent: 60
                 },
                 {
                     name: 'Vue&Vuex / React',
-                    extent: '70'
+                    extent: 70
                 },
             ],
         },
