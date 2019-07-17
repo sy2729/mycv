@@ -43,6 +43,7 @@ import cvButton from '@/components/cv-button.vue'
 import { mapState } from 'vuex'
 import { getCVBtnState } from "@/api";
 import local from "@/store/local.js";
+import changeTitle from '@/mixins/changeTitle';
 
 export default {
   name: 'home',
@@ -62,6 +63,7 @@ export default {
       'workTypes'
     ])
   },
+  mixins:[changeTitle],
   components: {
     vHeader,
     skillSection: ()=>import('@/components/skill-section.vue'),
@@ -88,6 +90,9 @@ export default {
       })
 
     local.setLocalStore('path', 'dev')
+  },
+  mounted(){
+    this.changeTitle('Shuai Yuan - Portfolio')
   },
 }
 </script>

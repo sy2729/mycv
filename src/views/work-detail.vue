@@ -56,6 +56,9 @@
 import sideBarInWorkDetail from '@/components/basic/side-bar-in-work-detail';
 import imgLoader from '@/components/basic/img-loader';
 import {mapState} from 'vuex';
+import changeTitle from '@/mixins/changeTitle';
+import viewScaleOperation from '@/mixins/viewScaleOperation';
+
 export default {
     name: 'workDetail',
     data: function(){
@@ -86,11 +89,14 @@ export default {
         // }
 
     },
+    mixins: [changeTitle, viewScaleOperation],
     watch: {
         cvData(val) {
             
             this.allWorks = this.$store.getters.cvData.works.allWorks
             this.currentWork = this.$store.getters.cvData.works.allWorks[this.currentWorkId];
+            //change the page title
+            this.changeTitle(this.currentWork['name']);
         },
         '$route'(to, from) {
             this.getId();
@@ -99,6 +105,8 @@ export default {
                 return i.id === this.currentWorkId - 0;
             });
             this.currentWork = currentWork[0];
+            //change the page title
+            this.changeTitle(this.currentWork['name']);
             // this.currentWork = this.$store.getters.cvData.works.allWorks[this.currentWorkId];
         }
     },
@@ -128,8 +136,13 @@ export default {
         },
         viewLargePicture(data) {
             this.focusedImage = data.content;
+
+            //allow scale the page
+            this.viewScaleOperation(true);
         },
         clearFocus() {
+            //disallow scale the page
+            this.viewScaleOperation(false);
             this.focusedImage = undefined;
         }
     },
@@ -149,6 +162,10 @@ export default {
             this.currentWork = currentWork[0]
         }
     },
+    mounted(){
+        //change the page title
+        this.changeTitle(this.currentWork['name']);
+    }
     
 }
 </script>
@@ -248,13 +265,13 @@ export default {
 
                     .image-loader {
                         img {
-                            width: 90%;
+                            width: 100%;
                             height: auto;
                             margin: 0 auto;
                             display: block;
                             // float: right;
                             padding: 20px 0;
-                            max-width: 400px;
+                            /* max-width: 400px; */
                             min-width: 200px;
                         }
                     }
@@ -311,8 +328,8 @@ export default {
                     }
                 }
                 .each-descrip-img {
-                    background: #efefef;
-                    width: 70%;
+                    /* background: #efefef; */
+                    width: 90%;
                     margin: 30px auto;
                     min-width: 260px;
                     cursor: pointer;
