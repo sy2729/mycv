@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0d7ea3"],{"799d":function(o){o.exports={commentBoard:"留言板",commentPromptButton:"留下您的脚印吧",namePlaceholder:"姓名",emailPlaceholder:"邮箱",contentPlaceholder:"很高兴认识你",codePlaceholder:"输入验证码",submit:"提交",loadMoreMsg:"加载更多",loadMoreMsgEnd:"没有更多消息了",version:"版本",siteWords:"个人设计（部分）并独立完成开发"}}}]);
+//# sourceMappingURL=chunk-2d0d7ea3.b5a7c30f.js.map
