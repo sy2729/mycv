@@ -7,5 +7,7 @@
   "codePlaceholder":"输入验证码",
   "submit":"提交",
   "loadMoreMsg":"加载更多",
-  "loadMoreMsgEnd":"没有更多消息了"
+  "loadMoreMsgEnd":"没有更多消息了",
+  "version":"版本",
+  "siteWords": "个人设计（部分）并独立完成开发"
 }

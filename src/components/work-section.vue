@@ -8,7 +8,7 @@
         </section-title>
         <div class='section-content flex flex-nowrap' ref='works'>
             <router-link v-for='i in filteredWorks.allWorks' :key=i.id :to='`/work?id=${i.id}`'>
-                <each-work v-bind='i' v-if="i.display || true"></each-work>
+                <each-work v-bind='i' v-if="i.display === true || i.display === undefined"></each-work>
             </router-link>
         </div>
         <button :class="['next-btn', 'flex', 'absolute', 'justify-center', 'align-center', 'circle-btn',{'deactive': scrollToEnd}]" @click=scrollRight v-if="mode !== 'full'"><i class='fa fa-angle-right'></i></button>
@@ -17,16 +17,11 @@
 </template>
 
 <script>
-// sectionTitle,
-//         eachWork,
-//         progressBar,
-//         switchType,
 import sectionTitle from './basic/section-title';
 import eachWork from './basic/each-work';
 import progressBar from './basic/progress-bar';
 import switchType from './basic/switch-type';
 import { starFirst } from '../utils/workArrange';
-// import workSkeleton from './basic/work-skeleton'
 
 
 export default {

@@ -171,6 +171,7 @@ let base = {
         allWorks: [
             {
                 name: '仿网易云音乐（移动端）',
+                display: false,
                 link: {
                     preview: `https://sy2729.github.io/music-app/`,
                     repo: 'https://github.com/sy2729/music-app',

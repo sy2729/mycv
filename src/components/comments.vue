@@ -44,8 +44,8 @@
     </form>
 
     <!-- the bottom mark -->
-    <div class="white ">
-      <p class="relative comment-bottom-mark p-t-1">(Partially) Designed and Coded by Shuai Yuan with 💗</p>
+    <div class="white">
+      <p class="relative comment-bottom-mark p-t-1">{{langSet.siteWords}}  |   <span><router-link to="/iteration">{{langSet.version}} V{{version}}</router-link></span></p>
     </div>
   </div>
 </div>
@@ -66,16 +66,8 @@ export default {
       code: null,
       // loadMoreMsg: 'Load More',
       langSet: {
-        // commentBoard: "Comment Board",
-        // commentPromptButton: "Leave your comment",
-        // loadMoreMsg: 'Load More',
-        // loadMoreMsgEnd: 'No More Comments',
-        // namePlaceholder: 'name',
-        // emailPlaceholder: 'email',
-        // contentPlaceholder: 'I just wanna say...',
-        // codePlaceholder: "enter the code",
-        // submit: "submit"
-      }
+      },
+      version: "1.5.0"
     }
   },
   props: ['currentLanguage'],
@@ -226,6 +218,7 @@ export default {
 
     .comment-bottom-mark {
       color: rgb(77, 76, 76);
+      a {color: rgb(77, 76, 76); &:hover {text-decoration: underline;}}
       &::before {
         content: '';
         position: absolute;

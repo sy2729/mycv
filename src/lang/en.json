@@ -7,5 +7,7 @@
   "codePlaceholder":"enter the code",
   "submit":"submit",
   "loadMoreMsg":"Load More",
-  "loadMoreMsgEnd":"No More Comments"
+  "loadMoreMsgEnd":"No More Comments",
+  "version":"Version",
+  "siteWords": "(Partially) Designed and Coded by Shuai Yuan with 💗"
 }

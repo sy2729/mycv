@@ -6,7 +6,7 @@ import VTooltip from 'v-tooltip';
 Vue.use(Router)
 Vue.use(VTooltip)
 
-export default new Router({
+var router = new Router({
   // mode: 'history',
   routes: [
     {
@@ -57,6 +57,11 @@ export default new Router({
       name: 'design',
       component: () => import(/* webpackChunkName: "about" */ './views/Design.vue')
     },
+    // {
+    //   path: '/iteration',
+    //   name: 'version',
+    //   component: () => import(/* webpackChunkName: "about" */ './views/Version.vue')
+    // },
     {
       path: '*',
       name: 'not-found',
@@ -71,3 +76,24 @@ export default new Router({
     }
   },
 })
+
+router.beforeEach((to, from, next)=>{
+  if(to.name === 'work' && from.name === 'work') {
+    next()
+  }else {
+    let cover = document.querySelector('.transition-cover');
+    if(cover) {
+      cover.classList.add('active');
+
+      cover.addEventListener('transitionend', ()=>{
+        cover.classList.remove('active')
+        next();
+      })
+    }else {
+      next()
+    }
+  }
+})
+
+
+export default router;

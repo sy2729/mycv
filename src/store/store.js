@@ -40,7 +40,7 @@ export default new Vuex.Store({
             // ...
         },
         cvData: {},
-        currentLanguage: undefined,
+        currentLanguage: undefined
     },
     getters: {
         cvData: state => {return state.cvData}

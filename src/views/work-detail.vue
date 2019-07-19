@@ -20,15 +20,16 @@
                     <a target='_blank' :class="[{ 'disabled': currentWork.biliID === '' }]" :href="currentWork.biliID ? currentWork.link.bili: 'javascript:;'" title="bilibili - Chinese Audience"><span><i class='iconfont'>&#xe607;</i></span></a>
                 </div>
                 <ul class='tags flex flex-wrap'>
-                    <li v-for='(i, index) in currentWork.tags' :key='index'>{{i}}</li>
+                    <li v-for='(i, index) in currentWork.tags' :key="'key'+ index">{{i}}</li>
                 </ul>
             </div>
             <div class='work-content'>
-                <div v-for="i in currentWork.descrip" :class="[{'each-descrip-img': i.type==='img'},{'work-videoWrapper': i.type==='video'} ]" :key='i.content'>
-                    <transition name='show-content'>
-                        <iframe :src="i.content.youtube" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen v-if="i.type==='video' && currentLanguage === 'en' && currentWork.youtubeID !== ''"></iframe>
-                        <iframe :src="i.content.bili" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen v-if="i.type==='video' && currentLanguage === 'zh' && currentWork.biliID !== ''"></iframe>
-                    </transition>
+                <div v-for="(i, index) in currentWork.descrip" :class="[{'each-descrip-img': i.type==='img'},{'work-videoWrapper': i.type==='video'} ]" :key="index + 'key'">
+                    <transition-group name='show-content'>
+                        <iframe key="youtube" :src="i.content.youtube" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen v-if="i.type==='video' && currentLanguage === 'en' && currentWork.youtubeID !== ''" @load="videoLoad"></iframe>
+                        <iframe key="bilibili" :src="i.content.bili" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen v-if="i.type==='video' && currentLanguage === 'zh' && currentWork.biliID !== ''"  @load="videoLoad"></iframe>
+                        <div key="videoPlaceHolder" v-if="i.type==='video' && videoLoadState !== true">hahahha</div>
+                    </transition-group>
                     <!-- <img :src='i.content' v-if="i.type==='img'" v-on:click.stop='viewLargePicture(i)'> -->
                     <img-loader :img='i.content' v-if="i.type==='img'" v-on:click.stop.native='viewLargePicture(i)'></img-loader>
                     <p v-html='i.content' v-if="i.type==='text'"></p>
@@ -68,7 +69,8 @@ export default {
             currentWork: {},
             allWorks: [],
             currentWorkId: undefined,
-            focusedImage: undefined
+            focusedImage: undefined,
+            videoLoadState: false
         }
     },
     computed: {
@@ -144,6 +146,9 @@ export default {
             //disallow scale the page
             this.viewScaleOperation(false);
             this.focusedImage = undefined;
+        },
+        videoLoad(){
+            this.videoLoadState = true;
         }
     },
     beforeMount(){
