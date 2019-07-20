@@ -1,5 +1,6 @@
 <template>
-  <div class="each-blog p-2 m-r-1 m-t-1 ov-hide">
+  <div class="each-blog p-2 m-r-1 m-t-1 ov-hide relative">
+    <div class="recent-mark absolute" v-if="blogData.recent">new</div>
     <h3 class="p-b-1">{{blogData.title}}</h3>
     <p class="date m-b-1">{{convertDate(blogData.date)}}</p>
     <!-- <div class="cover m-b-1" :style="{'background-image': `url(${blogData.cover||'/img/404.png'})`}"></div> -->
@@ -84,6 +85,12 @@ export default {
     /* background: $theme; */
 
     h3 {font-size: 1.3em;}
+
+    .recent-mark {
+      right: 10px;
+      top: 10px;
+      color: $theme;
+    }
 
     .cover {
       background: transparent center center;

@@ -20,7 +20,7 @@
                     <a target='_blank' :class="[{ 'disabled': currentWork.biliID === '' }]" :href="currentWork.biliID ? currentWork.link.bili: 'javascript:;'" title="bilibili - Chinese Audience"><span><i class='iconfont'>&#xe607;</i></span></a>
                 </div>
                 <ul class='tags flex flex-wrap'>
-                    <li v-for='(i, index) in currentWork.tags' :key="'key'+ index">{{i}}</li>
+                    <li v-for='i in currentWork.tags' :key="'key:'+ i">{{i}}</li><!-- Have to use this key value now, could change it to unique key with id in the future -->
                 </ul>
             </div>
             <div class='work-content'>
