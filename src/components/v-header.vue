@@ -1,6 +1,6 @@
 <template>
     <div class="header w-100 h-100vh relative over-hidden" >
-            <div class="header-bg w-100 h-100vh relative background-cover background-cover-fixed" :style="{backgroundImage: `url(${bgUrl})`}"></div>
+            <div class="header-bg w-100 h-100vh relative background-cover background-cover-fixed" :style="{backgroundImage: `url(${bgUrlClear})`}"></div>
             <div class="logo absolute background-cover" :style="{backgroundImage: `url(${logoUrl})`}"></div>
             <!-- <cv-nav @choose-to-view='headerSelect'></cv-nav> -->
 
@@ -34,7 +34,7 @@ export default {
     data(){
         return {
              bgUrl: './img/bg-blur.jpg',
-             bgUrlClear: './img/bg-clear-v2.png',
+             bgUrlClear: 'https://shuai-cv-data.oss-cn-shenzhen.aliyuncs.com/img/bg-clear-v2.png',
              logoUrl: './img/logo.png',
              header: {},
              bgVideoUrl: './img/bg-video.mp4',
@@ -127,7 +127,7 @@ export default {
     mixins: [imgLoader],
     created() {
         // loading clearer image
-        this.run(this.bgUrl, this.bgUrlClear, 'bgUrl')
+        // this.run(this.bgUrl, this.bgUrlClear, 'bgUrl')
     }
 }
 </script>
@@ -180,7 +180,7 @@ export default {
                 top: 50%;
                 transform: translate(-50%, -50%);
                 .subtitle {
-                    font-weight: 100;
+                    font-weight: 400;
 
                     .subtitle-target {
                         font-size: 32px;

@@ -2,20 +2,23 @@ let base = {
     experiences: {
         sectionName: '工作经验',
         allExperiences: [
-            // {
-            //     logo: '/img/makeblock.png',
-            //     role: '产品管理培训生',
-            //     company: '深圳创客工厂科技有限公司',
-            //     beginDate: '2019.07',
-            //     endDate: '现在',
-            //     activeState: true,
-            //     detail: {
-            //         descrip: [
-            //             '-----',
-            //             "-----",
-            //         ],
-            //     },
-            // },
+            {
+                logo: '/img/makeblock.png',
+                role: '产品管理培训生',
+                company: '深圳创客工厂科技有限公司',
+                beginDate: '2019.07',
+                endDate: '现在',
+                activeState: true,
+                detail: {
+                    descrip: [
+                        "全球STEAM教育解决方案提供者，STEAM教育行业C轮准独角兽公司。",
+                        "参与公司新项目Saas产品孵化和立项，走访数十家教培机构采访调研，整理用户反馈和市场行情，撰写7份调研分析报告；",
+                        "独立完成市面教培Saas软件竞品的5份竞品分析，并针对产品方向决策给出参考建议；",
+                        "通过电话调研收集慧编程平台和mBlock5扩展设计器用户需求，分析需求，整理需求池，并协助产品版本迭代，撰写需求文档，主持需求评审，并跟进迭代进度，成功上线扩展300余个。",
+                        "跟进首页mblock.cc开发上线，实现象素级还原、SEO和首屏加载速度260%优化，贡献前端代码量1000余行。"
+                    ],
+                },
+            },
             {
                 logo: 'https://res.cloudinary.com/shuaiyuan/image/upload/v1537750483/cv-img/download.png',
                 role: '网络维护和建设 - 学生会委员会',
@@ -247,6 +250,7 @@ let base = {
             },
             {
                 name: 'Atos OneSource 起飞页',
+                display: false,
                 link: {
                     preview: `https://sy2729.github.io/market-vue-reconstruct/dist/`,
                     repo: `https://github.com/sy2729/market-vue-reconstruct`
@@ -271,6 +275,7 @@ let base = {
                 tags: ['网页开发', '用户体验设计', 'Atos'],
                 type: 'web',
             },
+            //花瓣面板开发
             {
                 name: 'Atos Digital花瓣面板开发',
                 link: {
@@ -297,6 +302,7 @@ let base = {
                 tags: ['网页开发', '用户体验设计', 'Atos', 'CSS'],
                 type: 'web',
             },
+            //Care Guru
             {
                 name: 'Care Guru',
                 star: true,
@@ -364,6 +370,7 @@ let base = {
                 tags: ['网页开发', 'Riot.js', 'Firebase'],
                 type: 'web',
             },
+            //动态作画
             {
                 name: '动态作画',
                 link: {
@@ -386,6 +393,7 @@ let base = {
                 tags: ['网页开发', 'CSS', 'JavaScript'],
                 type: 'web',
             },
+            //Canvas 画板
             {
                 name: 'Canvas画板',
                 star: true,

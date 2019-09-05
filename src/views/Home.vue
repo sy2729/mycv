@@ -75,7 +75,8 @@ export default {
     cvButton,
     // 'vue-lazy-component': VueLazyComponent,
     comments: ()=>import('@/components/comments.vue'),
-    blogSection:()=>import('@/components/blog-section.vue')
+    blogSection:()=>import('@/components/blog-section.vue'),
+
   },
   created(){
     if(this.cvData.works === undefined) {

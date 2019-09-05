@@ -1,7 +1,7 @@
 <template>
     <div class="skill-section each-section" :style="{background: sectionColor}">
         <section-title :order=order :name=skills.sectionName></section-title>
-        <div class='section-content'>
+        <div class='section-content flex align-center flex-wrap justify-center'>
             <!-- <p class="content-description" v-html='skills.description'></p> -->
             <div :class="['skill-wrap', {active: skillBarShort}]">
                 <div class="each-skill w-100" v-for='(i, index) in skills.allSkills' :key=index>
@@ -15,6 +15,7 @@
                 </div>
                 
             </div>
+            <qr-code />
         </div>
     </div>
 </template>
@@ -70,7 +71,8 @@ export default {
     },
     components: {
         sectionTitle,
-        timeNumUpdater
+        timeNumUpdater,
+        qrCode:()=>import('@/components/qr-code.vue')
     }
 }
 </script>
@@ -81,6 +83,9 @@ export default {
 
        .skill-wrap {
             color: #FBF7F7;
+            flex: auto;
+            margin-right: 20px;
+            min-width: 400px;
 
             &.active .bar-inner{
                 width: 0% !important;
@@ -88,7 +93,7 @@ export default {
             .each-skill {
                 margin-bottom: 10px;
                 font-size: 14px;
-                font-weight: 100;
+                font-weight: 400;
                 
                 .bar-info-wrap {
                     .skill-name {

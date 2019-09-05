@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     <ul>
-                        <li v-for='(i, index) in detail && detail.descrip' :key='index'>{{i}}</li>
+                        <li class="exp-description-line" v-for='(i, index) in detail && detail.descrip' :key='index'>{{i}}</li>
                     </ul>
                     <div class="company-logo-bg-wrap absolute">
                         <img :src=logo class='experience-logo'>
@@ -94,6 +94,10 @@ export default {
                         .company-logo-bg-wrap {
                             transform: translate(0%, 0%);
                         }
+                    }
+
+                    .exp-description-line {
+                        margin-bottom: 5px;
                     }
                 }
 
